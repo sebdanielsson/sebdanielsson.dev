@@ -25,7 +25,8 @@
 				"GitHub.copilot-chat",
 				"1Password.op-vscode",
 				"christian-kohler.npm-intellisense",
-				"christian-kohler.path-intellisense"
+				"christian-kohler.path-intellisense",
+				"astro-build.astro-vscode"
 			]
 		}
 	},
