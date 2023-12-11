@@ -1,18 +1,17 @@
 {
   "name": "sebbo.github.io",
-  "version": "1.0.0",
-  "description": "Personal website",
-  "main": "index.js",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "keywords": [],
-  "author": "Sebastian Danielsson",
-  "license": "MIT",
   "dependencies": {
-    "astro": "^4.0.4"
+    "@astrojs/check": "^0.3.2",
+    "astro": "^4.0.4",
+    "typescript": "^5.3.3"
   }
 }
