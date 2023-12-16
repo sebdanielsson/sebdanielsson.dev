@@ -1,0 +1,81 @@
+---
+/** Main menu items */
+const textLinks: { label: string; href: string }[] = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const profileLinks: { label: string; href: string; icon: string }[] = [
+  { label: 'GitHub', href: 'https://github.com/sebdanielsson', icon: '/img/github.svg' },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/sebastiandanielsson/',
+    icon: '/img/linkedin.svg',
+  },
+  { label: 'Twitter/X', href: 'https://twitter.com/sebbo_io', icon: '/img/x.svg' },
+  { label: 'Mastodon', href: 'https://mastodon.social/@sebbo', icon: '/img/mastodon.svg' },
+];
+---
+
+<nav class="sticky top-0 bg-neutral-950 bg-opacity-90 text-white backdrop-blur">
+  <div class="main-width flex flex-row items-center justify-between">
+    <a href="/" class="flex flex-row items-center gap-3">
+      <img src="/favicon.svg" alt="Logo" class="h-9 w-9" />
+      <span class="text-gradient text-3xl font-bold">Sebbo.io</span>
+    </a>
+    <ul class="flex flex-row items-center gap-6 text-base">
+      {
+        textLinks.map(({ label, href }) => (
+          <li class="hover:text-[#883AEA]">
+            <a
+              aria-current={Astro.url.pathname === href}
+              class:list={[
+                'link',
+                {
+                  active:
+                    Astro.url.pathname === href ||
+                    (href !== '/' && Astro.url.pathname.startsWith(href)),
+                },
+              ]}
+              href={href}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="flex flex-row items-center gap-3">
+      {
+        profileLinks.map(({ label, href, icon }) => (
+          <li class="h-6 w-6">
+            <a
+              aria-current={Astro.url.pathname === href}
+              class:list={[
+                'link',
+                {
+                  active:
+                    Astro.url.pathname === href ||
+                    (href !== '/' && Astro.url.pathname.startsWith(href)),
+                },
+              ]}
+              href={href}
+              target="_blank"
+            >
+              <img src={icon} alt={`${label} icon`} class="profile-icon" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+<style>
+  .profile-icon:hover,
+  .profile-icon:focus {
+    filter: brightness(0) saturate(100%) invert(28%) sepia(96%) saturate(4015%) hue-rotate(257deg)
+      brightness(94%) contrast(95%);
+  }
+</style>

@@ -1,54 +1,79 @@
 ---
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
 interface Props {
-  title: string;
+  title?: string | undefined;
+  description?: string | undefined;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Sebastian Danielsson's Personal Website"
-    />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <MainHead title={title} description={description} />
   </head>
   <body>
+    <Nav />
     <slot />
+    <Footer />
+    <style is:global>
+      :root {
+        --accent: #883aea;
+        --accent-light: #bb8ff4;
+        --accent-dark: #310a65;
+        --accent-gradient: linear-gradient(90deg, var(--accent), var(--accent-light) 50%);
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background: #101010;
+      }
+      code {
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', 'DejaVu Sans Mono', monospace;
+      }
+      .main-width {
+        margin: auto;
+        padding: 1rem;
+        width: 800px;
+        max-width: calc(100% - 2rem);
+      }
+      main {
+        color: white;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+      h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        margin-top: 0.8em;
+        margin-bottom: 1em;
+      }
+      .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400% 400%;
+        animation: AnimationName 12s ease infinite;
+      }
+      @keyframes AnimationName {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      strong {
+        color: var(--accent-light);
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>
