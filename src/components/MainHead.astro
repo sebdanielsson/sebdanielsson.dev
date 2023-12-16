@@ -4,10 +4,9 @@ interface Props {
   description?: string | undefined;
 }
 
-const {
-  title = 'Sebastian Danielsson: Personal Site',
-  description = 'The personal site of Sebastian Danielsson',
-} = Astro.props;
+const { title: propTitle, description = 'The personal site of Sebastian Danielsson' } = Astro.props;
+
+const title = propTitle ? `${propTitle} - Sebbo.io` : 'Sebbo.io';
 ---
 
 <meta charset="UTF-8" />
@@ -18,7 +17,4 @@ const {
 
 <link rel="icon" type="image/x-icon" href="/favicon.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<script
-  src="https://plausible.hogwarts.zone/js/script.js"
-  defer
-  data-domain="hogwarts.zone"></script>
+<script src="https://plausible.hogwarts.zone/js/script.js" defer data-domain="sebbo.io"></script>
