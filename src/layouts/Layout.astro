@@ -19,9 +19,10 @@ const { title, description } = Astro.props;
   <body>
     <Nav />
     <slot />
-    <Footer />
+    <!-- <Footer /> -->
     <style is:global>
       :root {
+        --background: #101010;
         --accent: #883aea;
         --accent-light: #bb8ff4;
         --accent-dark: #310a65;
@@ -29,7 +30,7 @@ const { title, description } = Astro.props;
       }
       html {
         font-family: system-ui, sans-serif;
-        background: #101010;
+        background: var(--background);
       }
       code {
         font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', 'DejaVu Sans Mono', monospace;

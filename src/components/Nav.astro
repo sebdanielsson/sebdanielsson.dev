@@ -1,5 +1,4 @@
 ---
-/** Main menu items */
 const textLinks: { label: string; href: string }[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
@@ -28,10 +27,11 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
     <ul class="flex flex-row items-center gap-6 text-base">
       {
         textLinks.map(({ label, href }) => (
-          <li class="hover:text-[#883AEA]">
+          <li>
             <a
               aria-current={Astro.url.pathname === href}
               class:list={[
+                'nav-item',
                 'link',
                 {
                   active:
@@ -73,9 +73,37 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
   </div>
 </nav>
 <style>
+  .active {
+    color: var(--accent-light);
+  }
+
+  .nav-item {
+    display: inline-block;
+    position: relative;
+  }
+
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-light);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.4s ease-out;
+    color: var(--accent-light);
+  }
+
+  .nav-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
   .profile-icon:hover,
   .profile-icon:focus {
-    filter: brightness(0) saturate(100%) invert(28%) sepia(96%) saturate(4015%) hue-rotate(257deg)
-      brightness(94%) contrast(95%);
+    filter: brightness(0) saturate(100%) invert(66%) sepia(62%) saturate(2043%) hue-rotate(213deg)
+      brightness(98%) contrast(95%);
   }
 </style>
