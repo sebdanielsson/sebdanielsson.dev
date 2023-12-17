@@ -2,7 +2,7 @@
 const githubUser = import.meta.env.GITHUB_USER || 'unknown user';
 const repoName = import.meta.env.GITHUB_REPO || 'unknown repo';
 const commitId = import.meta.env.COMMIT_ID || 'unknown commit';
-const repoUrl = `https://github.com/${githubUser}/${repoName}/commit/$COMMIT_ID`;
+const repoUrl = `https://github.com/${githubUser}/${repoName}/commit/${commitId}`;
 
 const siteName = 'Sebastian Danielsson';
 const year = new Date().getFullYear();
