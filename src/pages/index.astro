@@ -1,11 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const date = new Date();
+const hour = date.getHours();
+
+const firstName = 'Sebastian';
+let greeting = '';
+
+if (hour < 4) {
+  greeting = 'Hello, night owl!';
+} else if (hour < 12) {
+  greeting = 'Good morning!';
+} else if (hour < 18) {
+  greeting = 'Good afternoon!';
+} else {
+  greeting = 'Good evening!';
+}
 ---
 
 <Layout>
-  <main class="main-width">
-    <h1>
-      Building my new portfolio with <span class="text-gradient">Astro</span>!
+  <main class="main-width flex flex-col items-center">
+    <h1 class="">
+      {greeting}<br /> My name is <span class="text-gradient">{firstName}</span>!
     </h1>
+    <p>
+      I'm currently building this site with <a
+        href="https://astro.build"
+        target="_blank"
+        class="text-gradient">Astro</a
+      >! There isn't much here yet, but I'm working on it!
+    </p>
   </main>
 </Layout>
