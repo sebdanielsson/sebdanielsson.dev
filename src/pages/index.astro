@@ -1,27 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const date = new Date();
-const hour = date.getHours();
-
 const firstName = 'Sebastian';
-let greeting = '';
-
-if (hour < 4) {
-  greeting = 'Hello, night owl!';
-} else if (hour < 12) {
-  greeting = 'Good morning!';
-} else if (hour < 18) {
-  greeting = 'Good afternoon!';
-} else {
-  greeting = 'Good evening!';
-}
 ---
 
 <Layout>
   <main class="main-width flex flex-col items-center">
-    <h1 class="">
-      {greeting}<br /> My name is <span class="text-gradient">{firstName}</span>!
+    <h1>
+      <span id="greeting">Hello!</span><br /> My name is <span id="firstName" class="text-gradient"
+        >{firstName}</span
+      >!
     </h1>
     <p>
       I'm currently building this site with <a
@@ -32,3 +20,24 @@ if (hour < 4) {
     </p>
   </main>
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const date = new Date();
+    const hour = date.getHours();
+
+    let greeting = '';
+
+    if (hour < 4) {
+      greeting = 'Hello, night owl!';
+    } else if (hour < 12) {
+      greeting = 'Good morning!';
+    } else if (hour < 18) {
+      greeting = 'Good afternoon!';
+    } else {
+      greeting = 'Good evening!';
+    }
+
+    document.getElementById('greeting').textContent = greeting;
+  });
+</script>
