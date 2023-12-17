@@ -16,7 +16,7 @@ const { title, description } = Astro.props;
   <head>
     <MainHead title={title} description={description} />
   </head>
-  <body>
+  <body class="flex min-h-screen flex-col">
     <Nav />
     <slot />
     <Footer />
@@ -45,6 +45,7 @@ const { title, description } = Astro.props;
         color: white;
         font-size: 16px;
         line-height: 1.6;
+        flex: 1;
       }
       h1 {
         font-size: 3rem;
