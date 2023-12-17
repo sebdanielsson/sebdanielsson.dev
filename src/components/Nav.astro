@@ -17,58 +17,54 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
 ];
 ---
 
-<nav class="sticky top-0 bg-neutral-950 bg-opacity-90 text-white backdrop-blur">
+<nav class="sm:text-md sticky top-0 bg-neutral-950 bg-opacity-90 text-xs text-white backdrop-blur">
   <div class="main-width flex flex-row items-center justify-between">
     <a href="/" class="flex flex-row items-center gap-3">
-      <img src="/favicon.svg" alt="Logo" class="h-9 w-9" />
-      <span class="text-gradient text-3xl font-bold">Sebbo.io</span>
+      <img src="/favicon.svg" alt="Logo" class="h-6 w-6 sm:h-9 sm:w-9" />
+      <span class="text-gradient hidden text-2xl font-bold sm:block sm:text-3xl">Sebbo.io</span>
     </a>
-    <ul class="flex flex-row items-center gap-6 text-base">
+    <div class="flex flex-row items-center gap-2 text-sm sm:gap-6 sm:text-base">
       {
         textLinks.map(({ label, href }) => (
-          <li>
-            <a
-              aria-current={Astro.url.pathname === href}
-              class:list={[
-                'nav-item',
-                'link',
-                {
-                  active:
-                    Astro.url.pathname === href ||
-                    (href !== '/' && Astro.url.pathname.startsWith(href)),
-                },
-              ]}
-              href={href}
-            >
-              {label}
-            </a>
-          </li>
+          <a
+            aria-current={Astro.url.pathname === href}
+            class:list={[
+              'nav-item',
+              'link',
+              {
+                active:
+                  Astro.url.pathname === href ||
+                  (href !== '/' && Astro.url.pathname.startsWith(href)),
+              },
+            ]}
+            href={href}
+          >
+            {label}
+          </a>
         ))
       }
-    </ul>
-    <ul class="flex flex-row items-center gap-3">
+    </div>
+    <div class="flex flex-row items-center gap-2 sm:gap-3">
       {
         profileLinks.map(({ label, href, icon }) => (
-          <li class="h-6 w-6">
-            <a
-              aria-current={Astro.url.pathname === href}
-              class:list={[
-                'link',
-                {
-                  active:
-                    Astro.url.pathname === href ||
-                    (href !== '/' && Astro.url.pathname.startsWith(href)),
-                },
-              ]}
-              href={href}
-              target="_blank"
-            >
-              <img src={icon} alt={`${label} icon`} class="profile-icon" />
-            </a>
-          </li>
+          <a
+            aria-current={Astro.url.pathname === href}
+            class:list={[
+              'link',
+              {
+                active:
+                  Astro.url.pathname === href ||
+                  (href !== '/' && Astro.url.pathname.startsWith(href)),
+              },
+            ]}
+            href={href}
+            target="_blank"
+          >
+            <img src={icon} alt={`${label} icon`} class="profile-icon h-5 w-5 sm:h-6 sm:w-6" />
+          </a>
         ))
       }
-    </ul>
+    </div>
   </div>
 </nav>
 <style>
