@@ -8,8 +8,7 @@ const siteName = 'Sebastian Danielsson';
 const year = new Date().getFullYear();
 ---
 
-<footer class="flex flex-row justify-center py-3 text-xs text-neutral-300">
-  <span>&copy; {siteName} {year}</span>
-  <span class="mx-2">|</span>
+<footer class="flex flex-col items-center py-3 text-xs text-neutral-300">
+  <!-- <span>&copy; {year} {siteName}</span> -->
   <span>Commit: <a href=`${repoUrl}/` target="_blank">{commitId}</a></span>
 </footer>
