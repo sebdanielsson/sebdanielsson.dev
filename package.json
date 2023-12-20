@@ -11,10 +11,14 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.3",
-    "astro": "^4.0.4",
+    "@octokit/rest": "^20.0.2",
+    "astro": "^4.0.6",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.12.2",
     "prettier-plugin-tailwindcss": "^0.5.9",
-    "tailwindcss": "^3.3.6"
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5"
   }
 }
