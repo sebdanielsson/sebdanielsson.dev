@@ -29,8 +29,10 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
           <a
             aria-current={Astro.url.pathname === href}
             class:list={[
-              'nav-item',
+              'passing-underline',
               'link',
+              'text-white',
+              'active:text-[var(--accent-light)]',
               {
                 active:
                   Astro.url.pathname === href ||
@@ -68,35 +70,6 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
   </div>
 </nav>
 <style>
-  .nav-item.active {
-    color: var(--accent-light);
-  }
-
-  .nav-item {
-    display: inline-block;
-    position: relative;
-    color: #fff;
-  }
-
-  .nav-item::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--accent-light);
-    transform: scaleX(0);
-    transform-origin: bottom left;
-    transition: transform 0.4s ease-out;
-    color: var(--accent-light);
-  }
-
-  .nav-item:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-
   .profile-icon:hover,
   .profile-icon:focus {
     filter: brightness(0) saturate(100%) invert(66%) sepia(62%) saturate(2043%) hue-rotate(213deg)
