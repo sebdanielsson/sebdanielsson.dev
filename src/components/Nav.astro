@@ -18,12 +18,12 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
 ---
 
 <nav class="sm:text-md sticky top-0 bg-neutral-950 bg-opacity-90 text-xs text-white backdrop-blur">
-  <div class="main-width flex flex-row items-center justify-between">
+  <div class="main-width flex flex-row items-center justify-between gap-2">
     <a href="/" class="flex flex-row items-center gap-3 hover:text-[var(--accent-light)]">
       <img src="/favicon.svg" alt="Logo" class="h-6 w-6 sm:h-9 sm:w-9" />
       <span class="hidden text-2xl font-bold sm:block sm:text-3xl">Sebbo.io</span>
     </a>
-    <div class="flex flex-row items-center gap-3 text-base sm:gap-6">
+    <div class="flex flex-row items-center gap-2 text-base sm:gap-6">
       {
         textLinks.map(({ label, href }) => (
           <a
@@ -46,7 +46,7 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
         ))
       }
     </div>
-    <div class="flex flex-row items-center gap-2 sm:gap-3">
+    <div class="flex flex-row items-center gap-1 sm:gap-3">
       {
         profileLinks.map(({ label, href, icon }) => (
           <a
