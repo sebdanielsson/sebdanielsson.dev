@@ -1,5 +1,124 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Octokit } from '@octokit/rest';
+
+// List of GitHub repos to fetch
+const githubRepos = [
+  {
+    owner: 'sebdanielsson',
+    repo: 'hogwarts-docusaurus',
+  },
+  {
+    owner: 'sebdanielsson',
+    repo: 'infra',
+  },
+  {
+    owner: 'sebdanielsson',
+    repo: 'nitmod',
+  },
+  {
+    owner: 'sebdanielsson',
+    repo: 'docker-etlegacy',
+  },
+  {
+    owner: 'sebdanielsson',
+    repo: 'sebdanielsson.github.io',
+  },
+  {
+    owner: 'sebdanielsson',
+    repo: 'ansible-role-cloudflared',
+  },
+  {
+    owner: 'sebdanielsson',
+    repo: 'compose-transmission-wireguard',
+  },
+  {
+    owner: 'sebdanielsson',
+    repo: 'Guides',
+  },
+];
+
+// List of Raycast extensions to fetch
+const raycastExtensions = [
+  {
+    store_url: 'https://www.raycast.com/SebDanielsson/repology-search',
+    icon_url:
+      'https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2Fjh7wv31sndbsyc2usxzab344j817&w=128&q=75',
+    install_button_url:
+      'https://www.raycast.com/SebDanielsson/repology-search/install_button@2x.png?v=1.1',
+    name: 'Repology Search',
+    description: 'Search packages from repology.org',
+    downloads: 5,
+    categories: ['Developer Tools', 'Web'],
+  },
+  {
+    store_url: 'https://www.raycast.com/SebDanielsson/url-unshortener',
+    icon_url:
+      'https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2F7z3ytac6b18g02r2gmsagmss82pu&w=128&q=75',
+    install_button_url:
+      'https://www.raycast.com/SebDanielsson/url-unshortener/install_button@2x.png?v=1.1',
+    name: 'URL Unshortener',
+    description:
+      'Unshorten/expand those pesky short links in your clipboard or text selection, enhancing your privacy and security.',
+    downloads: 170,
+    categories: ['Web'],
+  },
+];
+
+// Fetch repo details
+const octokit = new Octokit({
+  auth: import.meta.env.GITHUB_TOKEN,
+  userAgent: 'sebdanielsson/sebbo.io',
+});
+
+async function getRepoDetails(owner: string, repo: string) {
+  try {
+    const response = await octokit.repos.get({
+      owner,
+      repo,
+    });
+
+    const repoData = response.data;
+
+    return {
+      id: repoData.id,
+      owner: repoData.owner.login,
+      owner_url: repoData.owner.html_url,
+      name: repoData.name,
+      full_name: repoData.full_name,
+      html_url: repoData.html_url,
+      description: repoData.description,
+      created_at: repoData.created_at,
+      updated_at: repoData.updated_at,
+      pushed_at: repoData.pushed_at,
+      stars: repoData.stargazers_count,
+      language: repoData.language,
+      topics: repoData.topics,
+      license: repoData.license,
+    };
+  } catch (error) {
+    console.error('Error fetching repository details:', error);
+  }
+}
+
+// Format stars to k if >= 1000
+function shortenNumberWithK(number: number) {
+  if (number >= 10000) {
+    return `${Math.floor(number / 1000)}k`;
+  } else if (number >= 1000) {
+    return `${Math.floor(number / 100) / 10}k`;
+  } else {
+    return `${number}`;
+  }
+}
+
+// Fetch repo details
+const repoDetails = await Promise.all(
+  githubRepos.map((repo) => getRepoDetails(repo.owner, repo.repo)),
+);
+
+// Sort by stars
+repoDetails.sort((a, b) => b.stars - a.stars);
 ---
 
 <Layout title="Projects">
@@ -7,5 +126,125 @@ import Layout from '../layouts/Layout.astro';
     <h1>
       <span class="text-gradient text-gradient-animation">Projects</span>
     </h1>
+    <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+      {
+        repoDetails.map((repo) => (
+          <div
+            id={`project-${repo.id}`}
+            class="rounded-2xl border border-[--accent-light] bg-[#1A1420] shadow-lg"
+          >
+            <div class="p-4">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center justify-between sm:mt-2">
+                  <a
+                    href={repo.html_url}
+                    target="_blank"
+                    class="passing-underline flex-none text-sm font-bold text-gray-200 hover:text-gray-200"
+                  >
+                    {repo.name}
+                  </a>
+                </div>
+                <p class="text-sm text-gray-400">{repo.description}</p>
+                <div class="flex flex-wrap gap-x-2">
+                  {repo.topics.map((topic) => (
+                    <a
+                      href="https://github.com/topics/"
+                      target="_blank"
+                      class="text-[10px] font-semibold uppercase text-gray-400"
+                    >
+                      {topic}
+                    </a>
+                  ))}
+                </div>
+                <div class="flex gap-3 pt-2 text-xs text-gray-400">
+                  <div class="inline-flex items-center gap-1">
+                    <svg
+                      fill="#eac54f"
+                      aria-hidden="true"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      version="1.1"
+                      width="16"
+                      data-view-component="true"
+                      class="octicon octicon-star-fill starred-button-icon d-inline-block"
+                    >
+                      <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z" />
+                    </svg>
+                    <p class="">{shortenNumberWithK(repo.stars)} stars</p>
+                  </div>
+                  <div class="inline-flex items-center">
+                    <p class="">{repo.language}</p>
+                  </div>
+
+                  {repo.license && (
+                    <div class="inline-flex items-center">
+                      <span class="">{repo.license.spdx_id}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+
+      {
+        raycastExtensions.map((extension) => (
+          <div
+            id={`project-${extension.name}`}
+            class="flex flex-col gap-2 rounded-2xl border border-[--accent-light] bg-[#1A1420] p-4 shadow-lg"
+          >
+            <div class="flex flex-row gap-2">
+              <img src={extension.icon_url} alt="" class="inline-block h-16 w-16 rounded-lg" />
+              <div class="flex flex-col gap-1">
+                <a
+                  href={extension.store_url}
+                  target="_blank"
+                  class="text-sm font-bold text-gray-200 hover:text-gray-200"
+                >
+                  {extension.name}
+                </a>
+                <div class="flex flex-wrap items-center gap-x-2">
+                  {extension.categories.map((category) => (
+                    <span class="rounded bg-white px-1 text-[10px] text-black">{category}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400">{extension.description}</p>
+            <div class="flex justify-between gap-3 text-xs text-gray-400">
+              <div class="inline-flex items-center gap-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  class="arrow-down-circle_svg__icon"
+                  viewBox="0 0 20 20"
+                  height="20"
+                  width="20"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M9.996 18.204c4.499 0 8.212-3.713 8.212-8.204 0-4.491-3.72-8.205-8.22-8.205-4.49 0-8.196 3.714-8.196 8.205 0 4.49 3.713 8.204 8.204 8.204Zm0-1.634A6.54 6.54 0 0 1 3.442 10a6.53 6.53 0 0 1 6.546-6.562c3.642 0 6.57 2.92 6.578 6.562a6.547 6.547 0 0 1-6.57 6.57Zm0-10.633c-.405 0-.706.286-.706.69v3.738l.071 1.618-.714-.88-.888-.929a.651.651 0 0 0-.484-.206.632.632 0 0 0-.651.643c0 .19.055.349.19.484l2.619 2.65c.182.182.349.27.563.27.222 0 .405-.096.571-.27l2.619-2.65a.677.677 0 0 0 .19-.484.632.632 0 0 0-.65-.643.623.623 0 0 0-.484.206l-.881.92-.722.897.071-1.626V6.628c0-.405-.301-.69-.714-.69Z"
+                  />
+                </svg>
+                <p class="">{shortenNumberWithK(extension.downloads)} installs</p>
+              </div>
+              <a
+                title={`Install ${extension.name} Raycast Extension`}
+                href={extension.store_url}
+                target="_blank"
+                class="h-8 items-center place-self-end sm:h-12"
+              >
+                <img
+                  src={extension.install_button_url}
+                  alt={`Install ${extension.name} Raycast Extension`}
+                  class="h-auto max-h-full w-auto max-w-full"
+                />
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </main>
 </Layout>
