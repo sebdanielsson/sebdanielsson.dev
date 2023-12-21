@@ -1,0 +1,34 @@
+[
+    {
+      "owner": "sebdanielsson",
+      "repo": "hogwarts-docusaurus"
+    },
+    {
+      "owner": "sebdanielsson",
+      "repo": "infra"
+    },
+    {
+      "owner": "sebdanielsson",
+      "repo": "nitmod"
+    },
+    {
+      "owner": "sebdanielsson",
+      "repo": "docker-etlegacy"
+    },
+    {
+      "owner": "sebdanielsson",
+      "repo": "sebdanielsson.github.io"
+    },
+    {
+      "owner": "sebdanielsson",
+      "repo": "ansible-role-cloudflared"
+    },
+    {
+      "owner": "sebdanielsson",
+      "repo": "compose-transmission-wireguard"
+    },
+    {
+      "owner": "sebdanielsson",
+      "repo": "Guides"
+    }
+]

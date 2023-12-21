@@ -3,69 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import GitHubRepoCard from '../components/GitHubRepoCard.astro';
 import RaycastStoreCard from '../components/RaycastStoreCard.astro';
 import { Octokit } from '@octokit/rest';
+import githubRepos from '../data/githubRepos.json';
+import raycastExtensions from '../data/raycastExtensions.json';
 
-// List of GitHub repos to fetch
-const githubRepos = [
-  {
-    owner: 'sebdanielsson',
-    repo: 'hogwarts-docusaurus',
-  },
-  {
-    owner: 'sebdanielsson',
-    repo: 'infra',
-  },
-  {
-    owner: 'sebdanielsson',
-    repo: 'nitmod',
-  },
-  {
-    owner: 'sebdanielsson',
-    repo: 'docker-etlegacy',
-  },
-  {
-    owner: 'sebdanielsson',
-    repo: 'sebdanielsson.github.io',
-  },
-  {
-    owner: 'sebdanielsson',
-    repo: 'ansible-role-cloudflared',
-  },
-  {
-    owner: 'sebdanielsson',
-    repo: 'compose-transmission-wireguard',
-  },
-  {
-    owner: 'sebdanielsson',
-    repo: 'Guides',
-  },
-];
-
-// List of Raycast extensions to fetch
-const raycastExtensions = [
-  {
-    store_url: 'https://www.raycast.com/SebDanielsson/repology-search',
-    icon_url:
-      'https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2Fjh7wv31sndbsyc2usxzab344j817&w=128&q=75',
-    install_button_url:
-      'https://www.raycast.com/SebDanielsson/repology-search/install_button@2x.png?v=1.1',
-    name: 'Repology Search',
-    description: 'Search packages from repology.org',
-    downloads: 5,
-    categories: ['Developer Tools', 'Web'],
-  },
-  {
-    store_url: 'https://www.raycast.com/SebDanielsson/url-unshortener',
-    icon_url:
-      'https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2F7z3ytac6b18g02r2gmsagmss82pu&w=128&q=75',
-    install_button_url:
-      'https://www.raycast.com/SebDanielsson/url-unshortener/install_button@2x.png?v=1.1',
-    name: 'URL Unshortener',
-    description:
-      'Unshorten/expand those pesky short links in your clipboard or text selection, enhancing your privacy and security.',
-    downloads: 170,
-    categories: ['Web'],
-  },
-];
+interface Repo {
+  owner: string;
+  repo: string;
+}
 
 // Fetch repo details
 const octokit = new Octokit({
@@ -103,9 +47,12 @@ async function getRepoDetails(owner: string, repo: string) {
   }
 }
 
+// List of GitHub repos to fetch
+const typedGithubRepos: Repo[] = githubRepos as Repo[];
+
 // Fetch repo details
 const repoDetails = await Promise.all(
-  githubRepos.map((repo) => getRepoDetails(repo.owner, repo.repo)),
+  typedGithubRepos.map((repo) => getRepoDetails(repo.owner, repo.repo)),
 );
 
 // Sort by stars

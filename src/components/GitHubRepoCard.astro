@@ -75,17 +75,8 @@ const { repo } = Astro.props;
           </svg>
           <p class="">{shortenNumberWithK(repo.stars)} stars</p>
         </div>
-        <div class="inline-flex items-center">
-          <p class="">{repo.language}</p>
-        </div>
-
-        {
-          repo.license && (
-            <div class="inline-flex items-center">
-              <span class="">{repo.license.spdx_id}</span>
-            </div>
-          )
-        }
+        <span class="empty:hidden">{repo.language}</span>
+        {repo.license && <span class="empty:hidden">{repo.license.spdx_id}</span>}
       </div>
     </div>
   </div>
