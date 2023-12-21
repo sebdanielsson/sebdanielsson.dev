@@ -41,17 +41,27 @@ const { title, description } = Astro.props;
       }
       @media screen and (min-width: 640px) {
         .main-width {
-          width: calc(100% - 2rem);
+          width: 95vw;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        .main-width {
+          width: 90vw;
         }
       }
       @media screen and (min-width: 1024px) {
         .main-width {
-          width: calc(100% - 4rem);
+          width: 85vw;
+        }
+      }
+      @media screen and (min-width: 1280px) {
+        .main-width {
+          width: 80vw;
         }
       }
       @media screen and (min-width: 1920px) {
         .main-width {
-          width: calc(1920px . 4rem);
+          width: calc(1920px - 4rem);
         }
       }
       main {
