@@ -1,0 +1,87 @@
+---
+// Format stars to k if >= 1000
+function shortenNumberWithK(number: number) {
+  if (number >= 10000) {
+    return `${Math.floor(number / 1000)}k`;
+  } else if (number >= 1000) {
+    return `${Math.floor(number / 100) / 10}k`;
+  } else {
+    return `${number}`;
+  }
+}
+
+interface RaycastExtension {
+  store_url: string;
+  icon_url: string;
+  install_button_url: string;
+  name: string;
+  description: string;
+  downloads: number;
+  categories: string[];
+}
+
+interface Props {
+  extension: RaycastExtension;
+}
+
+const { extension } = Astro.props;
+---
+
+<div
+  id={`project-${extension.name}`}
+  class="flex flex-col gap-2 rounded-2xl border border-[--accent-light] bg-[#1A1420] p-4 shadow-lg"
+>
+  <div class="flex flex-row gap-2">
+    <img src={extension.icon_url} alt="" class="inline-block h-16 w-16 rounded-lg" />
+    <div class="flex flex-col gap-1">
+      <div>
+        <a
+          href={extension.store_url}
+          target="_blank"
+          class="passing-underline text-sm font-bold text-gray-200 hover:text-gray-200"
+        >
+          {extension.name}
+        </a>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-x-2">
+        {
+          extension.categories.map((category) => (
+            <span class="rounded bg-white px-1 text-[10px] text-black">{category}</span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  <p class="text-xs text-gray-400">{extension.description}</p>
+  <div class="flex justify-between gap-3 text-xs text-gray-400">
+    <div class="inline-flex items-center gap-1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        class="arrow-down-circle_svg__icon"
+        viewBox="0 0 20 20"
+        height="20"
+        width="20"
+      >
+        <path
+          fill="currentColor"
+          d="M9.996 18.204c4.499 0 8.212-3.713 8.212-8.204 0-4.491-3.72-8.205-8.22-8.205-4.49 0-8.196 3.714-8.196 8.205 0 4.49 3.713 8.204 8.204 8.204Zm0-1.634A6.54 6.54 0 0 1 3.442 10a6.53 6.53 0 0 1 6.546-6.562c3.642 0 6.57 2.92 6.578 6.562a6.547 6.547 0 0 1-6.57 6.57Zm0-10.633c-.405 0-.706.286-.706.69v3.738l.071 1.618-.714-.88-.888-.929a.651.651 0 0 0-.484-.206.632.632 0 0 0-.651.643c0 .19.055.349.19.484l2.619 2.65c.182.182.349.27.563.27.222 0 .405-.096.571-.27l2.619-2.65a.677.677 0 0 0 .19-.484.632.632 0 0 0-.65-.643.623.623 0 0 0-.484.206l-.881.92-.722.897.071-1.626V6.628c0-.405-.301-.69-.714-.69Z"
+        ></path>
+      </svg>
+      <p class="">{shortenNumberWithK(extension.downloads)} installs</p>
+    </div>
+    <a
+      title={`Install ${extension.name} Raycast Extension`}
+      href={extension.store_url}
+      target="_blank"
+      class="h-8 items-center place-self-end sm:h-12"
+    >
+      <img
+        src={extension.install_button_url}
+        alt={`Install ${extension.name} Raycast Extension`}
+        class="h-auto max-h-full w-auto max-w-full"
+      />
+    </a>
+  </div>
+</div>
