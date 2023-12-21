@@ -30,9 +30,7 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
             aria-current={Astro.url.pathname === href}
             class:list={[
               'passing-underline',
-              'link',
               'text-white',
-              'active:text-[var(--accent-light)]',
               {
                 active:
                   Astro.url.pathname === href ||
@@ -49,19 +47,7 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
     <div class="flex flex-row items-center gap-1 sm:gap-3">
       {
         profileLinks.map(({ label, href, icon }) => (
-          <a
-            aria-current={Astro.url.pathname === href}
-            class:list={[
-              'link',
-              {
-                active:
-                  Astro.url.pathname === href ||
-                  (href !== '/' && Astro.url.pathname.startsWith(href)),
-              },
-            ]}
-            href={href}
-            target="_blank"
-          >
+          <a href={href} target="_blank">
             <img src={icon} alt={`${label} icon`} class="profile-icon h-5 w-5 sm:h-6 sm:w-6" />
           </a>
         ))
@@ -70,6 +56,9 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
   </div>
 </nav>
 <style>
+  .active {
+    color: var(--accent-light);
+  }
   .profile-icon:hover,
   .profile-icon:focus {
     filter: brightness(0) saturate(100%) invert(66%) sepia(62%) saturate(2043%) hue-rotate(213deg)
