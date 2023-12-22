@@ -13,8 +13,9 @@ import stuffIUse from '../data/stuffIUse.json';
     <p>Here are some of the hardware, software, and tools that I use.</p>
     <p></p>
     <h3>Hardware</h3>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {stuffIUse.map((item) => <FlippingCard item={item} />)}
     </div>
+    <h3>Software</h3>
   </main>
 </Layout>
