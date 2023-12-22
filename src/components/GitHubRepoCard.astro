@@ -38,25 +38,25 @@ const { repo } = Astro.props;
 
 <div
   id={`project-${repo.id}`}
-  class="rounded-2xl border border-[--accent-light] bg-[#1A1420] shadow-lg"
+  class="grid grid-rows-[1fr_auto] rounded-2xl border border-[--accent-light] bg-[#1A1420] p-4 shadow-lg"
 >
-  <div class="p-4">
-    <div class="flex flex-col gap-1">
+  <div class="">
+    <div class="grid gap-1">
       <div class="flex items-center justify-between">
         <a
           href={repo.html_url}
           target="_blank"
-          class="passing-underline flex-none text-sm font-bold text-gray-200 hover:text-gray-200"
+          class="passing-underline flex-none text-base font-bold text-gray-200 hover:text-gray-200"
         >
           {repo.name}
         </a>
       </div>
       <p class="text-sm text-gray-400">{repo.description}</p>
-      <div class="flex flex-wrap gap-x-2">
+      <div class="flex flex-wrap gap-x-2 py-1">
         {
           repo.topics.map((topic) => (
             <a
-              href="https://github.com/topics/"
+              href={`https://github.com/topics/${topic}`}
               target="_blank"
               class="text-[10px] font-semibold uppercase text-gray-400"
             >
@@ -65,19 +65,21 @@ const { repo } = Astro.props;
           ))
         }
       </div>
-      <div class="flex gap-3 pt-2 text-xs text-gray-400">
-        <div class="inline-flex items-center gap-1">
-          <svg fill="none" aria-hidden="true" class="size-4 text-[#eac54d]">
-            <path
-              fill="currentColor"
-              d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
-            ></path>
-          </svg>
-          <p class="">{shortenNumberWithK(repo.stars)} stars</p>
-        </div>
-        <span class="empty:hidden">{repo.language}</span>
-        {repo.license && <span class="empty:hidden">{repo.license.spdx_id}</span>}
+    </div>
+  </div>
+  <div class="">
+    <div class="flex gap-3 pt-2 text-xs text-gray-400">
+      <div class="inline-flex items-center gap-1">
+        <svg fill="none" aria-hidden="true" class="size-4 text-[#eac54d]">
+          <path
+            fill="currentColor"
+            d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
+          ></path>
+        </svg>
+        <p>{shortenNumberWithK(repo.stars)} stars</p>
       </div>
+      <span class="empty:hidden">{repo.language}</span>
+      {repo.license && <span class="empty:hidden">{repo.license.spdx_id}</span>}
     </div>
   </div>
 </div>
