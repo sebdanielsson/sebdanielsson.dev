@@ -18,7 +18,7 @@ const { item } = Astro.props;
     >
       <div class="flex min-h-full flex-col place-content-between items-center">
         <h1 class="my-0 text-2xl font-bold text-white">{item.name}</h1>
-        <p class="text-sm">{item.description}</p>
+        <p class="text-sm" set:html={item.description} />
         <a
           href={item.link}
           target="_blank"

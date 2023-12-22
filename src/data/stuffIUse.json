@@ -16,5 +16,11 @@
         "description": "Great sound, noise cancellation, and transparency mode.",
         "link": "https://www.apple.com/airpods-pro/",
         "image": "/img/airpods-pro-2nd-generation.webp"
+    },
+    {
+        "name": "Boya BY-M1",
+        "description": "Cheap, but good lavalier microphone. More importantly, it makes the audio quality of the AirPods <a href=\"https://usenoor.com/blog/airpods\" target=\"_blank\">not suck</a> during calls.",
+        "link": "https://www.boya-mic.com/product/by-m1",
+        "image": "/img/boya-by-m1.webp"
     }
 ]
