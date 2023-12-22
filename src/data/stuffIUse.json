@@ -1,0 +1,20 @@
+[
+    {
+        "name": "M1 MacBook Air",
+        "description": "Small, light, fanless, great performance.",
+        "link": "https://www.apple.com/macbook-air-m1/",
+        "image": "/img/m1-mba.webp"
+    },
+    {
+        "name": "Gigabyte M28U",
+        "description": "28\" 4K Monitor with HDR, VRR, and 144 Hz",
+        "link": "https://www.gigabyte.com/Monitor/M28U",
+        "image": "/img/gigabyte-m28u.webp"
+    },
+    {
+        "name": "AirPods Pro (2nd gen)",
+        "description": "Great sound, noise cancellation, and transparency mode.",
+        "link": "https://www.apple.com/airpods-pro/",
+        "image": "/img/airpods-pro-2nd-generation.webp"
+    }
+]

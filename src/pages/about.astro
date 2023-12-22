@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FlippingCard from '../components/FlippingCard.astro';
+import stuffIUse from '../data/stuffIUse.json';
 ---
 
 <Layout title="About">
@@ -7,5 +9,17 @@ import Layout from '../layouts/Layout.astro';
     <h1>
       <span class="text-gradient text-gradient-animation">About</span>
     </h1>
+    <h2>Things I Use</h2>
+    <h3>Hardware</h3>
+    <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-3">
+      {stuffIUse.map((item) => <FlippingCard item={item} />)}
+    </div>
   </main>
 </Layout>
+
+<script>
+  function toggleDetails(element) {
+    var details = element.querySelector('.details');
+    details.classList.toggle('hidden');
+  }
+</script>
