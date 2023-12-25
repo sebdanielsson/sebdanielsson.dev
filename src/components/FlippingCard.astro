@@ -4,26 +4,27 @@ const { item } = Astro.props;
 
 <div class="aspect-2/1 group w-full [perspective:1000px]">
   <div
-    class="relative h-full w-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+    class="h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
   >
-    <div class="absolute inset-0 rounded-xl">
-      <div
-        class="absolute inset-0 -z-10 rounded-xl bg-black/80 bg-cover bg-no-repeat"
-        style=`background-image: url(${item.image}); backdrop-filter: blur(10px); border-radius: 20px;`
-      >
-      </div>
-      <img class="h-full w-full rounded-xl object-contain" src={item.image} alt={item.name} />
+    <div class="absolute inset-0 flex flex-col overflow-hidden rounded-xl">
+      <img src={item.image} alt={item.name} class="absolute h-full w-full scale-110 blur-md" />
+
+      <img
+        class="h-full place-self-center rounded-lg bg-black/80 object-contain blur-none"
+        src={item.image}
+        alt={item.name}
+      />
     </div>
     <div
-      class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-8 py-4 text-center text-slate-200 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+      class="absolute inset-0 overflow-hidden rounded-xl bg-black/80 px-8 py-3 text-center text-slate-200 [backface-visibility:hidden] [transform:rotateY(180deg)]"
     >
-      <div class="flex min-h-full flex-col place-content-between items-center">
-        <h1 class="my-0 text-xl font-bold text-white">{item.name}</h1>
+      <div class="flex h-full flex-col place-content-center items-center">
+        <h1 class="my-0 text-base font-bold text-white">{item.name}</h1>
         <p class="text-sm" set:html={item.description} />
         <a
           href={item.link}
           target="_blank"
-          class="rounded-lg bg-[hsla(0,0%,100%,.1)] px-3 py-2 text-xs text-white hover:bg-[hsla(0,0%,100%,.25)] hover:text-white"
+          class="mt-2 rounded-lg bg-[hsla(0,0%,100%,.1)] px-2 py-[6px] text-xs text-white hover:bg-[hsla(0,0%,100%,.25)] hover:text-white"
         >
           Read More
         </a>
