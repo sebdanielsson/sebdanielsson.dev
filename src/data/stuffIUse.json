@@ -30,19 +30,19 @@
             "name": "Visual Studio Code",
             "description": "My favorite code editor. I use it for everything from writing code to writing this website.",
             "link": "https://code.visualstudio.com/",
-            "image": "/img/vscode.webp"
+            "image": "https://media.istockphoto.com/id/1369274625/sv/vektor/abstract-diagonal-lines-white-background-with-smooth-stripes-minimal-website-backdrop.jpg?s=612x612&w=0&k=20&c=MtzoIoDosm1LURLfxyfqTdZGsy3rcrnwGA59L-i63f0="
         },
         {
             "name": "Warp Terminal",
             "description": "",
             "link": "",
-            "image": "/img/warp.webp"
+            "image": "https://media.istockphoto.com/id/1369274625/sv/vektor/abstract-diagonal-lines-white-background-with-smooth-stripes-minimal-website-backdrop.jpg?s=612x612&w=0&k=20&c=MtzoIoDosm1LURLfxyfqTdZGsy3rcrnwGA59L-i63f0="
         },
         {
             "name": "Raycast",
             "description": "Can't live without it.",
             "link": "",
-            "image": "/img/raycast.webp"
+            "image": "https://media.istockphoto.com/id/1369274625/sv/vektor/abstract-diagonal-lines-white-background-with-smooth-stripes-minimal-website-backdrop.jpg?s=612x612&w=0&k=20&c=MtzoIoDosm1LURLfxyfqTdZGsy3rcrnwGA59L-i63f0="
         }
     ],
     "coffee": [
@@ -60,7 +60,7 @@
         },
         {
             "name": "Anders Petter Backaryd",
-            "description": "Classic coffee pot that can also be used as a stainless steel kettle to brew coffee or boil water. Suitable for induction stovetops.",
+            "description": "Classic coffee pot that can also be used as a stainless steel kettle. Suitable for induction stovetops.",
             "link": "https://www.cervera.se/produkt/backaryd-kittel-15-l-induktion",
             "image": "/img/anders-petter-backaryd.webp"
         },
