@@ -48,13 +48,13 @@
     "coffee": [
         {
             "name": "Aeropress - Original",
-            "description": "",
+            "description": "Makes great coffee that is smooth and rich in flavor but without the bitterness and grittiness.",
             "link": "https://aeropress.com/products/aeropress-coffee-maker",
             "image": "/img/aeropress-original.webp"
         },
         {
             "name": "Timemore Chestnut C3 Pro",
-            "description": "",
+            "description": "Really nice manual coffee grinder that doesn't need much force to grind.",
             "link": "https://www.timemore.com/collections/coffee-grinder-manual/products/timemore-chestnut-c3-pro-manual-coffee-grinder?variant=43429178769650",
             "image": "/img/timemore-c3-pro.webp"
         },
