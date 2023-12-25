@@ -30,19 +30,19 @@
             "name": "Visual Studio Code",
             "description": "My favorite code editor. I use it for everything from writing code to writing this website.",
             "link": "https://code.visualstudio.com/",
-            "image": "https://media.istockphoto.com/id/1369274625/sv/vektor/abstract-diagonal-lines-white-background-with-smooth-stripes-minimal-website-backdrop.jpg?s=612x612&w=0&k=20&c=MtzoIoDosm1LURLfxyfqTdZGsy3rcrnwGA59L-i63f0="
+            "image": "/img/vscode.webp"
         },
         {
             "name": "Warp Terminal",
-            "description": "",
-            "link": "",
-            "image": "https://media.istockphoto.com/id/1369274625/sv/vektor/abstract-diagonal-lines-white-background-with-smooth-stripes-minimal-website-backdrop.jpg?s=612x612&w=0&k=20&c=MtzoIoDosm1LURLfxyfqTdZGsy3rcrnwGA59L-i63f0="
+            "description": "Terminal for the 21 century.",
+            "link": "https://www.warp.dev",
+            "image": "/img/warp.webp"
         },
         {
             "name": "Raycast",
-            "description": "Can't live without it.",
-            "link": "",
-            "image": "https://media.istockphoto.com/id/1369274625/sv/vektor/abstract-diagonal-lines-white-background-with-smooth-stripes-minimal-website-backdrop.jpg?s=612x612&w=0&k=20&c=MtzoIoDosm1LURLfxyfqTdZGsy3rcrnwGA59L-i63f0="
+            "description": "Do anything with ⌘ + Space! Can't live without it.",
+            "link": "https://www.raycast.com",
+            "image": "/img/raycast.webp"
         }
     ],
     "coffee": [
