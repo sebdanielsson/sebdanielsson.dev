@@ -4,14 +4,15 @@ const { item } = Astro.props;
 
 <div class="aspect-2/1 group w-full [perspective:1000px]">
   <div
-    class="relative h-full w-full rounded-xl bg-black shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+    class="relative h-full w-full shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
   >
-    <div class="absolute inset-0">
-      <img
-        class="h-full w-full rounded-xl object-contain shadow-xl shadow-black/40"
-        src={item.image}
-        alt={item.name}
-      />
+    <div class="absolute inset-0 rounded-xl">
+      <div
+        class="absolute inset-0 -z-10 rounded-xl bg-black/80 bg-cover bg-no-repeat"
+        style=`background-image: url(${item.image}); backdrop-filter: blur(10px); border-radius: 20px;`
+      >
+      </div>
+      <img class="h-full w-full rounded-xl object-contain" src={item.image} alt={item.name} />
     </div>
     <div
       class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-8 py-4 text-center text-slate-200 [backface-visibility:hidden] [transform:rotateY(180deg)]"
