@@ -10,9 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.0.3",
+    "@astrojs/tailwind": "^5.0.4",
     "@octokit/rest": "^20.0.2",
-    "astro": "^4.0.6",
+    "astro": "^4.0.7",
     "node-fetch": "^3.3.2",
     "node-html-parser": "^6.1.12",
     "prettier": "^3.1.1",
