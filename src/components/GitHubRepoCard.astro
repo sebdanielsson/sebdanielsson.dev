@@ -10,29 +10,6 @@ function shortenNumberWithK(number: number) {
   }
 }
 
-interface RepoDetails {
-  id: number;
-  owner: string;
-  owner_url: string;
-  name: string;
-  full_name: string;
-  html_url: string;
-  description: string;
-  created_at: string;
-  updated_at: string;
-  pushed_at: string;
-  stars: number;
-  language: string;
-  topics: string[];
-  license: {
-    key: string;
-    name: string;
-    spdx_id: string;
-    url: string;
-    node_id: string;
-  };
-}
-
 const { repo } = Astro.props;
 ---
 
