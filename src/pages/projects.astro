@@ -5,11 +5,35 @@ import RaycastStoreCard from '../components/RaycastStoreCard.astro';
 import { Octokit } from '@octokit/rest';
 import githubRepos from '../data/githubRepos.json';
 import raycastExtensions from '../data/raycastExtensions.json';
+import fetch from 'node-fetch';
+import { parse } from 'node-html-parser';
 
 interface Repo {
   owner: string;
   repo: string;
 }
+
+// Fetch DL count for Raycast extension
+async function getRaycastExtensionDL(urlToFetch: string, querySelector: string) {
+  const htmlString = await fetch(urlToFetch).then((res) => res.text());
+  const root = parse(htmlString);
+  const element = root.querySelector(querySelector);
+  const text = element.textContent;
+  const downloads = text.trim().split(' ')[0];
+  return downloads;
+}
+
+// Update DL count for Raycast extensions
+const querySelector = '.ExtensionPage_installsCount__lbE0o';
+const raycastExtensionsWithDL = await Promise.all(
+  raycastExtensions.map(async (extension) => {
+    const downloads = await getRaycastExtensionDL(extension.store_url, querySelector);
+    return {
+      ...extension,
+      downloads,
+    };
+  }),
+);
 
 // Fetch repo details
 const octokit = new Octokit({
@@ -67,7 +91,7 @@ repoDetails.sort((a, b) => b.stars - a.stars);
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
       {repoDetails.map((repo) => <GitHubRepoCard repo={repo} />)}
 
-      {raycastExtensions.map((extension) => <RaycastStoreCard extension={extension} />)}
+      {raycastExtensionsWithDL.map((extension) => <RaycastStoreCard extension={extension} />)}
     </div>
   </main>
 </Layout>

@@ -5,7 +5,7 @@
         "install_button_url": "https://www.raycast.com/SebDanielsson/repology-search/install_button@2x.png?v=1.1",
         "name": "Repology Search",
         "description": "Search packages from repology.org",
-        "downloads": 5,
+        "downloads": -1,
         "categories": ["Developer Tools", "Web"]
     },
     {
@@ -14,7 +14,7 @@
         "install_button_url": "https://www.raycast.com/SebDanielsson/url-unshortener/install_button@2x.png?v=1.1",
         "name": "URL Unshortener",
         "description": "Unshorten/expand those pesky short links in your clipboard or text selection, enhancing your privacy and security.",
-        "downloads": 191,
+        "downloads": -1,
         "categories": ["Web"]
     }
 ]
