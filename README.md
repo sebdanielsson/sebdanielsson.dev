@@ -7,4 +7,4 @@ My personal portfolio.
 
 ## Todo
 
-- Download Raycast Extension icons at build time
+- Nav bar moves horizontally when switching between Home and About or Projects

@@ -1,7 +1,7 @@
 [
     {
         "store_url": "https://www.raycast.com/SebDanielsson/repology-search",
-        "icon_url": "https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2Fjh7wv31sndbsyc2usxzab344j817&w=128&q=75",
+        "icon_url": "/img/raycast-extension-repology-search.png",
         "install_button_url": "https://www.raycast.com/SebDanielsson/repology-search/install_button@2x.png?v=1.1",
         "name": "Repology Search",
         "description": "Search packages from repology.org",
@@ -10,7 +10,7 @@
     },
     {
         "store_url": "https://www.raycast.com/SebDanielsson/url-unshortener",
-        "icon_url": "https://www.raycast.com/_next/image?url=https%3A%2F%2Ffiles.raycast.com%2F7z3ytac6b18g02r2gmsagmss82pu&w=128&q=75",
+        "icon_url": "/img/raycast-extension-url-unshortener.png",
         "install_button_url": "https://www.raycast.com/SebDanielsson/url-unshortener/install_button@2x.png?v=1.1",
         "name": "URL Unshortener",
         "description": "Unshorten/expand those pesky short links in your clipboard or text selection, enhancing your privacy and security.",
