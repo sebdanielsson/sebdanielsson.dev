@@ -7,5 +7,4 @@ My personal portfolio.
 
 ## Todo
 
-- Add View Transitions
-- Prefetch?
+- Download Raycast Extension icons at build time
