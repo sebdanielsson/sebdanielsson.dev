@@ -124,12 +124,17 @@ const dockerHubImagesWithDetails = await Promise.all(
     <h1>
       <span class="text-gradient text-gradient-animation">Projects</span>
     </h1>
+    <h2>Docker Images</h2>
+    <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+      {dockerHubImagesWithDetails.map((image) => <DockerHubCard image={image} />)}
+    </div>
+    <h2>Raycast Extensions</h2>
+    <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
+      {raycastExtensionsWithDL.map((extension) => <RaycastStoreCard extension={extension} />)}
+    </div>
+    <h2>GitHub Repos</h2>
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
       {repoDetails.map((repo) => <GitHubRepoCard repo={repo} />)}
-
-      {raycastExtensionsWithDL.map((extension) => <RaycastStoreCard extension={extension} />)}
-
-      {dockerHubImagesWithDetails.map((image) => <DockerHubCard image={image} />)}
     </div>
   </main>
 </Layout>
