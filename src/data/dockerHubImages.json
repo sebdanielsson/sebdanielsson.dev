@@ -1,6 +1,7 @@
 [
     {
       "owner": "sebdanielsson",
-      "repo": "etlegacy"
+      "repo": "etlegacy",
+      "github_url": "https://github.com/sebdanielsson/docker-etlegacy"
     }
 ]
