@@ -1,0 +1,54 @@
+---
+// Format stars to k if >= 1000
+function shortenNumberWithK(number: number) {
+  if (number >= 10000) {
+    return `${Math.floor(number / 1000)}k`;
+  } else if (number >= 1000) {
+    return `${Math.floor(number / 100) / 10}k`;
+  } else {
+    return `${number}`;
+  }
+}
+
+const { image } = Astro.props;
+console.log(image);
+---
+
+<div
+  id={`image-${image.repo}`}
+  class="grid grid-rows-[1fr_auto] rounded-2xl border border-[--accent-light] bg-[#1A1420] p-4 text-gray-400 shadow-lg"
+>
+  <div class="">
+    <div class="grid gap-1">
+      <div class="flex items-center justify-between">
+        <a
+          href=`https://hub.docker.com/r/${image.owner}/${image.repo}`
+          target="_blank"
+          class="passing-underline flex-none text-base font-bold text-gray-200 hover:text-gray-200"
+        >
+          {image.owner}/{image.repo}
+        </a>
+      </div>
+      <p class="text-sm">{image.repo} - Add description later</p>
+    </div>
+  </div>
+  <div class="">
+    <div class="flex gap-3 pt-2 text-xs">
+      <div class="inline-flex items-center gap-1">
+        <svg fill="none" aria-hidden="true" class="size-4 text-[#eac54d]">
+          <path
+            fill="currentColor"
+            d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
+          ></path>
+        </svg>
+        <p>{shortenNumberWithK(image.details.star_count)} stars</p>
+      </div>
+      <div class="inline-flex items-center gap-1">
+        <svg fill="none" aria-hidden="true" viewBox="0 0 24 24" class="size-5"
+          ><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg
+        >
+        <p>{shortenNumberWithK(image.details.pull_count)} pulls</p>
+      </div>
+    </div>
+  </div>
+</div>
