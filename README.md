@@ -7,4 +7,4 @@ My personal portfolio.
 
 ## Todo
 
-- Nav bar moves horizontally when switching between Home and About or Projects
+-
