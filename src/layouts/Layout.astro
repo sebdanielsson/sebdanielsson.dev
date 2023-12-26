@@ -1,6 +1,6 @@
 ---
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
+import CommonHead from '../components/CommonHead.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
@@ -14,10 +14,10 @@ const { title, description } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <MainHead title={title} description={description} />
+    <CommonHead title={title} description={description} />
   </head>
   <body class="flex h-dvh flex-col">
-    <Nav />
+    <Header />
     <slot />
     <Footer />
     <style is:global>
