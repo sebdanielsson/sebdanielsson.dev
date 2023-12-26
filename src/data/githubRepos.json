@@ -13,10 +13,6 @@
     },
     {
       "owner": "sebdanielsson",
-      "repo": "docker-etlegacy"
-    },
-    {
-      "owner": "sebdanielsson",
       "repo": "sebdanielsson.github.io"
     },
     {
@@ -26,9 +22,5 @@
     {
       "owner": "sebdanielsson",
       "repo": "compose-transmission-wireguard"
-    },
-    {
-      "owner": "sebdanielsson",
-      "repo": "Guides"
     }
 ]
