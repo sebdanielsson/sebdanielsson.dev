@@ -16,6 +16,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Get repo information
+        run: |
+          echo "GITHUB_USER=${{ github.repository_owner }}" >> $GITHUB_ENV
+          echo "GITHUB_REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
+
       - name: Set commit in environment
         run: echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
