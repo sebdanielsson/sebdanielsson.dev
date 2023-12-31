@@ -20,6 +20,7 @@ jobs:
         run: |
           echo "GITHUB_USER=${{ github.repository_owner }}" >> $GITHUB_ENV
           echo "GITHUB_REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "GH_API=${{secrets.GH_API}}" >> $GITHUB_ENV
 
       - name: Set commit in environment
         run: echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
