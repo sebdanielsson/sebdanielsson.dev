@@ -96,3 +96,7 @@ main {
   .gsc-timeline {
     display: none !important;
   }
+
+  .gsc-header {
+    display: none !important;
+  }

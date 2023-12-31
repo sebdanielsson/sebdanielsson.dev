@@ -31,12 +31,15 @@ interface GraphQLResponse {
   };
 }
 
+const GH_API = import.meta.env.GH_API;
+console.log(GH_API.length);
+
 async function getGuestbookPosts(): Promise<GraphQLResponse> {
   let results = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `bearer ${import.meta.env.GH_API}`,
+      Authorization: `bearer ${GH_API}`,
     },
     body: JSON.stringify({
       query: `{
@@ -72,23 +75,31 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
     <!-- <h1>Guestbook</h1> -->
     <div class="relative py-6">
       <img src="/img/kilroy.svg" class="mx-auto w-3/4 text-white md:w-1/2" />
-      <!-- <button
-        type="button"
-        class="absolute right-0 ml-auto inline-block -translate-y-[100%] rounded-full bg-[--accent] p-[6px] uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-[--accent-dark] focus:bg-[--accent-dark] focus:outline-none focus:ring-0 active:bg-[--accent-light]"
-      >
-        <svg class="size-8" fill="currentColor" viewBox="0 0 1024 1024"
-          ><path
-            d="M810.666667 554.666667H554.666667v256h-85.333334V554.666667H213.333333v-85.333334h256V213.333333h85.333334v256h256v85.333334z"
-          ></path></svg
-        >
-      </button> -->
       <button
-        class="absolute right-0 ml-auto -translate-y-[100%] rounded-xl bg-[--accent] px-4 py-2 text-base font-semibold text-white hover:bg-[--accent-dark]"
+        id="guestbook-post"
+        class="absolute right-0 ml-auto -translate-y-[100%] rounded-xl bg-[--accent] px-4 py-2 text-base font-semibold text-white"
       >
         Post
       </button>
     </div>
-
+    <div id="guestbook-content" class="">
+      <script
+        is:inline
+        src="https://giscus.app/client.js"
+        data-repo="sebdanielsson/sebdanielsson.github.io"
+        data-repo-id="R_kgDOJITMkA"
+        data-category="Guestbook"
+        data-category-id="DIC_kwDOJITMkM4CcDrE"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="https://sebbo.io/styles/giscus-dark.css"
+        data-lang="en"
+        crossorigin="anonymous"
+        async></script>
+    </div>
     <div class="flex flex-col flex-wrap justify-between gap-12 md:flex-row">
       {
         guestbookPosts.map((post) => (
@@ -98,7 +109,14 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
         ))
       }
     </div>
+
     <style>
+      #guestbook-content {
+        max-height: 0;
+        transition: max-height 0.5s ease-out;
+        overflow: hidden;
+      }
+
       @media screen and (min-width: 768px) {
         .post-container:nth-child(1),
         .post-container:nth-child(2),
@@ -117,28 +135,32 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
         }
       }
     </style>
+
     <script is:inline>
       document.querySelectorAll('.post').forEach((post) => {
         const randomDegree = Math.random() * 30 - 15; // Random rotation between -20 and +20 degrees
         post.style.transform = `rotate(${randomDegree}deg)`;
-        // Additional positioning code here
+      });
+
+      document.getElementById('guestbook-post').addEventListener('click', function () {
+        var guestbookDiv = document.getElementById('guestbook-content');
+        var guestbookPost = document.getElementById('guestbook-post');
+        // Check if the div is already expanded
+        if (guestbookDiv.style.maxHeight !== '1000px') {
+          // If not expanded, expand it
+          guestbookDiv.style.maxHeight = '1000px';
+          // Change text to close and make it red
+          guestbookPost.innerHTML = 'Close';
+          guestbookPost.style.backgroundColor = 'red';
+        } else {
+          // If already expanded, collapse it
+          guestbookDiv.style.maxHeight = '0';
+          // Change text to post and make it green
+          guestbookPost.innerHTML = 'Post';
+          // Remove the style attribute
+          guestbookPost.style.backgroundColor = 'var(--accent)';
+        }
       });
     </script>
-    <!-- <script
-      is:inline
-      src="https://giscus.app/client.js"
-      data-repo="sebdanielsson/sebdanielsson.github.io"
-      data-repo-id="R_kgDOJITMkA"
-      data-category="Guestbook"
-      data-category-id="DIC_kwDOJITMkM4CcDrE"
-      data-mapping="pathname"
-      data-strict="0"
-      data-reactions-enabled="0"
-      data-emit-metadata="0"
-      data-input-position="bottom"
-      data-theme="dark"
-      data-lang="en"
-      crossorigin="anonymous"
-      async></script> -->
   </main>
 </Layout>
