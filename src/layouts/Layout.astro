@@ -2,6 +2,7 @@
 import CommonHead from '../components/CommonHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '@fontsource/kalam/300.css';
 
 interface Props {
   title?: string | undefined;
@@ -35,6 +36,9 @@ const { title, description } = Astro.props;
       code {
         font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', 'DejaVu Sans Mono', monospace;
       }
+      .handwritten {
+        font-family: 'Kalam', 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+      }
       .main-width {
         margin: auto;
         width: 95vw;
@@ -59,9 +63,9 @@ const { title, description } = Astro.props;
           width: 80vw;
         }
       }
-      @media screen and (min-width: 1920px) {
+      @media screen and (min-width: 1536px) {
         .main-width {
-          width: calc(1920px - 4rem);
+          width: calc(1536px - 4rem);
         }
       }
       main {
