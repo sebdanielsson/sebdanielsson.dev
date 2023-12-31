@@ -31,12 +31,15 @@ interface GraphQLResponse {
   };
 }
 
+const GH_API = import.meta.env.GH_API;
+console.log(GH_API.length);
+
 async function getGuestbookPosts(): Promise<GraphQLResponse> {
   let results = await fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `bearer ${import.meta.env.GH_API}`,
+      Authorization: `bearer ${GH_API}`,
     },
     body: JSON.stringify({
       query: `{
