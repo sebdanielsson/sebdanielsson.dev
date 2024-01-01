@@ -43,6 +43,12 @@
             "description": "Do anything with ⌘ + Space! Can't live without it.",
             "link": "https://www.raycast.com",
             "image": "/img/raycast.webp"
+        },
+        {
+            "name": "OrbStack",
+            "description": "OrbStack is a drop-in replacement for Docker Desktop. It's faster, so much lighter, and will greatly improve your development experience.",
+            "link": "https://orbstack.dev",
+            "image": "/img/orbstack.webp"
         }
     ],
     "coffee": [
