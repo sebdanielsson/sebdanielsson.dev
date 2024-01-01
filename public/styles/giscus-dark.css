@@ -97,6 +97,10 @@ main {
     display: none !important;
   }
 
-  .gsc-header {
+  .gsc-comments-count {
+    display: none !important;
+  }
+
+  .gsc-right-header {
     display: none !important;
   }
