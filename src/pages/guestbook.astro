@@ -114,7 +114,7 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
 
 <style>
   #gisqus-post {
-    max-height: 0;
+    max-height: 1px;
     transition: max-height 0.5s ease-out;
     overflow: hidden;
   }
@@ -166,7 +166,7 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
       guestbookPost.innerHTML = 'Close';
       guestbookPost.style.backgroundColor = 'red';
     } else {
-      guestbookDiv.style.maxHeight = '0';
+      guestbookDiv.style.maxHeight = '1px';
       guestbookPost.innerHTML = 'Post';
       guestbookPost.style.backgroundColor = 'var(--accent)';
     }
@@ -175,33 +175,4 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
   initGuestbookButton();
 
   document.addEventListener('astro:after-swap', initGuestbookButton);
-
-  document.addEventListener('astro:after-swap', function () {
-    // Define the container where the script will be appended
-    var container = document.getElementById('gisqus-post');
-
-    // Remove the existing giscus script if it exists within the container
-    var existingScript = container.querySelector('script[src="https://giscus.app/client.js"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-
-    var script = document.createElement('script');
-    script.setAttribute('src', 'https://giscus.app/client.js');
-    script.setAttribute('data-repo', 'sebdanielsson/sebdanielsson.github.io');
-    script.setAttribute('data-repo-id', 'R_kgDOJITMkA');
-    script.setAttribute('data-category', 'Guestbook');
-    script.setAttribute('data-category-id', 'DIC_kwDOJITMkM4CcDrE');
-    script.setAttribute('data-mapping', 'pathname');
-    script.setAttribute('data-strict', '0');
-    script.setAttribute('data-reactions-enabled', '0');
-    script.setAttribute('data-emit-metadata', '0');
-    script.setAttribute('data-input-position', 'bottom');
-    script.setAttribute('data-theme', 'https://sebbo.io/styles/giscus-dark.css');
-    script.setAttribute('data-lang', 'en');
-    script.setAttribute('crossorigin', 'anonymous');
-    script.setAttribute('async', '');
-
-    container.appendChild(script);
-  });
 </script>
