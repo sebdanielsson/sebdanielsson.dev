@@ -175,4 +175,32 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
   initGuestbookButton();
 
   document.addEventListener('astro:after-swap', initGuestbookButton);
+
+  document.addEventListener('astro:after-swap', function () {
+    // Remove the existing giscus script if it exists
+    var existingScript = document.querySelector('script[src="https://giscus.app/client.js"]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    // Create a new giscus script tag
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'sebdanielsson/sebdanielsson.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOJITMkA');
+    script.setAttribute('data-category', 'Guestbook');
+    script.setAttribute('data-category-id', 'DIC_kwDOJITMkM4CcDrE');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '0');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', 'https://sebbo.io/styles/giscus-dark.css');
+    script.setAttribute('data-lang', 'en');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', '');
+
+    // Append the new script tag to the body
+    document.body.appendChild(script);
+  });
 </script>
