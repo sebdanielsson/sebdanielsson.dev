@@ -77,6 +77,7 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
       <img src="/img/kilroy.svg" alt="Kilroy" class="mx-auto w-3/4 text-white md:w-1/2" />
       <button
         id="guestbook-post"
+        onclick="toggleGuestbookPost()"
         class="absolute right-0 ml-auto -translate-y-[100%] rounded-xl bg-[--accent] px-4 py-2 text-base font-semibold text-white"
       >
         Post
@@ -102,7 +103,7 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
 
 <style>
   #giscus-post {
-    max-height: 400px;
+    max-height: 1px;
     transition: max-height 0.5s ease-out;
     overflow: hidden;
   }
@@ -133,22 +134,30 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
 </style>
 
 <script is:inline>
+  // Randomly rotate posts
   document.querySelectorAll('.post-container').forEach((post) => {
     const randomDegree = Math.random() * 30 - 15;
     post.style.transform = `rotate(${randomDegree}deg)`;
   });
 
-  console.log('injecting giscus script');
+  // Post button logic
+  function toggleGuestbookPost() {
+    const guestbookPost = document.getElementById('giscus-post');
+    if (guestbookPost.style.maxHeight === '500px') {
+      guestbookPost.style.maxHeight = '1px';
+    } else {
+      guestbookPost.style.maxHeight = '500px';
+    }
+  }
+
+  // Inject Giscus script
   document.addEventListener('astro:page-load', () => {
     injectGiscusScript();
   });
 
   function injectGiscusScript() {
-    console.log('injecting giscus script-inside');
-    // Create a new script element
     var script = document.createElement('script');
 
-    // Set the attributes of the script
     script.setAttribute('src', 'https://giscus.app/client.js');
     script.setAttribute('data-repo', 'sebdanielsson/sebdanielsson.github.io');
     script.setAttribute('data-repo-id', 'R_kgDOJITMkA');
@@ -164,7 +173,6 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
     script.setAttribute('crossorigin', 'anonymous');
     script.setAttribute('async', '');
 
-    // Append the script to the div with ID 'giscus-post'
     var div = document.getElementById('giscus-post');
     if (div) {
       div.appendChild(script);
