@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import GuestbookPostBox from '../components/GuestbookPostBox.astro';
 import fetch from 'node-fetch';
-import GuestbookPost from '../components/GuestbookPost.astro';
 
 interface Author {
   login: string;
@@ -87,7 +86,23 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
       <span class="text-sm text-neutral-400"
         >powered by <a href="https://giscus.app" target="_blank">gisqus</a></span
       >
-      <GuestbookPost />
+      <section class="giscus"></section>
+      <script
+        is:inline
+        src="https://giscus.app/client.js"
+        data-repo="sebdanielsson/sebdanielsson.github.io"
+        data-repo-id="R_kgDOJITMkA"
+        data-category="Guestbook"
+        data-category-id="DIC_kwDOJITMkM4CcDrE"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="https://sebbo.io/styles/giscus-dark.css"
+        data-lang="en"
+        crossorigin="anonymous"
+        async></script>
     </div>
     <div class="mt-12 flex flex-col flex-wrap justify-between gap-12 md:flex-row">
       {
@@ -103,7 +118,7 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
 
 <style>
   #gisqus-post {
-    max-height: 1px;
+    max-height: 30px;
     transition: max-height 0.5s ease-out;
     overflow: hidden;
   }
