@@ -82,27 +82,11 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
         Post
       </button>
     </div>
-    <div id="gisqus-post" class="">
+    <div id="giscus-post" class="">
       <span class="text-sm text-neutral-400"
         >powered by <a href="https://giscus.app" target="_blank">gisqus</a></span
       >
       <section class="giscus"></section>
-      <script
-        is:inline
-        src="https://giscus.app/client.js"
-        data-repo="sebdanielsson/sebdanielsson.github.io"
-        data-repo-id="R_kgDOJITMkA"
-        data-category="Guestbook"
-        data-category-id="DIC_kwDOJITMkM4CcDrE"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="0"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="https://sebbo.io/styles/giscus-dark.css"
-        data-lang="en"
-        crossorigin="anonymous"
-        async></script>
     </div>
     <div class="mt-12 flex flex-col flex-wrap justify-between gap-12 md:flex-row">
       {
@@ -117,8 +101,8 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
 </Layout>
 
 <style>
-  #gisqus-post {
-    max-height: 30px;
+  #giscus-post {
+    max-height: 400px;
     transition: max-height 0.5s ease-out;
     overflow: hidden;
   }
@@ -154,29 +138,38 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
     post.style.transform = `rotate(${randomDegree}deg)`;
   });
 
-  function initGuestbookButton() {
-    var guestbookButton = document.getElementById('guestbook-post');
-    if (guestbookButton) {
-      guestbookButton.removeEventListener('click', toggleGuestbook);
-      guestbookButton.addEventListener('click', toggleGuestbook);
-    }
-  }
+  console.log('injecting giscus script');
+  document.addEventListener('astro:page-load', () => {
+    injectGiscusScript();
+  });
 
-  function toggleGuestbook() {
-    var guestbookDiv = document.getElementById('gisqus-post');
-    var guestbookPost = this;
-    if (guestbookDiv.style.maxHeight !== '1000px') {
-      guestbookDiv.style.maxHeight = '1000px';
-      guestbookPost.innerHTML = 'Close';
-      guestbookPost.style.backgroundColor = 'red';
+  function injectGiscusScript() {
+    console.log('injecting giscus script-inside');
+    // Create a new script element
+    var script = document.createElement('script');
+
+    // Set the attributes of the script
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'sebdanielsson/sebdanielsson.github.io');
+    script.setAttribute('data-repo-id', 'R_kgDOJITMkA');
+    script.setAttribute('data-category', 'Guestbook');
+    script.setAttribute('data-category-id', 'DIC_kwDOJITMkM4CcDrE');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '0');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', 'https://sebbo.io/styles/giscus-dark.css');
+    script.setAttribute('data-lang', 'en');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', '');
+
+    // Append the script to the div with ID 'giscus-post'
+    var div = document.getElementById('giscus-post');
+    if (div) {
+      div.appendChild(script);
     } else {
-      guestbookDiv.style.maxHeight = '1px';
-      guestbookPost.innerHTML = 'Post';
-      guestbookPost.style.backgroundColor = 'var(--accent)';
+      console.error('Div with ID giscus-post not found.');
     }
   }
-
-  initGuestbookButton();
-
-  document.addEventListener('astro:after-swap', initGuestbookButton);
 </script>
