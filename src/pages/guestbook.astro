@@ -82,7 +82,7 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
         Post
       </button>
     </div>
-    <div id="guestbook-content" class="">
+    <div id="gisqus-post" class="">
       <script
         is:inline
         src="https://giscus.app/client.js"
@@ -113,7 +113,7 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
 </Layout>
 
 <style>
-  #guestbook-content {
+  #gisqus-post {
     max-height: 0;
     transition: max-height 0.5s ease-out;
     overflow: hidden;
@@ -159,7 +159,7 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
   }
 
   function toggleGuestbook() {
-    var guestbookDiv = document.getElementById('guestbook-content');
+    var guestbookDiv = document.getElementById('gisqus-post');
     var guestbookPost = this;
     if (guestbookDiv.style.maxHeight !== '1000px') {
       guestbookDiv.style.maxHeight = '1000px';
@@ -177,13 +177,15 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
   document.addEventListener('astro:after-swap', initGuestbookButton);
 
   document.addEventListener('astro:after-swap', function () {
-    // Remove the existing giscus script if it exists
-    var existingScript = document.querySelector('script[src="https://giscus.app/client.js"]');
+    // Define the container where the script will be appended
+    var container = document.getElementById('gisqus-post');
+
+    // Remove the existing giscus script if it exists within the container
+    var existingScript = container.querySelector('script[src="https://giscus.app/client.js"]');
     if (existingScript) {
       existingScript.remove();
     }
 
-    // Create a new giscus script tag
     var script = document.createElement('script');
     script.setAttribute('src', 'https://giscus.app/client.js');
     script.setAttribute('data-repo', 'sebdanielsson/sebdanielsson.github.io');
@@ -200,7 +202,6 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
     script.setAttribute('crossorigin', 'anonymous');
     script.setAttribute('async', '');
 
-    // Append the new script tag to the body
-    document.body.appendChild(script);
+    container.appendChild(script);
   });
 </script>
