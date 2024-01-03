@@ -143,29 +143,36 @@ const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comment
     }
   }
 </style>
+
 <script is:inline>
   document.querySelectorAll('.post-container').forEach((post) => {
-    const randomDegree = Math.random() * 30 - 15; // Random rotation between -20 and +20 degrees
+    const randomDegree = Math.random() * 30 - 15;
     post.style.transform = `rotate(${randomDegree}deg)`;
   });
 
-  document.getElementById('guestbook-post').addEventListener('click', function () {
+  function initGuestbookButton() {
+    var guestbookButton = document.getElementById('guestbook-post');
+    if (guestbookButton) {
+      guestbookButton.removeEventListener('click', toggleGuestbook);
+      guestbookButton.addEventListener('click', toggleGuestbook);
+    }
+  }
+
+  function toggleGuestbook() {
     var guestbookDiv = document.getElementById('guestbook-content');
-    var guestbookPost = document.getElementById('guestbook-post');
-    // Check if the div is already expanded
+    var guestbookPost = this;
     if (guestbookDiv.style.maxHeight !== '1000px') {
-      // If not expanded, expand it
       guestbookDiv.style.maxHeight = '1000px';
-      // Change text to close and make it red
       guestbookPost.innerHTML = 'Close';
       guestbookPost.style.backgroundColor = 'red';
     } else {
-      // If already expanded, collapse it
       guestbookDiv.style.maxHeight = '0';
-      // Change text to post and make it green
       guestbookPost.innerHTML = 'Post';
-      // Remove the style attribute
       guestbookPost.style.backgroundColor = 'var(--accent)';
     }
-  });
+  }
+
+  initGuestbookButton();
+
+  document.addEventListener('astro:after-swap', initGuestbookButton);
 </script>
