@@ -18,11 +18,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Get repo information
-        run: |
-          echo "GITHUB_USER=${{ github.repository_owner }}" >> $GITHUB_ENV
-          echo "GITHUB_REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
-          echo "GH_API=${{secrets.GH_API}}" >> $GITHUB_ENV
+      - name: Load secrets from 1Password
+        id: op-credentials
+        uses: 1password/load-secrets-action@v1
+        with:
+          export-env: false
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          GH_API: 'op://prod/github-pat-sebboio/credential'
 
       - name: Set commit in environment
         run: echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
@@ -37,6 +40,10 @@ jobs:
 
       - name: Build website
         run: npm run build
+        env:
+          GITHUB_USER: ${{ github.repository_owner }}
+          GITHUB_REPO: ${{ github.event.repository.name }}
+          GH_API: ${{ steps.op-credentials.outputs.GH_API }}
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
