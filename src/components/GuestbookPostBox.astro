@@ -1,10 +1,19 @@
 ---
+import { Image } from 'astro:assets';
+
 const { post } = Astro.props;
 ---
 
 <div class="post group flex flex-col gap-1">
   <div class="fade-animation flex flex-row items-center gap-2">
-    <img class="size-10 rounded-full" src={post.author.avatarUrl} alt={post.author.login} />
+    <Image
+      src={post.author.avatarUrl}
+      alt={post.author.login}
+      loading="eager"
+      width="40"
+      height="40"
+      class="rounded-full"
+    />
     <div class="flex flex-col">
       <a href={`https://github.com/${post.author.login}`} target="_blank" class="text-sm font-bold">
         {post.author.login}
