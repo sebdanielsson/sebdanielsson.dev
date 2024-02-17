@@ -8,3 +8,9 @@ My personal portfolio.
 ## Todo
 
 -
+
+## Notes to self
+
+```sh
+export GH_API={github_pat_.......}
+```
