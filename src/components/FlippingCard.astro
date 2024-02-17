@@ -1,18 +1,32 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
 const { item } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/stuffIUse/*.{jpeg,jpg,webp,png,gif}',
+);
+if (!images[item.image])
+  throw new Error(`"${item.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
 
-<div class="aspect-2/1 group w-full [perspective:1000px]">
+<div class="group aspect-2/1 w-full [perspective:1000px]">
   <div
     class="h-full w-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
   >
     <div class="absolute inset-0 flex flex-col overflow-hidden rounded-xl">
-      <img src={item.image} alt={item.name} class="absolute h-full w-full scale-110 blur-md" />
-
-      <img
-        class="h-full place-self-center rounded-lg bg-black/80 object-contain blur-none"
-        src={item.image}
+      <Image
+        src={images[item.image]()}
         alt={item.name}
+        loading="eager"
+        class="absolute h-full w-full scale-110 blur-md"
+      />
+
+      <Image
+        src={images[item.image]()}
+        alt={item.name}
+        loading="eager"
+        class="h-full place-self-center rounded-lg bg-black/80 object-contain blur-none"
       />
     </div>
     <div
