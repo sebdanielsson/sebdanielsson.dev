@@ -3,9 +3,8 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 
 const { item } = Astro.props;
-
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  '@assets/stuffIUse/*.{jpeg,jpg,webp,avif,png,gif}',
+  '/src/assets/stuffIUse/*.{jpeg,jpg,webp,avif,png,gif}',
 );
 
 const getImageImport = (imageKey: string) => {

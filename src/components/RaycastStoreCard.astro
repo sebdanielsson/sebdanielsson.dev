@@ -16,7 +16,7 @@ function shortenNumberWithK(number: number) {
 const { extension } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  '@assets/raycastExtensions/*.{jpeg,jpg,webp,avif,png,gif}',
+  '/src/assets/raycastExtensions/*.{jpeg,jpg,webp,avif,png,gif}',
 );
 
 const getImageImport = (imageKey: string) => {
