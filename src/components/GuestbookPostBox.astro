@@ -1,17 +1,19 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 
 const { post } = Astro.props;
 ---
 
 <div class="post group flex flex-col gap-1">
   <div class="fade-animation flex flex-row items-center gap-2">
-    <Image
+    <Picture
       src={post.author.avatarUrl}
       alt={post.author.login}
-      loading="eager"
       width="40"
       height="40"
+      loading="eager"
+      formats={['avif', 'webp']}
+      fallbackFormat="webp"
       class="rounded-full"
     />
     <div class="flex flex-col">
