@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import GuestbookPostBox from '../components/GuestbookPostBox.astro';
+import Layout from '@layouts/Layout.astro';
+import GuestbookPostBox from '@components/GuestbookPostBox.astro';
 import fetch from 'node-fetch';
 
 interface Author {
@@ -61,12 +61,12 @@ async function getGuestbookPosts(): Promise<GraphQLResponse> {
     }),
   });
 
-  let guestbookPostsResponse: GraphQLResponse = await results.json();
+  let guestbookPostsResponse: GraphQLResponse = (await results.json()) as GraphQLResponse;
   return guestbookPostsResponse;
 }
 
 const guestbookPostsResponse = await getGuestbookPosts();
-const guestbookPosts = guestbookPostsResponse.data.repository.discussion.comments.nodes;
+const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comments?.nodes || [];
 ---
 
 <Layout title="Guestbook">

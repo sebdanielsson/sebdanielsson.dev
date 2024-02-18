@@ -31,7 +31,7 @@ const { repo } = Astro.props;
       <p class="text-sm text-gray-400">{repo.description}</p>
       <div class="flex flex-wrap gap-x-2 py-1">
         {
-          repo.topics.map((topic) => (
+          repo.topics.map((topic: string) => (
             <a
               href={`https://github.com/topics/${topic}`}
               target="_blank"

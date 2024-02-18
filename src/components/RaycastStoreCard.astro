@@ -1,4 +1,7 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
 // Format stars to k if >= 1000
 function shortenNumberWithK(number: number) {
   if (number >= 10000) {
@@ -11,6 +14,20 @@ function shortenNumberWithK(number: number) {
 }
 
 const { extension } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '@assets/raycastExtensions/*.{jpeg,jpg,webp,avif,png,gif}',
+);
+
+const getImageImport = (imageKey: string) => {
+  const imageImport = images[imageKey];
+  if (!imageImport) {
+    throw new Error(`Image "${imageKey}" not found in glob imports. Build halted.`);
+  }
+  return imageImport;
+};
+
+const imageSrcPromise = getImageImport(extension.icon_url)();
 ---
 
 <div
@@ -19,7 +36,14 @@ const { extension } = Astro.props;
 >
   <div class="">
     <div class="grid grid-cols-[auto_1fr_auto] justify-between gap-2">
-      <img src={extension.icon_url} alt="" class="inline-block size-16 rounded-lg" />
+      <Image
+        src={(await imageSrcPromise).default}
+        alt={extension.name + ' icon'}
+        loading="eager"
+        width="64"
+        height="64"
+        class="inline-block rounded-lg"
+      />
       <div class="flex flex-col gap-1">
         <div>
           <a
@@ -32,7 +56,7 @@ const { extension } = Astro.props;
         </div>
         <div class="flex flex-wrap items-center gap-x-2">
           {
-            extension.categories.map((category) => (
+            extension.categories.map((category: string) => (
               <span class="rounded bg-white px-1 text-[10px] text-black">{category}</span>
             ))
           }
