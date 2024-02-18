@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+
+import logo from '@assets/logo.svg';
+
 const textLinks: { label: string; href: string }[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
@@ -21,7 +25,14 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
 <nav class="sticky top-0 z-50 bg-neutral-950 bg-opacity-70 py-4 text-white backdrop-blur">
   <div class="main-width flex flex-row items-center justify-between gap-2">
     <a href="/" class="flex flex-row items-center gap-3 hover:text-[var(--accent-light)]">
-      <img src="/favicon.svg" alt="Logo" class="size-6 sm:size-9" />
+      <Image
+        src={logo}
+        alt="Logo"
+        width="36"
+        height="36"
+        loading="eager"
+        class="size-6 sm:size-9"
+      />
       <span class="hidden text-2xl font-bold sm:block sm:text-3xl">Sebbo.io</span>
     </a>
     <div class="flex flex-row items-center gap-2 text-sm sm:gap-6 sm:text-base">

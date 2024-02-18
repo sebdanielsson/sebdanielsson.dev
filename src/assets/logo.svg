@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <clipPath id="clipPath1">
+        <path d="M -35.84 -35.84 L 547.84 -35.84 L 547.84 547.84 L -35.84 547.84 Z"/>
+    </clipPath>
+    <g id="Group" clip-path="url(#clipPath1)">
+        <g id="g1">
+            <path id="Path" fill="none" stroke="#AE7AF1" stroke-width="54.720001" stroke-linecap="round" stroke-linejoin="round" d="M 137.440002 210.399994 L 228.639999 292.47998 L 137.440002 374.559998 M 411.040009 484 L 100.959999 484 C 60.665306 484 28 451.334686 28 411.040009 L 28 100.959991 C 28 60.665283 60.665306 28 100.959999 28 L 411.040009 28 C 451.334717 28 484 60.665283 484 100.959991 L 484 411.040009 C 484 451.334686 451.334717 484 411.040009 484 Z"/>
+        </g>
+    </g>
+</svg>
