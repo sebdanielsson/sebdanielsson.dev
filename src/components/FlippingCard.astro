@@ -4,10 +4,18 @@ import { Image } from 'astro:assets';
 
 const { item } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/assets/stuffIUse/*.{jpeg,jpg,webp,png,gif}',
+  '/src/assets/stuffIUse/*.{jpeg,jpg,webp,avif,png,gif}',
 );
-if (!images[item.image])
-  throw new Error(`"${item.image}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+
+const getImageImport = (imageKey: string) => {
+  const imageImport = images[imageKey];
+  if (!imageImport) {
+    throw new Error(`Image "${imageKey}" not found in glob imports. Build halted.`);
+  }
+  return imageImport;
+};
+
+const imageSrcPromise = getImageImport(item.image)();
 ---
 
 <div class="group aspect-2/1 w-full [perspective:1000px]">
@@ -16,14 +24,14 @@ if (!images[item.image])
   >
     <div class="absolute inset-0 flex flex-col overflow-hidden rounded-xl">
       <Image
-        src={images[item.image]()}
+        src={(await imageSrcPromise).default}
         alt={item.name}
         loading="eager"
         class="absolute h-full w-full scale-110 blur-md"
       />
 
       <Image
-        src={images[item.image]()}
+        src={(await imageSrcPromise).default}
         alt={item.name}
         loading="eager"
         class="h-full place-self-center rounded-lg bg-black/80 object-contain blur-none"
