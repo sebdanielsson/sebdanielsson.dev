@@ -62,9 +62,12 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
         profileLinks.map(({ label, href, icon }) => (
           <a href={href} target="_blank" rel="noopener noreferrer">
             <span class="sr-only">Go to my {label} profile</span>
-            <img
+            <Image
               src={icon}
               alt={`${label} profile`}
+              width="32"
+              height="32"
+              loading="eager"
               class="profile-icon size-5 sm:size-6 md:size-8"
             />
           </a>
