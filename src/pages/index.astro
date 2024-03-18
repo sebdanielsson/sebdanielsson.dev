@@ -61,6 +61,11 @@ const firstName = 'Sebastian';
       greeting = 'Good evening!';
     }
 
-    (document.getElementById('greeting') as HTMLElement).textContent = greeting;
+    const greetingElement = document.getElementById('greeting');
+    if (greetingElement) {
+      greetingElement.textContent = greeting;
+    } else {
+      console.error('Element with ID "greeting" not found.');
+    }
   });
 </script>

@@ -7,16 +7,32 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint \"src/**/*.{astro,mjs,cjs,js,ts}\"",
+    "stylelint": "stylelint \"**/*.astro\"",
+    "format": "prettier --write \"src/**/*.{astro,mjs,cjs,js,ts}\""
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.4",
+    "@astrojs/check": "^0.5.9",
     "@astrojs/tailwind": "^5.1.0",
-    "@fontsource/kalam": "^5.0.8",
+    "@fontsource/kalam": "^5.0.12",
     "@octokit/rest": "^20.0.2",
-    "astro": "^4.4.0",
+    "astro": "^4.5.5",
     "node-html-parser": "^6.1.12",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-astro": "^0.31.4",
+    "postcss-html": "^1.6.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-tailwindcss": "^0.5.12",
+    "stylelint": "^16.2.1",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-standard": "^36.0.0",
+    "typescript": "^5.4.2",
+    "typescript-eslint": "^7.2.0"
   }
 }

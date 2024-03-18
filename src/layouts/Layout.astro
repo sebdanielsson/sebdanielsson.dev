@@ -25,55 +25,66 @@ const { title, description } = Astro.props;
       :root {
         --background: #101010;
         --accent: #883aea;
-        --accent-light: #AE7AF1;
+        --accent-light: #ae7af1;
         --accent-lighter: #bb8ff3;
         --accent-gradient: linear-gradient(90deg, var(--accent), var(--accent-light) 50%);
       }
+
       html {
         font-family: system-ui, sans-serif;
         background: var(--background);
       }
+
       code {
         font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', 'DejaVu Sans Mono', monospace;
       }
+
       .handwritten {
-        font-family: 'Kalam', 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+        font-family: Kalam, 'Segoe Print', 'Bradley Hand', Chilanka, 'TSCu_Comic', casual, cursive;
       }
+
       .main-width {
         margin: auto;
         width: 95vw;
       }
-      @media screen and (min-width: 640px) {
+
+      @media screen and (width >= 640px) {
         .main-width {
           width: 95vw;
         }
       }
-      @media screen and (min-width: 768px) {
+
+      @media screen and (width >= 768px) {
         .main-width {
           width: 90vw;
         }
       }
-      @media screen and (min-width: 1024px) {
+
+      @media screen and (width >= 1024px) {
         .main-width {
           width: 85vw;
         }
       }
-      @media screen and (min-width: 1280px) {
+
+      @media screen and (width >= 1280px) {
         .main-width {
           width: 80vw;
         }
       }
-      @media screen and (min-width: 1536px) {
+
+      @media screen and (width >= 1536px) {
         .main-width {
           width: calc(1536px - 4rem);
         }
       }
+
       main {
         color: white;
         font-size: 16px;
         line-height: 1.6;
         flex: 1;
       }
+
       h1 {
         font-size: 2.5rem;
         font-weight: 700;
@@ -82,13 +93,15 @@ const { title, description } = Astro.props;
         margin-bottom: 0.5em;
         color: var(--accent-light);
       }
-      @media (min-width: 640px) {
+
+      @media (width >= 640px) {
         h1 {
           font-size: 3rem;
           margin-top: 1em;
           margin-bottom: 0.5em;
         }
       }
+
       h2 {
         font-size: 2rem;
         font-weight: 700;
@@ -97,6 +110,7 @@ const { title, description } = Astro.props;
         margin-bottom: 0.5em;
         color: var(--accent-light);
       }
+
       h3 {
         font-size: 1.5rem;
         font-weight: 700;
@@ -105,36 +119,45 @@ const { title, description } = Astro.props;
         margin-bottom: 0.5em;
         color: var(--accent-light);
       }
+
       a {
         color: var(--accent-light);
         text-decoration: none;
       }
+
       a:hover {
         color: var(--accent-lighter);
       }
+
       .text-gradient {
         background-image: var(--accent-gradient);
-        -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         background-size: 400% 400%;
       }
+
       .text-gradient-animation {
-        animation: AnimationName 12s ease infinite;
+        animation: text-gradient-animation 12s ease infinite;
       }
-      @keyframes AnimationName {
+
+      @keyframes text-gradient-animation {
         0% {
           background-position: 0% 50%;
         }
+
         50% {
           background-position: 100% 50%;
         }
+
         100% {
           background-position: 0% 50%;
         }
       }
+
       strong {
         color: var(--accent-light);
       }
+
       .passing-underline {
         display: inline-block;
         position: relative;
