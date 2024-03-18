@@ -138,7 +138,7 @@ const { title, description } = Astro.props;
 
       .text-gradient-animation {
         animation: text-gradient-animation 12s ease infinite;
-        will-change: background-position;
+        animation-composition: add;
         transform: translateZ(0);
       }
 
