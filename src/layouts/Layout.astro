@@ -138,6 +138,8 @@ const { title, description } = Astro.props;
 
       .text-gradient-animation {
         animation: text-gradient-animation 12s ease infinite;
+        will-change: background-position;
+        transform: translateZ(0);
       }
 
       @keyframes text-gradient-animation {
