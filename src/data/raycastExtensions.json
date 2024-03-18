@@ -1,20 +1,20 @@
 [
-    {
-        "store_url": "https://www.raycast.com/SebDanielsson/repology-search",
-        "icon_url": "/src/assets/raycastExtensions/raycast-extension-repology-search.png",
-        "install_button_url": "https://www.raycast.com/SebDanielsson/repology-search/install_button@2x.png?v=1.1",
-        "name": "Repology Search",
-        "description": "Search packages from repology.org",
-        "downloads": -1,
-        "categories": ["Developer Tools", "Web"]
-    },
-    {
-        "store_url": "https://www.raycast.com/SebDanielsson/url-unshortener",
-        "icon_url": "/src/assets/raycastExtensions/raycast-extension-url-unshortener.png",
-        "install_button_url": "https://www.raycast.com/SebDanielsson/url-unshortener/install_button@2x.png?v=1.1",
-        "name": "URL Unshortener",
-        "description": "Unshorten/expand those pesky short links in your clipboard or text selection, enhancing your privacy and security.",
-        "downloads": -1,
-        "categories": ["Web"]
-    }
+  {
+    "store_url": "https://www.raycast.com/SebDanielsson/repology-search",
+    "icon_url": "/src/assets/raycastExtensions/raycast-extension-repology-search.png",
+    "install_button_url": "https://www.raycast.com/SebDanielsson/repology-search/install_button@2x.png?v=1.1",
+    "name": "Repology Search",
+    "description": "Search packages from repology.org",
+    "downloads": -1,
+    "categories": ["Developer Tools", "Web"]
+  },
+  {
+    "store_url": "https://www.raycast.com/SebDanielsson/url-unshortener",
+    "icon_url": "/src/assets/raycastExtensions/raycast-extension-url-unshortener.png",
+    "install_button_url": "https://www.raycast.com/SebDanielsson/url-unshortener/install_button@2x.png?v=1.1",
+    "name": "URL Unshortener",
+    "description": "Unshorten/expand those pesky short links in your clipboard or text selection, enhancing your privacy and security.",
+    "downloads": -1,
+    "categories": ["Web"]
+  }
 ]

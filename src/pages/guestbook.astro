@@ -83,7 +83,6 @@ const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comm
       />
       <button
         id="guestbook-post-button"
-        onclick="toggleGuestbookPost()"
         class="absolute right-0 ml-auto -translate-y-[100%] rounded-xl bg-[--accent] px-4 py-2 text-base font-semibold text-white"
       >
         Post
@@ -115,7 +114,7 @@ const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comm
     overflow: hidden;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     .post-container:nth-child(1),
     .post-container:nth-child(2),
     .post-container:nth-child(3) {
@@ -133,7 +132,7 @@ const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comm
     }
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (width <= 767px) {
     .post-container {
       transform: rotate(0deg) !important;
     }
@@ -146,6 +145,9 @@ const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comm
     const randomDegree = Math.random() * 30 - 15;
     post.style.transform = `rotate(${randomDegree}deg)`;
   });
+
+  // Add event listener to post button
+  document.getElementById('guestbook-post-button').addEventListener('click', toggleGuestbookPost);
 
   // Post button logic
   function toggleGuestbookPost() {

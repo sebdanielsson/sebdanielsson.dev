@@ -1,80 +1,80 @@
 {
-    "hardware": [
-        {
-            "name": "M1 MacBook Air",
-            "description": "Small, light, fanless, great performance.",
-            "link": "https://www.apple.com/macbook-air-m1/",
-            "image": "/src/assets/stuffIUse/m1-mba.webp"
-        },
-        {
-            "name": "Gigabyte M28U",
-            "description": "28\" 4K Monitor with HDR, VRR, and 144 Hz",
-            "link": "https://www.gigabyte.com/Monitor/M28U",
-            "image": "/src/assets/stuffIUse/gigabyte-m28u.webp"
-        },
-        {
-            "name": "AirPods Pro (2nd gen)",
-            "description": "Great sound, noise cancellation, and transparency mode.",
-            "link": "https://www.apple.com/airpods-pro/",
-            "image": "/src/assets/stuffIUse/airpods-pro-2nd-generation.webp"
-        },
-        {
-            "name": "Boya BY-M1",
-            "description": "Cheap, but good lavalier microphone. More importantly, it makes the audio quality of the AirPods <a href=\"https://usenoor.com/blog/airpods\" target=\"_blank\">not suck</a> during calls.",
-            "link": "https://www.boya-mic.com/product/by-m1",
-            "image": "/src/assets/stuffIUse/boya-by-m1.webp"
-        }
-    ],
-    "software": [
-        {
-            "name": "Visual Studio Code",
-            "description": "My favorite code editor. I use it for everything from writing code to writing this website.",
-            "link": "https://code.visualstudio.com/",
-            "image": "/src/assets/stuffIUse/vscode.webp"
-        },
-        {
-            "name": "Warp Terminal",
-            "description": "Terminal for the 21 century.",
-            "link": "https://www.warp.dev",
-            "image": "/src/assets/stuffIUse/warp.webp"
-        },
-        {
-            "name": "Raycast",
-            "description": "Do anything with ⌘ + Space! Can't live without it.",
-            "link": "https://www.raycast.com",
-            "image": "/src/assets/stuffIUse/raycast.webp"
-        },
-        {
-            "name": "OrbStack",
-            "description": "OrbStack is a drop-in replacement for Docker Desktop. It's faster, so much lighter, and will greatly improve your development experience.",
-            "link": "https://orbstack.dev",
-            "image": "/src/assets/stuffIUse/orbstack.webp"
-        }
-    ],
-    "coffee": [
-        {
-            "name": "Aeropress - Original",
-            "description": "Makes great coffee that is smooth and rich in flavor but without the bitterness and grittiness.",
-            "link": "https://aeropress.com/products/aeropress-coffee-maker",
-            "image": "/src/assets/stuffIUse/aeropress-original.webp"
-        },
-        {
-            "name": "Timemore Chestnut C3 Pro",
-            "description": "Really nice manual coffee grinder that doesn't need much force to grind.",
-            "link": "https://www.timemore.com/collections/coffee-grinder-manual/products/timemore-chestnut-c3-pro-manual-coffee-grinder?variant=43429178769650",
-            "image": "/src/assets/stuffIUse/timemore-c3-pro.webp"
-        },
-        {
-            "name": "Anders Petter Backaryd",
-            "description": "Classic coffee pot that can also be used as a stainless steel kettle. Suitable for induction stovetops.",
-            "link": "https://www.cervera.se/produkt/backaryd-kittel-15-l-induktion",
-            "image": "/src/assets/stuffIUse/anders-petter-backaryd.webp"
-        },
-        {
-            "name": "Espresso House Signature Brew",
-            "description": "Medium roasted and with distinct notes of chocolate, nuts, and marzipan.</br>Origin: Brazil",
-            "link": "https://espressohouse.com/menu/merchandise/signature-espresso-hela-bonor-500-g",
-            "image": "/src/assets/stuffIUse/espresso-house-signature-brew.webp"
-        }
-    ]
+  "hardware": [
+    {
+      "name": "M1 MacBook Air",
+      "description": "Small, light, fanless, great performance.",
+      "link": "https://www.apple.com/macbook-air-m1/",
+      "image": "/src/assets/stuffIUse/m1-mba.webp"
+    },
+    {
+      "name": "Gigabyte M28U",
+      "description": "28\" 4K Monitor with HDR, VRR, and 144 Hz",
+      "link": "https://www.gigabyte.com/Monitor/M28U",
+      "image": "/src/assets/stuffIUse/gigabyte-m28u.webp"
+    },
+    {
+      "name": "AirPods Pro (2nd gen)",
+      "description": "Great sound, noise cancellation, and transparency mode.",
+      "link": "https://www.apple.com/airpods-pro/",
+      "image": "/src/assets/stuffIUse/airpods-pro-2nd-generation.webp"
+    },
+    {
+      "name": "Boya BY-M1",
+      "description": "Cheap, but good lavalier microphone. More importantly, it makes the audio quality of the AirPods <a href=\"https://usenoor.com/blog/airpods\" target=\"_blank\">not suck</a> during calls.",
+      "link": "https://www.boya-mic.com/product/by-m1",
+      "image": "/src/assets/stuffIUse/boya-by-m1.webp"
+    }
+  ],
+  "software": [
+    {
+      "name": "Visual Studio Code",
+      "description": "My favorite code editor. I use it for everything from writing code to writing this website.",
+      "link": "https://code.visualstudio.com/",
+      "image": "/src/assets/stuffIUse/vscode.webp"
+    },
+    {
+      "name": "Warp Terminal",
+      "description": "Terminal for the 21 century.",
+      "link": "https://www.warp.dev",
+      "image": "/src/assets/stuffIUse/warp.webp"
+    },
+    {
+      "name": "Raycast",
+      "description": "Do anything with ⌘ + Space! Can't live without it.",
+      "link": "https://www.raycast.com",
+      "image": "/src/assets/stuffIUse/raycast.webp"
+    },
+    {
+      "name": "OrbStack",
+      "description": "OrbStack is a drop-in replacement for Docker Desktop. It's faster, so much lighter, and will greatly improve your development experience.",
+      "link": "https://orbstack.dev",
+      "image": "/src/assets/stuffIUse/orbstack.webp"
+    }
+  ],
+  "coffee": [
+    {
+      "name": "Aeropress - Original",
+      "description": "Makes great coffee that is smooth and rich in flavor but without the bitterness and grittiness.",
+      "link": "https://aeropress.com/products/aeropress-coffee-maker",
+      "image": "/src/assets/stuffIUse/aeropress-original.webp"
+    },
+    {
+      "name": "Timemore Chestnut C3 Pro",
+      "description": "Really nice manual coffee grinder that doesn't need much force to grind.",
+      "link": "https://www.timemore.com/collections/coffee-grinder-manual/products/timemore-chestnut-c3-pro-manual-coffee-grinder?variant=43429178769650",
+      "image": "/src/assets/stuffIUse/timemore-c3-pro.webp"
+    },
+    {
+      "name": "Anders Petter Backaryd",
+      "description": "Classic coffee pot that can also be used as a stainless steel kettle. Suitable for induction stovetops.",
+      "link": "https://www.cervera.se/produkt/backaryd-kittel-15-l-induktion",
+      "image": "/src/assets/stuffIUse/anders-petter-backaryd.webp"
+    },
+    {
+      "name": "Espresso House Signature Brew",
+      "description": "Medium roasted and with distinct notes of chocolate, nuts, and marzipan.</br>Origin: Brazil",
+      "link": "https://espressohouse.com/menu/merchandise/signature-espresso-hela-bonor-500-g",
+      "image": "/src/assets/stuffIUse/espresso-house-signature-brew.webp"
+    }
+  ]
 }
