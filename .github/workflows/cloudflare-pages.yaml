@@ -20,7 +20,7 @@ jobs:
 
       - name: Load secrets from 1Password
         id: op-credentials
-        uses: 1password/load-secrets-action@v1
+        uses: 1password/load-secrets-action@v2
         with:
           export-env: false
         env:
