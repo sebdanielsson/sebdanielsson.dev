@@ -27,7 +27,12 @@ const { title, description } = Astro.props;
         --accent: #883aea;
         --accent-light: #ae7af1;
         --accent-lighter: #bb8ff3;
-        --accent-gradient: linear-gradient(90deg, var(--accent), var(--accent-light) 50%);
+        --accent-gradient: linear-gradient(
+          90deg,
+          var(--accent-lighter) 0%,
+          var(--accent-light) 50%,
+          var(--accent) 100%
+        );
       }
 
       html {
@@ -133,25 +138,6 @@ const { title, description } = Astro.props;
         background-image: var(--accent-gradient);
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-size: 400% 400%;
-      }
-
-      .text-gradient-animation {
-        animation: text-gradient-animation 12s ease infinite;
-      }
-
-      @keyframes text-gradient-animation {
-        0% {
-          background-position: 0% 50%;
-        }
-
-        50% {
-          background-position: 100% 50%;
-        }
-
-        100% {
-          background-position: 0% 50%;
-        }
       }
 
       strong {
