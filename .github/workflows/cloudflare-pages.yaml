@@ -28,6 +28,7 @@ jobs:
           GH_API: 'op://prod/github-pat-sebboio/credential'
           CLOUDFLARE_API_TOKEN: 'op://prod/cloudflare-sebboio-api-token/credential'
           CLOUDFLARE_ACCOUNT_ID: 'op://prod/cloudflare-sebboio-api-token/account_id'
+          CLOUDFLARE_PROJECT_NAME: 'op://prod/cloudflare-sebboio-api-token/project_name'
 
       - name: Set commit in environment
         run: echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
@@ -55,6 +56,6 @@ jobs:
         with:
           apiToken: ${{ steps.op-credentials.outputs.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ steps.op-credentials.outputs.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: sebbo
+          projectName: ${{ steps.op-credentials.outputs.CLOUDFLARE_PROJECT_NAME }}
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
