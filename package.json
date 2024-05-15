@@ -13,7 +13,7 @@
     "format": "prettier --write \"src/**/*.{astro,mjs,cjs,js,ts}\""
   },
   "dependencies": {
-    "@astrojs/check": "^0.6.0",
+    "@astrojs/check": "^0.7.0",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/kalam": "^5.0.12",
     "@octokit/rest": "^20.1.0",
