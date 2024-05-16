@@ -1,0 +1,65 @@
+name: Libyear
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  libyear:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+
+      - run: npm ci
+
+      - id: libyear
+        uses: s0/libyear-node-action@v0.1.2
+
+      - run: mkdir badges
+      - uses: emibcn/badge-action@v2
+        with:
+          label: 'libyear'
+          status: ${{ steps.libyear.outputs.drift }} year(s) behind
+          color: 'blue'
+          path: 'badges/drift.svg'
+
+      - uses: s0/git-publish-subdir-action@v2.6.0
+        if: github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          REPO: self
+          BRANCH: badges
+          FOLDER: badges
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SQUASH_HISTORY: true
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        if: github.event_name == 'pull_request'
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Build output
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v4
+        if: github.event_name == 'pull_request'
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Build output
+            ${{ steps.libyear.outputs.drift }}
+          edit-mode: replace
