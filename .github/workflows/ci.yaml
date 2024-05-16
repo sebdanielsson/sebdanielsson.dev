@@ -1,5 +1,8 @@
 name: Libyear
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
