@@ -7,4 +7,7 @@ export default defineConfig({
   output: 'static',
   site: 'https://sebbo.io',
   integrations: [tailwind()],
+  security: {
+    checkOrigin: true,
+  },
 });
