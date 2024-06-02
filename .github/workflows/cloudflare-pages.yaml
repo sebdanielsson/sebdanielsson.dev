@@ -40,9 +40,9 @@ jobs:
 
       - run: bun run lint
 
-      - run: bun run stylelint
+      - run: bun --bun run stylelint
 
-      - run: bun run build
+      - run: bun --bun run build
         env:
           GITHUB_USER: ${{ github.repository_owner }}
           GITHUB_REPO: ${{ github.event.repository.name }}
