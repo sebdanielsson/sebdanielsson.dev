@@ -1,6 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-
 interface Props {
   title?: string | undefined;
   description?: string | undefined;
@@ -18,9 +16,14 @@ const title = propTitle ? `${propTitle} - Sebbo.io` : 'Sebbo.io';
 <meta name="theme-color" content="#000" />
 <title>{title}</title>
 
+<style>
+  /* stylelint-disable-next-line at-rule-no-unknown */
+  @view-transition {
+    /* stylelint-disable-next-line property-no-unknown */
+    navigation: auto; /* enabled! */
+  }
+</style>
 <link rel="icon" type="image/x-icon" href="/favicon.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <script is:inline defer data-domain="sebbo.io" src="https://plausible.hogwarts.zone/js/script.js"
 ></script>
-
-<ViewTransitions />
