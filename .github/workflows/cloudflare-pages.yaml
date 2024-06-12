@@ -38,7 +38,7 @@ jobs:
 
       - run: bun install
 
-      - run: bun run lint
+      - run: bun --bun run lint
 
       - run: bun --bun run stylelint
 
