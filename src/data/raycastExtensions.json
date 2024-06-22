@@ -16,5 +16,14 @@
     "description": "Unshorten/expand those pesky short links in your clipboard or text selection, enhancing your privacy and security.",
     "downloads": -1,
     "categories": ["Web"]
+  },
+  {
+    "store_url": "https://www.raycast.com/SebDanielsson/background-sounds",
+    "icon_url": "/src/assets/raycastExtensions/raycast-extension-background-sounds.webp",
+    "install_button_url": "https://www.raycast.com/SebDanielsson/background-sounds/install_button@2x.png?v=1.1",
+    "name": "Background Sounds",
+    "description": "Toggle macOS background sounds on and off.",
+    "downloads": -1,
+    "categories": ["Media", "Fun", "System"]
   }
 ]
