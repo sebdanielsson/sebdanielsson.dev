@@ -34,7 +34,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version-file: ".bun-version"
+          bun-version-file: '.bun-version'
 
       - run: bun install
 
@@ -48,11 +48,9 @@ jobs:
           GITHUB_REPO: ${{ github.event.repository.name }}
           GH_API: ${{ steps.op-credentials.outputs.GH_API }}
 
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ steps.op-credentials.outputs.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ steps.op-credentials.outputs.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ steps.op-credentials.outputs.CLOUDFLARE_PROJECT_NAME }}
-          directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy dist --project-name=${{ steps.op-credentials.outputs.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
