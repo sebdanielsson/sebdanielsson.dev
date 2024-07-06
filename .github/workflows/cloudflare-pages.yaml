@@ -54,4 +54,3 @@ jobs:
           apiToken: ${{ steps.op-credentials.outputs.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ steps.op-credentials.outputs.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=${{ steps.op-credentials.outputs.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
-          environment: Preview
