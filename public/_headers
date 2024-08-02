@@ -1,0 +1,6 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  Access-Control-Allow-Origin: https://sebbo.io
+  Referrer-Policy: strict-origin-when-cross-origin
