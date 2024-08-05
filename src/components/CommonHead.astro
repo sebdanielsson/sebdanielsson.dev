@@ -1,9 +1,4 @@
 ---
-interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-}
-
 const { title: propTitle, description = 'The personal site of Sebastian Danielsson' } = Astro.props;
 
 const title = propTitle ? `${propTitle} - Sebbo.io` : 'Sebbo.io';
