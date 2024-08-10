@@ -1,0 +1,48 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Picture } from 'astro:assets';
+
+const { item, loading } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/stuffIUse/*.{jpeg,jpg,webp,avif,png,gif}',
+);
+
+const getImageImport = (imageKey: string) => {
+  const imageImport = images[imageKey];
+  if (!imageImport) {
+    throw new Error(`Image "${imageKey}" not found in glob imports. Build halted.`);
+  }
+  return imageImport;
+};
+
+const imageSrcPromise = getImageImport(item.image)();
+---
+
+<div class="group relative aspect-2/1 w-full overflow-hidden rounded-xl">
+  <Picture
+    src={(await imageSrcPromise).default}
+    alt={item.name}
+    width="480"
+    height="480"
+    loading={loading}
+    formats={['avif', 'webp']}
+    fallbackFormat="webp"
+    class="absolute inset-0 transition duration-700 ease-in-out group-hover:blur-md"
+  />
+
+  <div
+    class="absolute inset-0 flex items-center justify-center rounded-xl bg-black/50 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
+  >
+    <div class="flex flex-col items-center gap-2 px-4 text-center text-slate-200">
+      <h6 class="text-base font-bold">{item.name}</h6>
+      <p class="text-sm" set:html={item.description} />
+      <a
+        href={item.link}
+        target="_blank"
+        class="rounded-lg bg-[rgba(100,100,100,0.4)] px-2 py-[6px] text-xs text-white transition hover:bg-[rgba(255,255,255,0.4)] hover:text-white"
+      >
+        Read More
+      </a>
+    </div>
+  </div>
+</div>

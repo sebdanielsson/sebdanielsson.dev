@@ -1,6 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import FlippingCard from '@components/FlippingCard.astro';
+import ItemCard from '@components/ItemCard.astro';
 import stuffIUse from '@data/stuffIUse.json';
 ---
 
@@ -14,15 +14,15 @@ import stuffIUse from '@data/stuffIUse.json';
     <p></p>
     <h3>Hardware</h3>
     <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {stuffIUse.hardware.map((item) => <FlippingCard item={item} />)}
+      {stuffIUse.hardware.map((item) => <ItemCard item={item} loading="eager" />)}
     </div>
     <h3>Software</h3>
     <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {stuffIUse.software.map((item) => <FlippingCard item={item} />)}
+      {stuffIUse.software.map((item) => <ItemCard item={item} loading="lazy" />)}
     </div>
     <h3>Coffee</h3>
     <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {stuffIUse.coffee.map((item) => <FlippingCard item={item} />)}
+      {stuffIUse.coffee.map((item) => <ItemCard item={item} loading="lazy" />)}
     </div>
   </main>
 </Layout>
