@@ -19,14 +19,14 @@ const { title, description } = Astro.props;
     <style is:global>
       :root {
         --background: #101010;
-        --accent: #883aea;
-        --accent-light: #ae7af1;
-        --accent-lighter: #bb8ff3;
+        --accent-dark: #883aea;
+        --accent-main: #ae7af1;
+        --accent-light: #bb8ff3;
         --accent-gradient: linear-gradient(
           90deg,
-          var(--accent-lighter) 0%,
-          var(--accent-light) 50%,
-          var(--accent) 100%
+          var(--accent-light) 0%,
+          var(--accent-main) 50%,
+          var(--accent-dark) 100%
         );
       }
 
@@ -91,7 +91,7 @@ const { title, description } = Astro.props;
         line-height: 1;
         margin-top: 0.5em;
         margin-bottom: 0.5em;
-        color: var(--accent-light);
+        color: var(--accent-main);
       }
 
       @media (width >= 640px) {
@@ -108,7 +108,7 @@ const { title, description } = Astro.props;
         line-height: 1;
         margin-top: 1em;
         margin-bottom: 0.5em;
-        color: var(--accent-light);
+        color: var(--accent-main);
       }
 
       h3 {
@@ -117,16 +117,16 @@ const { title, description } = Astro.props;
         line-height: 1;
         margin-top: 1em;
         margin-bottom: 0.5em;
-        color: var(--accent-light);
+        color: var(--accent-main);
       }
 
       a {
-        color: var(--accent-light);
+        color: var(--accent-main);
         text-decoration: none;
       }
 
       a:hover {
-        color: var(--accent-lighter);
+        color: var(--accent-light);
       }
 
       .text-gradient {
@@ -136,7 +136,7 @@ const { title, description } = Astro.props;
       }
 
       strong {
-        color: var(--accent-light);
+        color: var(--accent-main);
       }
 
       .passing-underline {
@@ -151,11 +151,11 @@ const { title, description } = Astro.props;
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: var(--accent-light);
+        background-color: var(--accent-main);
         transform: scaleX(0);
         transform-origin: bottom left;
         transition: transform 0.4s ease-out;
-        color: var(--accent-light);
+        color: var(--accent-main);
       }
 
       .passing-underline:hover::after {
