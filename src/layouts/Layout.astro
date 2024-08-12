@@ -18,16 +18,50 @@ const { title, description } = Astro.props;
     <Footer />
     <style is:global>
       :root {
+        /* Common */
         --background: #101010;
-        --accent-dark: #883aea;
-        --accent-main: #ae7af1;
-        --accent-light: #bb8ff3;
+
+        /* Accent */
+        --accent-background: var(--purple-background);
+        --accent-dark: var(--purple-dark);
+        --accent-main: var(--purple-main);
+        --accent-light: var(--purple-light);
         --accent-gradient: linear-gradient(
           90deg,
           var(--accent-light) 0%,
           var(--accent-main) 50%,
           var(--accent-dark) 100%
         );
+
+        /* Purple */
+        --purple-background: #1a1420;
+        --purple-dark: #883aea;
+        --purple-main: #ad79f1;
+        --purple-light: #bb8ff3;
+
+        /* Blue */
+        --blue-background: #121220;
+        --blue-dark: #2b6cb0;
+        --blue-main: #3182ce;
+        --blue-light: #4299e1;
+
+        /* Red */
+        --red-background: #181009;
+        --red-dark: #c53030;
+        --red-main: #e53e3e;
+        --red-light: #fc8181;
+
+        /* Yellow */
+        --yellow-background: #1c1a01;
+        --yellow-dark: #d69e2e;
+        --yellow-main: #ecc94b;
+        --yellow-light: #f6e05e;
+
+        /* Green */
+        --green-background: #101810;
+        --green-dark: #2f855a;
+        --green-main: #38a169;
+        --green-light: #48bb78;
       }
 
       html {

@@ -1,0 +1,165 @@
+---
+
+---
+
+<div class="theme-dropdown group relative inline-block">
+  <div
+    class="flex size-7 cursor-pointer items-center justify-center rounded-full bg-[var(--accent-main)] sm:size-8"
+    id="theme-indicator"
+  >
+    <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="currentColor"
+        d="M6 21q-1.125 0-2.225-.55T2 19q.65 0 1.325-.513T4 17q0-1.25.875-2.125T7 14t2.125.875T10 17q0 1.65-1.175 2.825T6 21m5.75-6L9 12.25l8.95-8.95q.275-.275.688-.288t.712.288l1.35 1.35q.3.3.3.7t-.3.7z"
+      >
+      </path>
+    </svg>
+  </div>
+  <ul
+    class="absolute -left-full top-10 z-50 hidden rounded border border-[var(--accent-main)] bg-[var(--accent-background)] p-2 group-[.active]:block"
+    id="theme-options"
+  >
+  </ul>
+</div>
+<script>
+  interface ThemeColors {
+    accentBackgroundVar: string;
+    accentDarkVar: string;
+    accentMainVar: string;
+    accentLightVar: string;
+  }
+
+  const themes: Record<string, ThemeColors> = {
+    purple: {
+      accentBackgroundVar: '--purple-background',
+      accentDarkVar: '--purple-dark',
+      accentMainVar: '--purple-main',
+      accentLightVar: '--purple-light',
+    },
+    blue: {
+      accentBackgroundVar: '--blue-background',
+      accentDarkVar: '--blue-dark',
+      accentMainVar: '--blue-main',
+      accentLightVar: '--blue-light',
+    },
+    red: {
+      accentBackgroundVar: '--red-background',
+      accentDarkVar: '--red-dark',
+      accentMainVar: '--red-main',
+      accentLightVar: '--red-light',
+    },
+    yellow: {
+      accentBackgroundVar: '--yellow-background',
+      accentDarkVar: '--yellow-dark',
+      accentMainVar: '--yellow-main',
+      accentLightVar: '--yellow-light',
+    },
+    green: {
+      accentBackgroundVar: '--green-background',
+      accentDarkVar: '--green-dark',
+      accentMainVar: '--green-main',
+      accentLightVar: '--green-light',
+    },
+  };
+
+  const indicator = document.getElementById('theme-indicator') as HTMLElement;
+  const options = document.getElementById('theme-options') as HTMLElement;
+
+  // Get current theme from localStorage or fall back to default
+  const currentTheme = (localStorage.getItem('theme') as keyof typeof themes) || 'purple';
+  setTheme(currentTheme);
+  updateIndicator();
+  populateThemeOptions();
+
+  // Function to populate theme options dynamically
+  function populateThemeOptions() {
+    Object.keys(themes).forEach((theme) => {
+      const listItem = document.createElement('li');
+      listItem.setAttribute('data-theme', theme);
+      listItem.className = 'flex flex-row items-center p-1 cursor-pointer hover:text-gray-400';
+
+      const preview = document.createElement('div');
+      preview.className = 'size-4 rounded-full inline-block mr-2';
+
+      const colors = themes[theme];
+
+      if (colors) {
+        // Set the background color of the preview
+        const accentMainColor = getComputedStyle(document.documentElement).getPropertyValue(
+          colors.accentMainVar,
+        );
+        preview.style.backgroundColor = accentMainColor.trim();
+
+        // Add the preview and theme name to the list item
+        listItem.appendChild(preview);
+        listItem.appendChild(
+          document.createTextNode(theme.charAt(0).toUpperCase() + theme.slice(1)),
+        );
+        options.appendChild(listItem);
+      } else {
+        console.warn(`Theme ${theme} not found in themes object.`);
+      }
+    });
+  }
+
+  // Function to set the theme
+  function setTheme(theme: keyof typeof themes) {
+    const selectedTheme = themes[theme];
+    if (selectedTheme) {
+      // Change CSS variables to point to the selected theme
+      document.documentElement.style.setProperty(
+        '--accent-background',
+        `var(${selectedTheme.accentBackgroundVar})`,
+      );
+      document.documentElement.style.setProperty(
+        '--accent-dark',
+        `var(${selectedTheme.accentDarkVar})`,
+      );
+      document.documentElement.style.setProperty(
+        '--accent-main',
+        `var(${selectedTheme.accentMainVar})`,
+      );
+      document.documentElement.style.setProperty(
+        '--accent-light',
+        `var(${selectedTheme.accentLightVar})`,
+      );
+
+      // Save to localStorage
+      localStorage.setItem('theme', theme);
+    } else {
+      console.warn(`Theme ${theme} not defined`);
+    }
+  }
+
+  // Show the current theme in the indicator
+  function updateIndicator() {
+    const themeStyles = getComputedStyle(document.documentElement);
+    indicator.style.backgroundColor = themeStyles.getPropertyValue('--accent-main');
+  }
+
+  // Toggle dropdown visibility
+  indicator.addEventListener('click', () => {
+    options.parentElement?.classList.toggle('active');
+  });
+
+  // Change theme on option click
+  options.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    if (target.tagName === 'LI') {
+      const selectedTheme = target.getAttribute('data-theme') as keyof typeof themes;
+      if (selectedTheme && themes[selectedTheme]) {
+        setTheme(selectedTheme);
+        updateIndicator();
+      } else {
+        console.warn(`Theme ${selectedTheme} not defined`);
+      }
+    }
+  });
+
+  // Close dropdown if clicked outside
+  document.addEventListener('click', (event) => {
+    if (!indicator.contains(event.target as Node) && !options.contains(event.target as Node)) {
+      options.parentElement?.classList.remove('active');
+    }
+  });
+</script>
