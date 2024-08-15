@@ -17,7 +17,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/kalam": "^5.0.13",
     "@octokit/rest": "^21.0.1",
-    "astro": "4.14.0",
+    "astro": "4.14.1",
     "node-html-parser": "^6.1.13",
     "tailwindcss": "3.4.10"
   },
