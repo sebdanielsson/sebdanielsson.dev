@@ -170,7 +170,7 @@ const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comm
   });
 
   function injectGiscusScript() {
-    var script = document.createElement('script');
+    const script = document.createElement('script');
 
     script.setAttribute('src', 'https://giscus.app/client.js');
     script.setAttribute('data-repo', 'sebdanielsson/sebdanielsson.github.io');
@@ -187,7 +187,7 @@ const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comm
     script.setAttribute('crossorigin', 'anonymous');
     script.setAttribute('async', '');
 
-    var div = document.getElementById('giscus-post');
+    const div = document.getElementById('giscus-post');
     if (div) {
       div.appendChild(script);
     } else {
