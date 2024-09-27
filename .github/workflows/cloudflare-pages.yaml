@@ -43,7 +43,7 @@ jobs:
 
       - run: bun --bun run stylelint
 
-      - run: bun --bun run prettier:check
+      - run: bun --bun run format:check
 
       - run: bun --bun run build
         env:
