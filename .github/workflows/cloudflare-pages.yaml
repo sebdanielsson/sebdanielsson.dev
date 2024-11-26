@@ -52,10 +52,9 @@ jobs:
           GH_API: ${{ steps.op-credentials.outputs.GH_API }}
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ steps.op-credentials.outputs.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ steps.op-credentials.outputs.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ steps.op-credentials.outputs.CLOUDFLARE_PROJECT_NAME }}
-          directory: dist
+          command: 'pages deploy dist --project-name=${{ steps.op-credentials.outputs.CLOUDFLARE_PROJECT_NAME }}'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
