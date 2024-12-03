@@ -20,7 +20,7 @@
     "@octokit/rest": "^21.0.2",
     "astro": "5.0.2",
     "node-html-parser": "^6.1.13",
-    "tailwindcss": "3.4.15"
+    "tailwindcss": "3.4.16"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
