@@ -32,11 +32,14 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
 ];
 ---
 
-<nav class="sticky top-0 z-50 bg-neutral-950 bg-opacity-70 py-4 text-white backdrop-blur">
+<nav class="sticky top-0 z-50 bg-neutral-950/70 py-4 backdrop-blur-sm">
   <div class="main-width flex h-8 flex-row items-center justify-between gap-2">
-    <a href="/" class="flex flex-row items-center gap-3 text-white hover:text-[var(--accent-main)]">
+    <a href="/" class="flex flex-row items-center gap-3">
       <img src="/favicon.svg" alt="Sebbo.io logo" class="h-6 sm:hidden sm:h-8" />
-      <span class="hidden text-2xl font-bold sm:block sm:text-3xl">Sebbo.io</span>
+      <span
+        class="hidden text-2xl font-bold text-white hover:text-[var(--accent-light)] sm:block sm:text-3xl"
+        >Sebbo.io</span
+      >
     </a>
     <div class="flex flex-row items-center gap-2 text-sm sm:gap-6 sm:text-base">
       {
@@ -45,8 +48,8 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
             aria-current={Astro.url.pathname === href}
             class:list={[
               'passing-underline',
-              'text-white',
-              'hover:text-white',
+              '!text-white',
+              'hover:!text-white',
               {
                 active:
                   Astro.url.pathname === href ||
@@ -68,7 +71,7 @@ const profileLinks: { label: string; href: string; icon: string }[] = [
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-white hover:text-[--accent-main]"
+            class="!text-white hover:!text-[var(--accent-light)]"
           >
             <span class="sr-only">Go to my {label} profile</span>
             <div set:html={icon} />
