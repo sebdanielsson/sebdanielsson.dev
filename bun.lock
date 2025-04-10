@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "sebbo.io",
+      "name": "sebdanielsson.dev",
       "dependencies": {
         "@astrojs/check": "^0.9.4",
         "@fontsource/kalam": "^5.2.5",

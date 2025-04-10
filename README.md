@@ -1,4 +1,4 @@
-# Sebbo.io
+# sebdanielsson.dev
 
 My personal portfolio.
 

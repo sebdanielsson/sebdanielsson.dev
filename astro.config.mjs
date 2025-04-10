@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  site: 'https://sebbo.io',
+  site: 'https://sebdanielsson.dev',
   security: {
     checkOrigin: true,
   },
