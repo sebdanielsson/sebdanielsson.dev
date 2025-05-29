@@ -19,7 +19,7 @@
     "@octokit/rest": "^22.0.0",
     "@tailwindcss/postcss": "^4.1.5",
     "@tailwindcss/vite": "^4.1.5",
-    "astro": "5.8.0",
+    "astro": "5.8.1",
     "node-html-parser": "^7.0.1",
     "tailwindcss": "^4.1.5"
   },
