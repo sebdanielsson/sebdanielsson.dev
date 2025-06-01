@@ -5,7 +5,7 @@ pubDate: 2020-02-03
 slug: install-transmission-on-arch-linux
 tags: [transmission, arch, linux, tutorial, guide]
 heroImage: './images/transmission.webp'
-heroImageAlt: ""
+heroImageAlt: ''
 ---
 
 This guide show you how to install Transmission on Arch Linux and configure it with a kill switch so that Transmission will only download and upload using a specific IP address. For example a [WireGuard VPN](/install-wireguard-client-on-arch-linux). The guide is based on the tutorial over at the [Transmission Wiki](https://github.com/transmission/transmission/wiki) on GitHub. [Documentation for the config file](https://github.com/transmission/transmission/wiki/Editing-Configuration-Files) can be found over at the GitHub Wiki page as well.

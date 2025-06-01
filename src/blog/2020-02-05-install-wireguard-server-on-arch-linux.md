@@ -5,7 +5,7 @@ pubDate: '2020-02-05'
 slug: install-wireguard-server-on-arch-linux
 tags: [wireguard, server, vpn, arch, linux, tutorial, guide]
 heroImage: './images/wireguard.webp'
-heroImageAlt: ""
+heroImageAlt: ''
 ---
 
 This is a very basic tutorial on how to install WireGuard on Arch Linux to use it as a VPN server. For example if you want to access your home LAN from remote locations.

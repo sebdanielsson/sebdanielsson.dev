@@ -5,7 +5,7 @@ pubDate: '2020-02-01'
 slug: install-arch-linux
 tags: [arch, linux, install, tutorial, guide]
 heroImage: './images/arch-linux.webp'
-heroImageAlt: ""
+heroImageAlt: ''
 ---
 
 This is my personal step-by-step guide for installing Arch Linux on x86-64 UEFI based machines. This guide is a slimmed down and simplified version of the [Installation guide](https://wiki.archlinux.org/index.php/Installation_guide) on ArchWiki.

@@ -5,7 +5,7 @@ pubDate: '2020-09-10'
 slug: minecraft-bedrock-dedicated-server-docker
 tags: [docker, container, compose, minecraft, bedrock, dedicated, server, linux, tutorial, guide]
 heroImage: './images/minecraft-docker.webp'
-heroImageAlt: ""
+heroImageAlt: ''
 ---
 
 This guide will show you how to start a Minecraft Bedrock dedicated server using Docker.

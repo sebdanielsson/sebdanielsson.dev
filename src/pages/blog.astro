@@ -79,7 +79,7 @@ const posts = (await getCollection('blog')).sort(
             <a href={`/${post.id}/`}>
               <Picture
                 src={post.data.heroImage ?? '../assets/images/placeholder.png'}
-                alt={post.data.heroImageAlt}]
+                alt={post.data.heroImageAlt}
                 width="720"
                 height="360"
                 loading="lazy"

@@ -5,7 +5,7 @@ pubDate: '2021-05-18'
 slug: install-paru-on-arch-linux
 tags: [paru, aur, aur helper, rust, arch, linux, tutorial, guide]
 heroImage: './images/server-rack.webp'
-heroImageAlt: ""
+heroImageAlt: ''
 ---
 
 Paru is the newest and hottest AUR Helper. From one of the developers of yay and written is Rust this project has gained a lot of traction in the Arch commuinty. This guide will walk you through the steps for installing this AUR Helper which lets you install packages from the AUR (Arch User Repository) in the same way you install packages from the Arch repos with pacman.
