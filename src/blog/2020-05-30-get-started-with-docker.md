@@ -1,6 +1,6 @@
 ---
 title: Get started with Docker
-description: Beginner's guide to Docker: install, pull images, run containers, and manage with Docker Compose.
+description: "Beginner's guide to Docker: install, pull images, run containers, and manage with Docker Compose."
 pubDate: '2020-05-30'
 slug: get-started-with-docker
 tags: [docker, container, arch, linux, tutorial, guide]

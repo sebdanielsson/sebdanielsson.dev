@@ -1,6 +1,6 @@
 ---
 title: Install Reflector on Arch Linux
-description: Learn how to install and configure Reflector, a Python script that automatically sorts and updates your Arch Linux mirrorlist for optimal package download speeds.
+description: Learn to install and set up Reflector, a Python tool that automatically updates your Arch Linux mirrorlist for faster package downloads.
 pubDate: '2020-03-29'
 slug: install-reflector-on-arch-linux
 tags: [reflector, pacman, mirrors, python, arch, linux, tutorial, guide]
@@ -35,7 +35,7 @@ Reflector can run automatically in the background at chosen intervalls. The defa
 
 If you want the options from the example earlier make the following changes.
 
-```title="/etc/xdg/reflector/reflector.conf"
+```plaintext title="/etc/xdg/reflector/reflector.conf"
 --save /etc/pacman.d/mirrorlist
 --completion-percent 100
 --protocol https
