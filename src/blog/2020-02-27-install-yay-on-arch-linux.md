@@ -1,6 +1,6 @@
 ---
 title: Install yay on Arch Linux
-description: Learn how to install yay (Yet another Yogurt), an AUR Helper that lets you install packages from the Arch User Repository using the same commands as pacman.
+description: Learn how to install yay, an AUR Helper that lets you install packages from the Arch User Repository using the same commands as pacman.
 pubDate: '2020-02-27'
 updatedDate: '2021-05-21'
 slug: install-yay-on-arch-linux
