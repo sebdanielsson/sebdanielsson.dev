@@ -35,7 +35,7 @@ Reflector can run automatically in the background at chosen intervalls. The defa
 
 If you want the options from the example earlier make the following changes.
 
-```showLineNumbers title="/etc/xdg/reflector/reflector.conf"
+```title="/etc/xdg/reflector/reflector.conf"
 --save /etc/pacman.d/mirrorlist
 --completion-percent 100
 --protocol https

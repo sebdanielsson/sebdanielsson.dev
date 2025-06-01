@@ -23,7 +23,7 @@ pacman -S tmux
 
 The default scrolling behaviour runs through the previous commands instead of scrolling the terminal output. Enable sane scrolling behaviour with this config line.
 
-```showLineNumbers title="~/.config/tmux/tmux.conf"
+```title="~/.config/tmux/tmux.conf"
 set -g mouse on
 ```
 

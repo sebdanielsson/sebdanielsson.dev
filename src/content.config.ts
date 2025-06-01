@@ -5,7 +5,10 @@ const blog = defineCollection({
   loader: glob({ base: './src/blog', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
-    description: z.string().max(155, { message: 'Must be 5 or fewer characters long' }).optional(),
+    description: z
+      .string()
+      .max(155, { message: 'Must be 155 or fewer characters long' })
+      .optional(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     slug: z.string(),
