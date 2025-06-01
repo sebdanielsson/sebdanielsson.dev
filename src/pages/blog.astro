@@ -76,16 +76,14 @@ const posts = (await getCollection('blog')).sort(
       {
         posts.map((post) => (
           <li>
-            <a href={`/${post.id}/`}>
+            <a href={`/${post.id}/`} aria-label={`Read more about ${post.data.title}`}>
               <Picture
                 src={post.data.heroImage ?? '../assets/images/placeholder.png'}
                 alt={post.data.heroImageAlt}
-                width="720"
-                height="360"
-                loading="lazy"
                 formats={['avif', 'webp']}
                 fallbackFormat="webp"
                 class="rounded-xl"
+                loading={posts[0]?.id === post.id ? 'eager' : 'lazy'}
               />
             </a>
             <a href={`/${post.id}/`}>
