@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Layout from '@layouts/Layout.astro';
+import FormattedDate from '@components/FormattedDate.astro';
+import '@styles/markdown.css';
+import { Picture } from 'astro:assets';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, heroImageAlt } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <main class="flex flex-col items-center">
+    <div class="w-2/3">
+      <Picture
+        src={heroImage ?? '/src/assets/images/placeholder.png'}
+        alt={heroImageAlt}
+        loading="lazy"
+        formats={['avif', 'webp']}
+        fallbackFormat="webp"
+        loading="eager"
+        class="hero-image rounded-xl"
+      />
+    </div>
+    <article class="markdown-body flex flex-col items-center px-4">
+      <div class="w-[720px] max-w-[calc(100%-2em)] gap-4 text-[rgb(var(--gray-dark))]">
+        <div class="pb-4 text-center leading-none">
+          <h1>{title}</h1>
+          <div class="text-sm text-gray-200">
+            <span>
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <>
+                    | Updated <FormattedDate date={updatedDate} />
+                  </>
+                )
+              }
+            </span>
+          </div>
+        </div>
+        <slot />
+      </div>
+    </article>
+  </main>
+</Layout>
