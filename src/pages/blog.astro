@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import FormattedDate from '@components/FormattedDate.astro';
+import Tags from '@components/Tags.astro';
 import { getCollection } from 'astro:content';
 import { Picture } from 'astro:assets';
 
@@ -98,6 +99,7 @@ const posts = (await getCollection('blog')).sort(
               )}
             </p>
             <p class="introduction text-base">{post.data.description}</p>
+            <Tags tags={post.data.tags} />
           </li>
         ))
       }
