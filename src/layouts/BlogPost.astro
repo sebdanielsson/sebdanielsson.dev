@@ -3,10 +3,11 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from '@layouts/Layout.astro';
 import FormattedDate from '@components/FormattedDate.astro';
 import '@styles/markdown.css';
+import { Picture } from 'astro:assets';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, heroImageAlt } = Astro.props;
 ---
 
 <style is:global>
@@ -50,7 +51,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   <main class="markdown-body">
     <article>
       <div class="hero-image">
-        {heroImage && <img width={800} height={400} src={heroImage} alt="" />}
+        <Picture
+          src={heroImage ?? '/src/assets/images/placeholder.png'}
+          alt={heroImageAlt}
+          ]
+          width="720"
+          height="360"
+          loading="lazy"
+          formats={['avif', 'webp']}
+          fallbackFormat="webp"
+          class="rounded-xl"
+        />
       </div>
       <div class="prose">
         <div class="title">

@@ -4,7 +4,8 @@ description: "Beginner's guide to Docker: install, pull images, run containers, 
 pubDate: '2020-05-30'
 slug: get-started-with-docker
 tags: [docker, container, arch, linux, tutorial, guide]
-heroImage: '../src/assets/blog/docker.webp'
+heroImage: './images/docker.webp'
+heroImageAlt: ""
 ---
 
 I just tried out Docker for a small project and now I get all the hype around it. While searching for good guides I stumbled upon this excellent tutorial by [Prakhar Srivastav](https://prakhar.me): [A Docker Tutorial for Beginners](https://docker-curriculum.com). If you want a deeper understanding of Docker and how it works, and not only how to spin up a container and leave it running, I highly recommend reading it. He also go through the basics of writing your own Docker image which helped me a lot.

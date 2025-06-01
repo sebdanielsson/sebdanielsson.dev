@@ -4,7 +4,8 @@ description: Step-by-step guide to installing Ghost CMS on Arch Linux, using NGI
 pubDate: '2022-02-03'
 slug: install-ghost-with-nginx-on-arch-linux
 tags: [ghost, cms, blog, nginx, reverse proxy, arch, linux, tutorial, guide]
-heroImage: '../src/assets/blog/ghost-nginx.webp'
+heroImage: './images/ghost-nginx.webp'
+heroImageAlt: ""
 ---
 
 Complete guide on how to install Ghost and using NGINX as a reverse proxy to make the site accessible on the internet over HTTP/2.

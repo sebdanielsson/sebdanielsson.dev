@@ -4,7 +4,8 @@ description: Learn how to analyze and optimize your Linux boot performance using
 pubDate: '2022-04-18'
 slug: analyze-boot-performance-with-systemd-analyze
 tags: [linux, boot, performance, systemd, tutorial, guide]
-heroImage: '../src/assets/blog/server-rack.webp'
+heroImage: './images/server-rack.webp'
+heroImageAlt: ""
 ---
 
 systemd comes with a tool for analyzing boot times, called systemd-analyze.

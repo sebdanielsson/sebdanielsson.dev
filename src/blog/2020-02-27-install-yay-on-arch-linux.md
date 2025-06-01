@@ -5,7 +5,8 @@ pubDate: '2020-02-27'
 updatedDate: '2021-05-21'
 slug: install-yay-on-arch-linux
 tags: [yay, aur, aur helper, arch, linux, tutorial, guide]
-heroImage: '../src/assets/blog/yay.webp'
+heroImage: './images/yay.webp'
+heroImageAlt: ""
 ---
 
 This guide will walk through the steps for installing yay (Yet another Yogurt) which is an AUR Helper. This will let you install packages from the AUR (Arch User Repository) in the same way you install packages from the Arch Repo with pacman.

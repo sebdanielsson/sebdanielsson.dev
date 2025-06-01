@@ -4,7 +4,8 @@ description: Learn how to install and use tmux, a terminal multiplexer that enab
 pubDate: '2021-02-11'
 slug: install-tmux-on-linux
 tags: [tmux, terminal, multiplexer, arch, linux, tutorial, guide]
-heroImage: '../src/assets/blog/tmux.webp'
+heroImage: './images/tmux.webp'
+heroImageAlt: ""
 ---
 
 Tmux is a terminal multiplexer. This lets you to run multiple terminal sessions simultaniously. It gives you multitasking capabilities for your terminal and more importantly, this enables you to complete system updates even after a broken SSH connection since terminal sessions can be resumed.
