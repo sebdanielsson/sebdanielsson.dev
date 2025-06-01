@@ -11,24 +11,22 @@ const { title, description, pubDate, updatedDate, heroImage, heroImageAlt } = As
 ---
 
 <Layout title={title} description={description}>
-  <main class="markdown-body">
-    <article>
-      <div class="hero-image">
-        <Picture
-          src={heroImage ?? '/src/assets/images/placeholder.png'}
-          alt={heroImageAlt}
-          width="720"
-          height="360"
-          loading="lazy"
-          formats={['avif', 'webp']}
-          fallbackFormat="webp"
-          class="rounded-xl shadow-[0_4px_24px_0_rgb(30_41_59_/_18%),_0_1.5px_6px_0_rgb(30_41_59_/_10%)]"
-        />
-      </div>
-      <div class="prose mx-auto w-[720px] max-w-[calc(100%-2em)] p-4 text-[rgb(var(--gray-dark))]">
-        <div class="mb-4 py-4 text-center leading-none">
+  <main class="flex flex-col items-center">
+    <div class="w-2/3">
+      <Picture
+        src={heroImage ?? '/src/assets/images/placeholder.png'}
+        alt={heroImageAlt}
+        loading="lazy"
+        formats={['avif', 'webp']}
+        fallbackFormat="webp"
+        class="hero-image rounded-xl"
+      />
+    </div>
+    <article class="markdown-body flex flex-col items-center px-4">
+      <div class="w-[720px] max-w-[calc(100%-2em)] gap-4 text-[rgb(var(--gray-dark))]">
+        <div class="pb-4 text-center leading-none">
           <h1>{title}</h1>
-          <div class="date">
+          <div class="text-sm text-gray-200">
             <span>
               <FormattedDate date={pubDate} />
               {

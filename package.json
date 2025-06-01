@@ -16,11 +16,13 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.0",
+    "@expressive-code/plugin-line-numbers": "^0.41.2",
     "@fontsource/kalam": "^5.2.5",
     "@octokit/rest": "^22.0.0",
     "@tailwindcss/postcss": "^4.1.8",
     "@tailwindcss/vite": "^4.1.8",
     "astro": "5.8.1",
+    "astro-expressive-code": "^0.41.2",
     "node-html-parser": "^7.0.1",
     "tailwindcss": "^4.1.8"
   },
