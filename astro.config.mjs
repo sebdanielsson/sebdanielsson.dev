@@ -15,7 +15,6 @@ export default defineConfig({
   integrations: [
     expressiveCode({
       themes: ['github-dark'],
-      lineNumbers: true,
     }),
     mdx(),
   ],
