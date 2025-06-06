@@ -76,7 +76,7 @@ const posts = (await getCollection('blog')).sort(
     <ul>
       {
         posts.map((post) => (
-          <li>
+          <li class="flex flex-col gap-2">
             <a href={`/${post.id}/`} aria-label={`Read more about ${post.data.title}`}>
               <Picture
                 src={post.data.heroImage ?? '../assets/images/placeholder.png'}
