@@ -21,6 +21,8 @@ tags:
   ]
 heroImage: './images/server-rack.webp'
 heroImageAlt: ''
+author: Sebastian Danielsson
+draft: false
 ---
 
 Quickly deploy VMs in Proxmox VE with automated cloud-init templates. This guide covers creating, configuring, and using templates for fast, consistent provisioning.

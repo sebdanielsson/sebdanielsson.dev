@@ -6,6 +6,8 @@ slug: install-nginx-on-arch-linux
 tags: [nginx, reverse proxy, arch, linux, tutorial, guide]
 heroImage: './images/nginx.webp'
 heroImageAlt: ''
+author: Sebastian Danielsson
+draft: false
 ---
 
 Fast and easy tutorial for installing a NGINX web server with HTTP/2 and TLS certificates from Let's Encrypt on Arch Linux.
