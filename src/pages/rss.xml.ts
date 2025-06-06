@@ -5,7 +5,9 @@ import { render } from 'astro:content';
 import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
-  const blog = await getCollection('blog');
+  const blog = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
+  });
 
   // Create container for rendering
   const container = await AstroContainer.create();
