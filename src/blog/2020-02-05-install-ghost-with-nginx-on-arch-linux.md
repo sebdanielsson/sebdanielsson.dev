@@ -6,6 +6,8 @@ slug: install-ghost-with-nginx-on-arch-linux
 tags: [ghost, cms, blog, nginx, reverse proxy, arch, linux, tutorial, guide]
 heroImage: './images/ghost-nginx.webp'
 heroImageAlt: ''
+author: Sebastian Danielsson
+draft: false
 ---
 
 Complete guide on how to install Ghost and using NGINX as a reverse proxy to make the site accessible on the internet over HTTP/2.

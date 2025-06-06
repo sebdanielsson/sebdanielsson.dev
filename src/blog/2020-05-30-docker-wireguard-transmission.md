@@ -7,6 +7,8 @@ slug: docker-wireguard-transmission
 tags: [docker, container, transmission, wireguard, vpn, linux, tutorial, guide]
 heroImage: './images/docker-wireguard-transmission.webp'
 heroImageAlt: ''
+author: Sebastian Danielsson
+draft: false
 ---
 
 **Update 2021-05-23:** This project is no longer maintained because there is a more clean way of achieving this with only a compose file.
