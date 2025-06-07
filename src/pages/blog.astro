@@ -10,87 +10,32 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<style>
-  .title {
-    margin: 0;
-    color: rgb(var(--black));
-    line-height: 1;
-  }
-
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 800px;
-    justify-content: center;
-    gap: 2rem;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  ul li {
-    width: calc(50% - 1rem);
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  ul li * {
-    transition: 0.2s ease;
-  }
-
-  ul li:first-child {
-    width: 100%;
-    margin-bottom: 1rem;
-    align-items: center;
-  }
-
-  ul a:hover img {
-    box-shadow: var(--box-shadow);
-  }
-
-  @media (width <= 720px) {
-    ul {
-      gap: 0.5em;
-    }
-
-    ul li {
-      width: 100%;
-      text-align: center;
-    }
-
-    ul li:first-child {
-      margin-bottom: 0;
-    }
-
-    ul li:first-child .title {
-      font-size: 1.563em;
-    }
-  }
-</style>
-
 <Layout>
   <main class="main-width flex flex-col py-12">
-    <ul>
+    <ul class="m-0 mx-auto flex max-w-3xl list-none flex-wrap justify-between gap-8 p-0 md:gap-4">
       {
-        posts.map((post) => (
-          <li class="flex flex-col gap-2">
-            <a href={`/${post.id}/`} aria-label={`Read more about ${post.data.title}`}>
+        posts.map((post, index) => (
+          <li
+            class={`flex w-full flex-col gap-3 transition-all duration-200 ease-in-out ${index !== 0 ? 'sm:w-[calc(50%-1rem)]' : ''}`}
+          >
+            <a
+              href={`/${post.id}/`}
+              aria-label={`Read more about ${post.data.title}`}
+              class="group"
+            >
               <Picture
                 src={post.data.heroImage ?? '../assets/images/placeholder.png'}
                 alt={post.data.heroImageAlt}
                 formats={['avif', 'webp']}
                 fallbackFormat="webp"
-                class="rounded-xl"
+                class="rounded-xl group-hover:shadow-[var(--box-shadow)]"
                 loading={posts[0]?.id === post.id ? 'eager' : 'lazy'}
               />
             </a>
             <a href={`/${post.id}/`}>
-              <h3 class="title">{post.data.title}</h3>
+              <h3 class={`!my-0 transition-all duration-200 ease-in-out`}>{post.data.title}</h3>
             </a>
-            <p class="date text-sm">
+            <p class="text-sm transition-all duration-200 ease-in-out">
               <FormattedDate date={post.data.pubDate} />
               {post.data.updatedDate && (
                 <>
@@ -98,7 +43,7 @@ const posts = (await getCollection('blog')).sort(
                 </>
               )}
             </p>
-            <p class="introduction text-base">{post.data.description}</p>
+            <p class="text-base transition-all duration-200 ease-in-out">{post.data.description}</p>
             <Tags tags={post.data.tags} />
           </li>
         ))
