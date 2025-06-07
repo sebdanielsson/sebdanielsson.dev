@@ -8,11 +8,21 @@ import { Picture } from 'astro:assets';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt, draft } =
+  Astro.props;
 ---
 
 <Layout title={title} description={description}>
   <main class="main-width flex flex-col items-center gap-4 py-4 sm:py-8 md:py-12">
+    {
+      draft && (
+        <div class="w-full max-w-[800px] bg-yellow-100 p-4 text-yellow-800">
+          <p class="m-0 text-sm">
+            This post is a draft and is not visible on the blog page or in the RSS feed.
+          </p>
+        </div>
+      )
+    }
     <div class="w-full max-w-[800px]">
       <Picture
         src={heroImage ?? '/src/assets/images/placeholder.png'}

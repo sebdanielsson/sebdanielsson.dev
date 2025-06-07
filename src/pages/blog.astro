@@ -1,53 +1,10 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import FormattedDate from '@components/FormattedDate.astro';
-import Tags from '@components/Tags.astro';
+import BlogList from '@layouts/BlogList.astro';
 import { getCollection } from 'astro:content';
-import { Picture } from 'astro:assets';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
-<Layout>
-  <main class="main-width flex flex-col py-4 sm:py-8 md:py-12">
-    <ul class="m-0 mx-auto flex w-full max-w-[800px] list-none flex-wrap justify-between gap-8 p-0">
-      {
-        posts.map((post, index) => (
-          <li
-            class={`flex w-full flex-col gap-3 transition-all duration-200 ease-in-out ${index !== 0 ? 'sm:w-[calc(50%-1rem)]' : ''}`}
-          >
-            <a
-              href={`/${post.id}/`}
-              aria-label={`Read more about ${post.data.title}`}
-              class="group"
-            >
-              <Picture
-                src={post.data.heroImage ?? '../assets/images/placeholder.png'}
-                alt={post.data.heroImageAlt}
-                formats={['avif', 'webp']}
-                fallbackFormat="webp"
-                class="rounded-xl group-hover:shadow-[var(--box-shadow)]"
-                loading={posts[0]?.id === post.id ? 'eager' : 'lazy'}
-              />
-            </a>
-            <a href={`/${post.id}/`}>
-              <h3 class={`!my-0 transition-all duration-200 ease-in-out`}>{post.data.title}</h3>
-            </a>
-            <p class="text-sm transition-all duration-200 ease-in-out">
-              <FormattedDate date={post.data.pubDate} />
-              {post.data.updatedDate && (
-                <>
-                  | Updated <FormattedDate date={post.data.updatedDate} />
-                </>
-              )}
-            </p>
-            <p class="text-base transition-all duration-200 ease-in-out">{post.data.description}</p>
-            <Tags tags={post.data.tags} />
-          </li>
-        ))
-      }
-    </ul>
-  </main>
-</Layout>
+<BlogList posts={posts} title="Blog" />
