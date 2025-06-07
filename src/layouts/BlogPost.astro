@@ -13,7 +13,7 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt 
 
 <Layout title={title} description={description}>
   <main class="main-width flex flex-col items-center">
-    <div class="max-w-[800px]">
+    <div class="w-full max-w-[800px] px-4">
       <Picture
         src={heroImage ?? '/src/assets/images/placeholder.png'}
         alt={heroImageAlt}
@@ -21,10 +21,10 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt 
         formats={['avif', 'webp']}
         fallbackFormat="webp"
         loading="eager"
-        class="hero-image rounded-xl"
+        class="hero-image h-auto w-full rounded-xl"
       />
     </div>
-    <article class="markdown-body flex max-w-[720px] flex-col">
+    <article class="markdown-body flex w-full max-w-[720px] flex-col px-4">
       <div class="pb-4 leading-none">
         <h1>{title}</h1>
         <div class="text-sm text-gray-200">
@@ -42,7 +42,7 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt 
       </div>
       <slot />
     </article>
-    <div class="flex w-[720px] max-w-[calc(100%-2em)] flex-col gap-12 px-4 py-12 text-center">
+    <div class="flex w-full max-w-[720px] flex-col gap-12 px-4 py-12 text-center">
       <p class="text-center text-gray-400">
         <a href="/blog" class="text-[var(--accent-main)] hover:text-[var(--accent-light)]">
           ← Back to all posts
