@@ -11,7 +11,7 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <Layout>
-  <main class="main-width flex flex-col py-12">
+  <main class="main-width flex flex-col py-4 sm:py-8 md:py-12">
     <ul class="m-0 mx-auto flex max-w-3xl list-none flex-wrap justify-between gap-8 p-0 md:gap-4">
       {
         posts.map((post, index) => (
