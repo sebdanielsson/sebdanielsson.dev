@@ -35,13 +35,12 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version-file: '.bun-version'
-          no-cache: true
 
       - run: bun install --frozen-lockfile
 
       - run: bun --bun run lint
 
-      # - run: bun --bun run stylelint
+      - run: bun --bun run stylelint
 
       - run: bun --bun run format:check
 
