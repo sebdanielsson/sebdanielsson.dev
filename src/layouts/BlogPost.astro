@@ -12,8 +12,8 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt 
 ---
 
 <Layout title={title} description={description}>
-  <main class="main-width flex flex-col items-center">
-    <div class="w-full max-w-[800px] px-4">
+  <main class="main-width flex flex-col items-center gap-4 py-4 sm:py-8 md:py-12">
+    <div class="w-full max-w-[800px]">
       <Picture
         src={heroImage ?? '/src/assets/images/placeholder.png'}
         alt={heroImageAlt}
@@ -24,9 +24,9 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt 
         class="hero-image h-auto w-full rounded-xl"
       />
     </div>
-    <article class="markdown-body flex w-full max-w-[720px] flex-col px-4">
+    <article class="markdown-body flex w-full max-w-[720px] flex-col">
       <div class="pb-4 leading-none">
-        <h1>{title}</h1>
+        <h1 class="!my-0">{title}</h1>
         <div class="text-sm text-gray-200">
           <span>
             <FormattedDate date={pubDate} />
