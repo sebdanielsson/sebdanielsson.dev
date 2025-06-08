@@ -28,5 +28,6 @@ export default defineConfig({
   },
   experimental: {
     responsiveImages: true,
+    csp: true,
   },
 });
