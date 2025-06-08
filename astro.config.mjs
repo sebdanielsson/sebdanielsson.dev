@@ -30,7 +30,7 @@ export default defineConfig({
     responsiveImages: true,
     csp: {
       directives: [
-        "default-src 'self' 'https://plausible.hogwarts.zone' 'https://static.cloudflareinsights.com'",
+        "default-src 'self' https://plausible.hogwarts.zone https://static.cloudflareinsights.com",
       ],
     },
   },
