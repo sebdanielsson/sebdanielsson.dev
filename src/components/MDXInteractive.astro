@@ -1,0 +1,123 @@
+---
+interface Props {
+  variables: { id: string; label: string; defaultValue: string; placeholder?: string }[];
+  syntax?: 'double-braces' | 'single-braces' | 'angle-brackets' | 'square-brackets';
+}
+
+const { variables, syntax = 'double-braces' } = Astro.props;
+---
+
+<div class="mdx-interactive-container mb-6" data-syntax={syntax}>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {
+      variables.map((variable) => (
+        <div>
+          <label for={variable.id} class="mb-2 block text-sm font-medium text-gray-300">
+            {variable.label}
+          </label>
+          <input
+            type="text"
+            id={variable.id}
+            name={variable.id}
+            value={variable.defaultValue}
+            placeholder={variable.placeholder || variable.defaultValue}
+            class="mdx-input w-full rounded-md border border-[var(--accent-main)] bg-[var(--accent-background)] px-3 py-2 text-white placeholder-gray-400 focus:border-transparent focus:ring-2 focus:ring-[var(--accent-main)] focus:outline-none"
+            data-variable={variable.id}
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  // Function to update all code blocks on the page
+  function updateCodeBlocks() {
+    const inputs = document.querySelectorAll('.mdx-input') as NodeListOf<HTMLInputElement>;
+    const codeBlocks = document.querySelectorAll('pre code') as NodeListOf<HTMLElement>;
+
+    // Create a map of variable values
+    const variableMap = new Map<string, string>();
+    inputs.forEach((input) => {
+      const variable = input.getAttribute('data-variable');
+      if (variable) {
+        variableMap.set(variable, input.value || input.placeholder || variable);
+      }
+    });
+
+    // Update each code block by walking through text nodes only
+    codeBlocks.forEach((codeBlock) => {
+      updateTextNodes(codeBlock, variableMap);
+    });
+  }
+
+  // Recursively update text nodes while preserving HTML structure
+  function updateTextNodes(element: Element, variableMap: Map<string, string>) {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null);
+
+    const textNodes: Text[] = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      textNodes.push(node as Text);
+    }
+
+    textNodes.forEach((textNode) => {
+      // Use a data attribute approach by setting it on the parent element
+      const parentElement = textNode.parentElement;
+      const dataKey =
+        'data-original-text-' + Array.from(parentElement?.childNodes || []).indexOf(textNode);
+      const originalText = parentElement?.getAttribute(dataKey) || textNode.textContent || '';
+
+      // Store original text on first run
+      if (parentElement && !parentElement.getAttribute(dataKey)) {
+        parentElement.setAttribute(dataKey, originalText);
+      }
+
+      let updatedText = originalText;
+      variableMap.forEach((value, variable) => {
+        const regex = new RegExp(`\\b${variable}\\b`, 'g');
+        updatedText = updatedText.replace(regex, value);
+      });
+
+      if (textNode.textContent !== updatedText) {
+        textNode.textContent = updatedText;
+      }
+    });
+  }
+
+  // Initialize on page load
+  function initializeInteractiveCodeBlocks() {
+    const container = document.querySelector('.mdx-interactive-container');
+    if (!container) return;
+
+    // Initialize original text storage for text nodes in code blocks
+    const codeBlocks = document.querySelectorAll('pre code') as NodeListOf<HTMLElement>;
+    codeBlocks.forEach((codeBlock) => {
+      // Pre-store original text for all text nodes
+      updateTextNodes(codeBlock, new Map()); // Empty map just to initialize storage
+    });
+
+    const inputs = container.querySelectorAll('.mdx-input') as NodeListOf<HTMLInputElement>;
+
+    inputs.forEach((input) => {
+      input.addEventListener('input', updateCodeBlocks);
+    });
+
+    // Initial update
+    updateCodeBlocks();
+  }
+
+  // Handle both initial load and Astro's client-side routing
+  document.addEventListener('DOMContentLoaded', initializeInteractiveCodeBlocks);
+  document.addEventListener('astro:page-load', initializeInteractiveCodeBlocks);
+</script>
+
+<style>
+  .mdx-interactive-container {
+    margin: 1.5rem 0;
+  }
+
+  .mdx-input-container input:focus {
+    box-shadow: 0 0 0 2px var(--accent-main);
+  }
+</style>
