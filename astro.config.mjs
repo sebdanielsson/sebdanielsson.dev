@@ -21,6 +21,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark',
+    },
+  },
   experimental: {
     responsiveImages: true,
   },
