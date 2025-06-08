@@ -39,7 +39,7 @@ const { posts, title, description } = Astro.props;
             </a>
             <a href={`/${post.id}/`}>
               <h3
-                class={`!my-0 transition-all duration-200 ease-in-out ${index === 0 ? '!text-2xl md:!text-3xl' : '!text-xl md:!text-2xl'}`}
+                class={`!my-0 transition-all duration-200 ease-in-out ${index === 0 ? '!text-xl sm:!text-2xl md:!text-3xl' : '!text-xl md:!text-2xl'}`}
               >
                 {post.data.title}
               </h3>
