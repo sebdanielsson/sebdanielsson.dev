@@ -32,6 +32,9 @@ export default defineConfig({
       directives: [
         "default-src 'self' https://plausible.hogwarts.zone https://static.cloudflareinsights.com",
       ],
+      scriptDirective: {
+        resources: ['self', 'https://static.cloudflareinsights.com'],
+      },
     },
   },
 });
