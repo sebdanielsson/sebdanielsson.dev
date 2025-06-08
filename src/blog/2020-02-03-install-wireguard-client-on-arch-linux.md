@@ -5,7 +5,7 @@ pubDate: '2020-02-03'
 slug: install-wireguard-client-on-arch-linux
 tags: [wireguard, vpn, arch, linux, tutorial, guide]
 heroImage: './images/wireguard.webp'
-heroImageAlt: ''
+heroImageAlt: 'WireGuard logo.'
 author: Sebastian Danielsson
 draft: false
 ---

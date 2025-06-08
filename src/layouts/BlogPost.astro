@@ -23,17 +23,22 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
         </div>
       )
     }
-    <div class="w-full max-w-[800px]">
-      <Picture
-        src={heroImage ?? '/src/assets/images/placeholder.png'}
-        alt={heroImageAlt}
-        loading="lazy"
-        formats={['avif', 'webp']}
-        fallbackFormat="webp"
-        loading="eager"
-        class="hero-image h-auto w-full rounded-xl"
-      />
-    </div>
+
+    {
+      heroImage && heroImageAlt && (
+        <div class="w-full max-w-[800px]">
+          <Picture
+            src={heroImage}
+            alt={heroImageAlt}
+            loading="lazy"
+            formats={['avif', 'webp']}
+            fallbackFormat="webp"
+            loading="eager"
+            class="hero-image h-auto w-full rounded-xl"
+          />
+        </div>
+      )
+    }
     <article class="markdown-body flex w-full max-w-[720px] flex-col">
       <div class="pb-4 leading-none">
         <h1 class="!my-0 !text-xl sm:!text-3xl">{title}</h1>

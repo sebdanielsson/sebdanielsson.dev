@@ -5,7 +5,7 @@ pubDate: '2020-05-30'
 slug: get-started-with-docker
 tags: [docker, container, arch, linux, tutorial, guide]
 heroImage: './images/docker.webp'
-heroImageAlt: ''
+heroImageAlt: 'Docker logo.'
 author: Sebastian Danielsson
 draft: false
 ---

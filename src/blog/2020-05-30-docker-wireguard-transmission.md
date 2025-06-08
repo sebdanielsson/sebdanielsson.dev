@@ -6,7 +6,7 @@ updatedDate: '2021-05-23'
 slug: docker-wireguard-transmission
 tags: [docker, container, transmission, wireguard, vpn, linux, tutorial, guide]
 heroImage: './images/docker-wireguard-transmission.webp'
-heroImageAlt: ''
+heroImageAlt: 'Docker, WireGuard, Transmission logos.'
 author: Sebastian Danielsson
 draft: false
 ---

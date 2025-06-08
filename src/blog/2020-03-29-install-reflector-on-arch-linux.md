@@ -5,7 +5,7 @@ pubDate: '2020-03-29'
 slug: install-reflector-on-arch-linux
 tags: [reflector, pacman, mirrors, python, arch, linux, tutorial, guide]
 heroImage: './images/server-rack.webp'
-heroImageAlt: ''
+heroImageAlt: 'Rack mounted servers in a server room.'
 author: Sebastian Danielsson
 draft: false
 ---

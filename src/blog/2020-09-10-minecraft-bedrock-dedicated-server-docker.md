@@ -5,7 +5,7 @@ pubDate: '2020-09-10'
 slug: minecraft-bedrock-dedicated-server-docker
 tags: [docker, container, compose, minecraft, bedrock, dedicated, server, linux, tutorial, guide]
 heroImage: './images/minecraft-docker.webp'
-heroImageAlt: ''
+heroImageAlt: 'Screenshot of Minecraft with an overlay of the Docker compose file.'
 author: Sebastian Danielsson
 draft: false
 ---

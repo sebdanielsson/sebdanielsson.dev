@@ -5,7 +5,7 @@ pubDate: '2020-02-01'
 slug: install-arch-linux
 tags: [arch, linux, install, tutorial, guide]
 heroImage: './images/arch-linux.webp'
-heroImageAlt: ''
+heroImageAlt: 'Arch Linux logo.'
 author: Sebastian Danielsson
 draft: false
 ---

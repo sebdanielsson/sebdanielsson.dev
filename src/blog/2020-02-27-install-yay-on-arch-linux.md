@@ -6,7 +6,7 @@ updatedDate: '2021-05-21'
 slug: install-yay-on-arch-linux
 tags: [yay, aur, aur helper, arch, linux, tutorial, guide]
 heroImage: './images/yay.webp'
-heroImageAlt: ''
+heroImageAlt: 'Terminal screenshot of yay installing packages.'
 author: Sebastian Danielsson
 draft: false
 ---

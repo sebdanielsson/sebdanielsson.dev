@@ -20,7 +20,7 @@ tags:
     guide,
   ]
 heroImage: './images/server-rack.webp'
-heroImageAlt: ''
+heroImageAlt: 'Rack mounted servers in a server room.'
 author: Sebastian Danielsson
 draft: false
 ---

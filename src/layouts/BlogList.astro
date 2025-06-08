@@ -23,20 +23,22 @@ const { posts, title, description } = Astro.props;
           <li
             class={`flex w-full flex-col gap-3 transition-all duration-200 ease-in-out ${index !== 0 ? 'sm:w-[calc(50%-1rem)]' : ''}`}
           >
-            <a
-              href={`/${post.id}/`}
-              aria-label={`Read more about ${post.data.title}`}
-              class="group"
-            >
-              <Picture
-                src={post.data.heroImage ?? '../assets/images/placeholder.png'}
-                alt={post.data.heroImageAlt}
-                formats={['avif', 'webp']}
-                fallbackFormat="webp"
-                class="rounded-xl group-hover:shadow-[var(--box-shadow)]"
-                loading={posts[0]?.id === post.id ? 'eager' : 'lazy'}
-              />
-            </a>
+            {post.data.heroImage && post.data.heroImageAlt && (
+              <a
+                href={`/${post.id}/`}
+                aria-label={`Read more about ${post.data.title}`}
+                class="group"
+              >
+                <Picture
+                  src={post.data.heroImage}
+                  alt={post.data.heroImageAlt}
+                  formats={['avif', 'webp']}
+                  fallbackFormat="webp"
+                  class="rounded-xl group-hover:shadow-[var(--box-shadow)]"
+                  loading={posts[0]?.id === post.id ? 'eager' : 'lazy'}
+                />
+              </a>
+            )}
             <a href={`/${post.id}/`}>
               <h3
                 class={`!my-0 transition-all duration-200 ease-in-out ${index === 0 ? '!text-xl sm:!text-2xl md:!text-3xl' : '!text-xl md:!text-2xl'}`}

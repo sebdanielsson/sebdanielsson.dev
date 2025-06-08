@@ -5,7 +5,7 @@ pubDate: '2022-04-18'
 slug: analyze-boot-performance-with-systemd-analyze
 tags: [linux, boot, performance, systemd, tutorial, guide]
 heroImage: './images/server-rack.webp'
-heroImageAlt: ''
+heroImageAlt: 'Rack mounted servers in a server room.'
 author: Sebastian Danielsson
 draft: false
 ---

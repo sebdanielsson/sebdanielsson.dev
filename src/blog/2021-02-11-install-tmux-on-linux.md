@@ -5,7 +5,7 @@ pubDate: '2021-02-11'
 slug: install-tmux-on-linux
 tags: [tmux, terminal, multiplexer, arch, linux, tutorial, guide]
 heroImage: './images/tmux.webp'
-heroImageAlt: ''
+heroImageAlt: 'Tmux running with multiple panes.'
 author: Sebastian Danielsson
 draft: false
 ---

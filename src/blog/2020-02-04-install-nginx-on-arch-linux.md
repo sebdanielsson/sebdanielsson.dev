@@ -5,7 +5,7 @@ pubDate: '2020-02-04'
 slug: install-nginx-on-arch-linux
 tags: [nginx, reverse proxy, arch, linux, tutorial, guide]
 heroImage: './images/nginx.webp'
-heroImageAlt: ''
+heroImageAlt: 'NGINX logo.'
 author: Sebastian Danielsson
 draft: false
 ---

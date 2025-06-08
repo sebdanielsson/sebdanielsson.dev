@@ -5,7 +5,7 @@ pubDate: '2020-02-29'
 slug: install-phoronix-test-suite-on-arch-linux
 tags: [phoronix test suite, pts, benchmark, arch, linux, tutorial, guide]
 heroImage: './images/pts.webp'
-heroImageAlt: ''
+heroImageAlt: 'Phoronix Test Suite (PTS) logo.'
 author: Sebastian Danielsson
 draft: false
 ---

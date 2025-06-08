@@ -15,11 +15,23 @@ const blog = defineCollection({
       updatedDate: z.coerce.date().optional(),
       slug: z.string(),
       tags: z.array(z.string()).default([]),
-      heroImage: image(),
-      heroImageAlt: z.string(),
+      heroImage: image().optional(),
+      heroImageAlt: z.string().optional(),
       author: z.string().optional(),
       draft: z.boolean().default(false),
-    }),
+    }).refine(
+      (data) => {
+        // If heroImage is set, heroImageAlt must also be set
+        if (data.heroImage && !data.heroImageAlt) {
+          return false;
+        }
+        return true;
+      },
+      {
+        message: 'heroImageAlt is required when heroImage is provided',
+        path: ['heroImageAlt'], // This will show the error on the heroImageAlt field
+      }
+    ),
 });
 
 export const collections = { blog };

@@ -5,7 +5,7 @@ pubDate: 2020-02-03
 slug: install-transmission-on-arch-linux
 tags: [transmission, arch, linux, tutorial, guide]
 heroImage: './images/transmission.webp'
-heroImageAlt: ''
+heroImageAlt: 'Transmission logo.'
 author: Sebastian Danielsson
 draft: false
 ---

@@ -5,7 +5,7 @@ pubDate: '2022-02-03'
 slug: install-ghost-with-nginx-on-arch-linux
 tags: [ghost, cms, blog, nginx, reverse proxy, arch, linux, tutorial, guide]
 heroImage: './images/ghost-nginx.webp'
-heroImageAlt: ''
+heroImageAlt: 'Ghost, NGINX logo.'
 author: Sebastian Danielsson
 draft: false
 ---
