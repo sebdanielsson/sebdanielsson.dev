@@ -38,7 +38,11 @@ const { posts, title, description } = Astro.props;
               />
             </a>
             <a href={`/${post.id}/`}>
-              <h3 class={`!my-0 transition-all duration-200 ease-in-out`}>{post.data.title}</h3>
+              <h3
+                class={`!my-0 transition-all duration-200 ease-in-out ${index === 0 ? '!text-2xl md:!text-3xl' : '!text-xl md:!text-2xl'}`}
+              >
+                {post.data.title}
+              </h3>
             </a>
             <p class="text-sm transition-all duration-200 ease-in-out">
               <FormattedDate date={post.data.pubDate} />
