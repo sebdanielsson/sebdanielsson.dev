@@ -7,7 +7,7 @@ interface Props {
 const { variables, syntax = 'double-braces' } = Astro.props;
 ---
 
-<div class="mdx-interactive-container mb-6" data-syntax={syntax}>
+<div class="mdx-interactive-container my-6" data-syntax={syntax}>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     {
       variables.map((variable) => (
@@ -111,13 +111,3 @@ const { variables, syntax = 'double-braces' } = Astro.props;
   document.addEventListener('DOMContentLoaded', initializeInteractiveCodeBlocks);
   document.addEventListener('astro:page-load', initializeInteractiveCodeBlocks);
 </script>
-
-<style>
-  .mdx-interactive-container {
-    margin: 1.5rem 0;
-  }
-
-  .mdx-input-container input:focus {
-    box-shadow: 0 0 0 2px var(--accent-main);
-  }
-</style>

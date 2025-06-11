@@ -14,18 +14,18 @@ This is a test of MDX with some input variables and prefilled code blocks.
 
 ## Interactive Example
 
-Replace the input fields below with your own values and see how they are rendered in the code block in real-time!
+Replace the input fields below with your own values and see how they are rendered in the code block in real-time! Note that the id should be a string without spaces or special characters to avoid issues with syntax highlighting. The value will be replaced by the value of defaultValue and the placeholder will be used if no value is provided.
 
 <MDXInteractive
   variables={[
-    { id: 'variable1', label: 'Package Manager', defaultValue: 'bun', placeholder: 'bun' },
-    { id: 'variable2', label: 'Framework', defaultValue: 'astro', placeholder: 'astro' },
-    { id: 'variable3', label: 'Library', defaultValue: 'react', placeholder: 'react' },
+    { id: 'packageManager', label: 'Package Manager', defaultValue: '{{packageManager}}', placeholder: 'bun' },
+    { id: 'framework', label: 'Framework', defaultValue: '{{framework}}', placeholder: 'astro' },
+    { id: 'library', label: 'Library', defaultValue: '{{library}}', placeholder: 'react' },
   ]}
 />
 
 ```shell
-variable1 install variable2 --add variable3
+packageManager install framework --add library
 ```
 
 ## Traditional Code Block
