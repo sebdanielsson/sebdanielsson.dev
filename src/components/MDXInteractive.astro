@@ -48,6 +48,7 @@ const { variables, syntax = 'double-braces' } = Astro.props;
     // Update each code block by walking through text nodes only
     codeBlocks.forEach((codeBlock) => {
       updateTextNodes(codeBlock, variableMap);
+      updateCopyButton(codeBlock, variableMap);
     });
   }
 
@@ -85,6 +86,39 @@ const { variables, syntax = 'double-braces' } = Astro.props;
     });
   }
 
+  // Update copy button data-code attribute
+  function updateCopyButton(codeBlock: HTMLElement, variableMap: Map<string, string>) {
+    // Find the copy button associated with this code block
+    const preElement = codeBlock.closest('pre');
+    if (!preElement) return;
+
+    // Look for copy button in the next sibling or parent's next sibling
+    const copyButton = preElement.parentElement?.querySelector(
+      'button[data-code]',
+    ) as HTMLButtonElement;
+
+    if (copyButton) {
+      // Get the original data-code value
+      const originalDataCode =
+        copyButton.getAttribute('data-original-code') || copyButton.getAttribute('data-code') || '';
+
+      // Store original data-code on first run
+      if (!copyButton.getAttribute('data-original-code')) {
+        copyButton.setAttribute('data-original-code', originalDataCode);
+      }
+
+      // Apply variable replacements to the data-code
+      let updatedDataCode = originalDataCode;
+      variableMap.forEach((value, variable) => {
+        const regex = new RegExp(`\\b${variable}\\b`, 'g');
+        updatedDataCode = updatedDataCode.replace(regex, value);
+      });
+
+      // Update the data-code attribute
+      copyButton.setAttribute('data-code', updatedDataCode);
+    }
+  }
+
   // Initialize on page load
   function initializeInteractiveCodeBlocks() {
     const container = document.querySelector('.mdx-interactive-container');
@@ -95,6 +129,8 @@ const { variables, syntax = 'double-braces' } = Astro.props;
     codeBlocks.forEach((codeBlock) => {
       // Pre-store original text for all text nodes
       updateTextNodes(codeBlock, new Map()); // Empty map just to initialize storage
+      // Initialize copy button data
+      updateCopyButton(codeBlock, new Map()); // Empty map just to initialize storage
     });
 
     const inputs = container.querySelectorAll('.mdx-input') as NodeListOf<HTMLInputElement>;
