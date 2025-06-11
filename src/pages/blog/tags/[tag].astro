@@ -28,6 +28,7 @@ const { tag } = Astro.props;
 const allPosts = await getCollection('blog');
 const postsWithTag = allPosts
   .filter((post) => post.data.tags?.includes(tag))
+  .filter((post) => post.data.draft !== true)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
