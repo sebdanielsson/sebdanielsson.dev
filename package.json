@@ -18,29 +18,29 @@
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/rss": "^4.0.12",
     "@expressive-code/plugin-line-numbers": "^0.41.2",
-    "@fontsource/kalam": "^5.2.5",
+    "@fontsource/kalam": "^5.2.6",
     "@octokit/rest": "^22.0.0",
-    "@tailwindcss/postcss": "^4.1.8",
-    "@tailwindcss/vite": "^4.1.8",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.10",
     "astro": "5.9.4",
     "astro-expressive-code": "^0.41.2",
     "node-html-parser": "^7.0.1",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
-    "@eslint/js": "^9.28.0",
+    "@eslint/js": "^9.29.0",
     "@types/eslint__js": "^9.14.0",
-    "@typescript-eslint/parser": "^8.33.1",
-    "eslint": "^9.28.0",
+    "@typescript-eslint/parser": "^8.34.1",
+    "eslint": "^9.29.0",
     "eslint-plugin-astro": "^1.3.1",
     "postcss-html": "^1.8.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.12",
+    "prettier-plugin-tailwindcss": "^0.6.13",
     "prettier-plugin-astro": "^0.14.1",
-    "stylelint": "^16.20.0",
+    "stylelint": "^16.21.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-standard": "^38.0.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.33.1"
+    "typescript-eslint": "^8.34.1"
   }
 }
