@@ -1,4 +1,3 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
@@ -26,15 +25,15 @@ export default defineConfig({
       theme: 'github-dark',
     },
   },
+  image: {
+    responsiveStyles: true,
+  },
   experimental: {
-    responsiveImages: true,
+    liveContentCollections: true,
     csp: {
       directives: [
         "default-src 'self' https://plausible.hogwarts.zone https://static.cloudflareinsights.com",
       ],
-      scriptDirective: {
-        resources: ['self', 'https://static.cloudflareinsights.com'],
-      },
     },
   },
 });
