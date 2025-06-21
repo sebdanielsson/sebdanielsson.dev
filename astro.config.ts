@@ -30,10 +30,10 @@ export default defineConfig({
   },
   experimental: {
     liveContentCollections: true,
-    /* csp: {
+    csp: {
       directives: [
         "default-src 'self' https://plausible.hogwarts.zone https://static.cloudflareinsights.com",
       ],
-    }, */
+    },
   },
 });
