@@ -25,8 +25,11 @@ export default defineConfig({
       theme: 'github-dark',
     },
   },
+  image: {
+    responsiveStyles: true,
+  },
   experimental: {
-    responsiveImages: true,
+    liveContentCollections: true,
     /* csp: {
       directives: [
         "default-src 'self' https://plausible.hogwarts.zone https://static.cloudflareinsights.com",
