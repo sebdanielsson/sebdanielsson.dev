@@ -17,17 +17,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Load secrets from 1Password
-        id: op-credentials
-        uses: 1password/load-secrets-action@v2
+      - name: Load secrets from dotenvx
+        id: dotenvx
+        uses: andreijiroh-dev/dotenvx-action@v0.4.0
         with:
-          export-env: false
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          GH_API: 'op://prod/github-pat-sebdanielssondev/credential'
-          CLOUDFLARE_API_TOKEN: 'op://prod/cloudflare-sebdanielssondev-api-token/credential'
-          CLOUDFLARE_ACCOUNT_ID: 'op://prod/cloudflare-sebdanielssondev-api-token/account_id'
-          CLOUDFLARE_PROJECT_NAME: 'op://prod/cloudflare-sebdanielssondev-api-token/project_name'
+          path: .env
+          key: ${{ secrets.DOTENVX_KEY }}
+          inject-env-vars: false
 
       - name: Set commit in environment
         run: echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
@@ -48,12 +44,12 @@ jobs:
         env:
           GITHUB_USER: ${{ github.repository_owner }}
           GITHUB_REPO: ${{ github.event.repository.name }}
-          GH_API: ${{ steps.op-credentials.outputs.GH_API }}
+          GH_API: ${{ steps.dotenvx.outputs.GH_API }}
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ steps.op-credentials.outputs.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ steps.op-credentials.outputs.CLOUDFLARE_ACCOUNT_ID }}
-          command: 'pages deploy dist --project-name=${{ steps.op-credentials.outputs.CLOUDFLARE_PROJECT_NAME }}'
+          apiToken: ${{ steps.dotenvx.outputs.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ steps.dotenvx.outputs.CLOUDFLARE_ACCOUNT_ID }}
+          command: 'pages deploy dist --project-name=${{ steps.dotenvx.outputs.CLOUDFLARE_PROJECT_NAME }}'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
