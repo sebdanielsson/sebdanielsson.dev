@@ -2,5 +2,5 @@
 @import 'tailwindcss';
 
 @theme inline {
-    --font-kalam: var(--font-kalam);
+  --font-kalam: var(--font-kalam);
 }
