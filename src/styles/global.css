@@ -1,2 +1,6 @@
 /* stylelint-disable import-notation */
 @import 'tailwindcss';
+
+@theme inline {
+    --font-kalam: var(--font-kalam);
+}

@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 
@@ -30,10 +30,17 @@ export default defineConfig({
   },
   experimental: {
     liveContentCollections: true,
-    csp: {
+    /* csp: {
       directives: [
         "default-src 'self' https://plausible.hogwarts.zone https://static.cloudflareinsights.com",
       ],
-    },
+    }, */
+    fonts: [
+      {
+        provider: fontProviders.fontsource(),
+        name: 'Kalam',
+        cssVariable: '--font-kalam',
+      },
+    ],
   },
 });

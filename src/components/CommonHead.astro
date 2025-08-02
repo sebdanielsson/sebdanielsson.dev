@@ -1,4 +1,6 @@
 ---
+import { Font } from 'astro:assets';
+
 const { title: propTitle, description = 'The personal site of Sebastian Danielsson' } = Astro.props;
 
 const title = propTitle ? `${propTitle} - sebdanielsson.dev` : 'sebdanielsson.dev';
@@ -11,6 +13,7 @@ const title = propTitle ? `${propTitle} - sebdanielsson.dev` : 'sebdanielsson.de
 <meta name="theme-color" content="#000" />
 <title>{title}</title>
 
+<Font cssVariable="--font-kalam" preload />
 <style>
   @view-transition {
     navigation: auto; /* enabled! */
