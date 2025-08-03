@@ -1,7 +1,5 @@
-/* stylelint-disable import-notation */
 @import 'tailwindcss';
 
-/* stylelint-disable at-rule-no-unknown */
 @theme inline {
   --font-kalam: var(--font-kalam);
 }
