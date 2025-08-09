@@ -1,23 +1,34 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import Layout from '@layouts/Layout.astro';
-import FormattedDate from '@components/FormattedDate.astro';
-import Tags from '@components/Tags.astro';
-import { Picture } from 'astro:assets';
+import type { CollectionEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import Tags from "@components/Tags.astro";
+import { Picture } from "astro:assets";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt, draft } =
-  Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  tags,
+  heroImage,
+  heroImageAlt,
+  draft,
+} = Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <main class="main-width flex flex-col items-center gap-4 py-4 sm:py-8 md:py-12">
+  <main
+    class="main-width flex flex-col items-center gap-4 py-4 sm:py-8 md:py-12"
+  >
     {
       draft && (
         <div class="w-full max-w-[800px] bg-yellow-100 p-4 text-yellow-800">
           <p class="m-0 text-sm">
-            This post is a draft and is not visible on the blog page or in the RSS feed.
+            This post is a draft and is not visible on the blog page or in the
+            RSS feed.
           </p>
         </div>
       )
@@ -30,7 +41,7 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
             src={heroImage}
             alt={heroImageAlt}
             loading="lazy"
-            formats={['avif', 'webp']}
+            formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="eager"
             class="hero-image h-auto w-full rounded-xl"
@@ -56,9 +67,14 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
       </div>
       <slot />
     </article>
-    <div class="flex w-full max-w-[720px] flex-col gap-12 px-4 py-12 text-center">
+    <div
+      class="flex w-full max-w-[720px] flex-col gap-12 px-4 py-12 text-center"
+    >
       <p class="text-center text-gray-400">
-        <a href="/blog" class="text-[var(--accent-main)] hover:text-[var(--accent-light)]">
+        <a
+          href="/blog"
+          class="text-[var(--accent-main)] hover:text-[var(--accent-light)]"
+        >
           ← Back to all posts
         </a>
       </p>
@@ -73,8 +89,6 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
   /* dark */
   .markdown-body {
     color-scheme: dark;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
     margin: 0;
     font-size: 16px;
     line-height: 1.5;
@@ -95,10 +109,9 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
   .markdown-body h6:hover .anchor .octicon-link:before {
     width: 16px;
     height: 16px;
-    content: ' ';
+    content: " ";
     display: inline-block;
     background-color: currentColor;
-    -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
     mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
   }
 
@@ -123,7 +136,6 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
 
   .markdown-body abbr[title] {
     border-bottom: none;
-    -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted;
   }
 
@@ -207,39 +219,16 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
     line-height: inherit;
   }
 
-  .markdown-body [type='button'],
-  .markdown-body [type='reset'],
-  .markdown-body [type='submit'] {
-    -webkit-appearance: button;
+  .markdown-body [type="button"],
+  .markdown-body [type="reset"],
+  .markdown-body [type="submit"] {
     appearance: button;
   }
 
-  .markdown-body [type='checkbox'],
-  .markdown-body [type='radio'] {
+  .markdown-body [type="checkbox"],
+  .markdown-body [type="radio"] {
     box-sizing: border-box;
     padding: 0;
-  }
-
-  .markdown-body [type='number']::-webkit-inner-spin-button,
-  .markdown-body [type='number']::-webkit-outer-spin-button {
-    height: auto;
-  }
-
-  .markdown-body [type='search']::-webkit-search-cancel-button,
-  .markdown-body [type='search']::-webkit-search-decoration {
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  .markdown-body ::-webkit-input-placeholder {
-    color: inherit;
-    opacity: 0.54;
-  }
-
-  .markdown-body ::-webkit-file-upload-button {
-    -webkit-appearance: button;
-    appearance: button;
-    font: inherit;
   }
 
   .markdown-body a:hover {
@@ -253,13 +242,13 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
 
   .markdown-body hr::before {
     display: table;
-    content: '';
+    content: "";
   }
 
   .markdown-body hr::after {
     display: table;
     clear: both;
-    content: '';
+    content: "";
   }
 
   .markdown-body table {
@@ -282,25 +271,25 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
   }
 
   .markdown-body a:focus,
-  .markdown-body [role='button']:focus,
-  .markdown-body input[type='radio']:focus,
-  .markdown-body input[type='checkbox']:focus {
+  .markdown-body [role="button"]:focus,
+  .markdown-body input[type="radio"]:focus,
+  .markdown-body input[type="checkbox"]:focus {
     outline: 2px solid #1f6feb;
     outline-offset: -2px;
     box-shadow: none;
   }
 
   .markdown-body a:focus:not(:focus-visible),
-  .markdown-body [role='button']:focus:not(:focus-visible),
-  .markdown-body input[type='radio']:focus:not(:focus-visible),
-  .markdown-body input[type='checkbox']:focus:not(:focus-visible) {
+  .markdown-body [role="button"]:focus:not(:focus-visible),
+  .markdown-body input[type="radio"]:focus:not(:focus-visible),
+  .markdown-body input[type="checkbox"]:focus:not(:focus-visible) {
     outline: solid 1px transparent;
   }
 
   .markdown-body a:focus-visible,
-  .markdown-body [role='button']:focus-visible,
-  .markdown-body input[type='radio']:focus-visible,
-  .markdown-body input[type='checkbox']:focus-visible {
+  .markdown-body [role="button"]:focus-visible,
+  .markdown-body input[type="radio"]:focus-visible,
+  .markdown-body input[type="checkbox"]:focus-visible {
     outline: 2px solid #1f6feb;
     outline-offset: -2px;
     box-shadow: none;
@@ -308,10 +297,10 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
 
   .markdown-body a:not([class]):focus,
   .markdown-body a:not([class]):focus-visible,
-  .markdown-body input[type='radio']:focus,
-  .markdown-body input[type='radio']:focus-visible,
-  .markdown-body input[type='checkbox']:focus,
-  .markdown-body input[type='checkbox']:focus-visible {
+  .markdown-body input[type="radio"]:focus,
+  .markdown-body input[type="radio"]:focus-visible,
+  .markdown-body input[type="checkbox"]:focus,
+  .markdown-body input[type="checkbox"]:focus-visible {
     outline-offset: 0;
   }
 
@@ -446,25 +435,19 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
     fill: currentColor;
   }
 
-  .markdown-body input::-webkit-outer-spin-button,
-  .markdown-body input::-webkit-inner-spin-button {
-    margin: 0;
-    appearance: none;
-  }
-
   .markdown-body .mr-2 {
     margin-right: 0.5rem !important;
   }
 
   .markdown-body::before {
     display: table;
-    content: '';
+    content: "";
   }
 
   .markdown-body::after {
     display: table;
     clear: both;
-    content: '';
+    content: "";
   }
 
   .markdown-body > *:first-child {
@@ -590,23 +573,23 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
     list-style-type: none;
   }
 
-  .markdown-body ol[type='a s'] {
+  .markdown-body ol[type="a s"] {
     list-style-type: lower-alpha;
   }
 
-  .markdown-body ol[type='A s'] {
+  .markdown-body ol[type="A s"] {
     list-style-type: upper-alpha;
   }
 
-  .markdown-body ol[type='i s'] {
+  .markdown-body ol[type="i s"] {
     list-style-type: lower-roman;
   }
 
-  .markdown-body ol[type='I s'] {
+  .markdown-body ol[type="I s"] {
     list-style-type: upper-roman;
   }
 
-  .markdown-body ol[type='1'] {
+  .markdown-body ol[type="1"] {
     list-style-type: decimal;
   }
 
@@ -674,11 +657,11 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
     background-color: transparent;
   }
 
-  .markdown-body img[align='right'] {
+  .markdown-body img[align="right"] {
     padding-left: 20px;
   }
 
-  .markdown-body img[align='left'] {
+  .markdown-body img[align="left"] {
     padding-right: 20px;
   }
 
@@ -873,11 +856,11 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
   }
 
   .markdown-body [data-footnote-ref]::before {
-    content: '[';
+    content: "[";
   }
 
   .markdown-body [data-footnote-ref]::after {
-    content: ']';
+    content: "]";
   }
 
   .markdown-body .footnotes {
@@ -907,7 +890,7 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
     bottom: calc(0.5rem * -1);
     left: calc(1.5rem * -1);
     pointer-events: none;
-    content: '';
+    content: "";
     border: 2px solid #1f6feb;
     border-radius: 6px;
   }
@@ -1044,8 +1027,8 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
     color: #a5d6ff;
   }
 
-  .markdown-body [role='button']:focus:not(:focus-visible),
-  .markdown-body [role='tabpanel'][tabindex='0']:focus:not(:focus-visible),
+  .markdown-body [role="button"]:focus:not(:focus-visible),
+  .markdown-body [role="tabpanel"][tabindex="0"]:focus:not(:focus-visible),
   .markdown-body button:focus:not(:focus-visible),
   .markdown-body summary:focus:not(:focus-visible),
   .markdown-body a:focus:not(:focus-visible) {
@@ -1053,7 +1036,7 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
     box-shadow: none;
   }
 
-  .markdown-body [tabindex='0']:focus:not(:focus-visible),
+  .markdown-body [tabindex="0"]:focus:not(:focus-visible),
   .markdown-body details-dialog:focus:not(:focus-visible) {
     outline: none;
   }
@@ -1061,7 +1044,7 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
   .markdown-body g-emoji {
     display: inline-block;
     min-width: 1ch;
-    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1em;
     font-style: normal !important;
     font-weight: 400;
@@ -1108,16 +1091,14 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
   }
 
   .markdown-body .contains-task-list:hover .task-list-item-convert-container,
-  .markdown-body .contains-task-list:focus-within .task-list-item-convert-container {
+  .markdown-body
+    .contains-task-list:focus-within
+    .task-list-item-convert-container {
     display: block;
     width: auto;
     height: 24px;
     overflow: visible;
     clip: auto;
-  }
-
-  .markdown-body ::-webkit-calendar-picker-indicator {
-    filter: invert(50%);
   }
 
   .markdown-body .markdown-alert {
@@ -1154,7 +1135,9 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt,
     border-left-color: #8957e5;
   }
 
-  .markdown-body .markdown-alert.markdown-alert-important .markdown-alert-title {
+  .markdown-body
+    .markdown-alert.markdown-alert-important
+    .markdown-alert-title {
     color: #ab7df8;
   }
 
