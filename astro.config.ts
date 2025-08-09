@@ -15,6 +15,7 @@ export default defineConfig({
       COMMIT_ID: envField.string({ context: 'server', access: 'public', optional: false }),
       GH_API: envField.string({ context: 'server', access: 'secret', optional: false }),
     },
+    validateSecrets: true,
   },
   security: {
     checkOrigin: true,
