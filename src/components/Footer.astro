@@ -1,8 +1,7 @@
 ---
-const githubUser = import.meta.env.GITHUB_USER || 'unknown user';
-const repoName = import.meta.env.GITHUB_REPO || 'unknown repo';
-const commitId = import.meta.env.COMMIT_ID || 'unknown commit';
-const repoUrl = `https://github.com/${githubUser}/${repoName}/commit/${commitId}`;
+import { GITHUB_USER, GITHUB_REPO, COMMIT_ID } from "astro:env/server";
+
+const repoUrl = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/commit/${COMMIT_ID}`;
 
 /* const siteName = 'Sebastian Danielsson';
 const year = new Date().getFullYear(); */
@@ -10,5 +9,5 @@ const year = new Date().getFullYear(); */
 
 <footer class="flex flex-col items-center py-12 text-xs text-neutral-300">
   <!-- <span>&copy; {year} {siteName}</span> -->
-  <span>Commit: <a href=`${repoUrl}/` target="_blank">{commitId}</a></span>
+  <span>Commit: <a href=`${repoUrl}/` target="_blank">{COMMIT_ID}</a></span>
 </footer>

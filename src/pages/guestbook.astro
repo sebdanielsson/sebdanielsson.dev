@@ -1,7 +1,8 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import GuestbookPostBox from '@components/GuestbookPostBox.astro';
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import GuestbookPostBox from "@components/GuestbookPostBox.astro";
+import { GH_API } from "astro:env/server";
 
 interface Author {
   login: string;
@@ -31,13 +32,11 @@ interface GraphQLResponse {
   };
 }
 
-const GH_API = import.meta.env.GH_API;
-
 async function getGuestbookPosts(): Promise<GraphQLResponse> {
-  let results = await fetch('https://api.github.com/graphql', {
-    method: 'POST',
+  let results = await fetch("https://api.github.com/graphql", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: `bearer ${GH_API}`,
     },
     body: JSON.stringify({
@@ -61,12 +60,14 @@ async function getGuestbookPosts(): Promise<GraphQLResponse> {
     }),
   });
 
-  let guestbookPostsResponse: GraphQLResponse = (await results.json()) as GraphQLResponse;
+  let guestbookPostsResponse: GraphQLResponse =
+    (await results.json()) as GraphQLResponse;
   return guestbookPostsResponse;
 }
 
 const guestbookPostsResponse = await getGuestbookPosts();
-const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comments?.nodes || [];
+const guestbookPosts =
+  guestbookPostsResponse.data?.repository?.discussion?.comments?.nodes || [];
 ---
 
 <Layout title="Guestbook">
@@ -90,12 +91,14 @@ const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comm
     </div>
     <div id="giscus-post" class="">
       <span class="text-sm text-neutral-400"
-        >Powered by <a href="https://giscus.app" target="_blank">gisqus</a>. Comments will be added
-        to the page shortly after posting.</span
+        >Powered by <a href="https://giscus.app" target="_blank">gisqus</a>.
+        Comments will be added to the page shortly after posting.</span
       >
       <section class="giscus"></section>
     </div>
-    <div class="mt-12 flex flex-col flex-wrap justify-between gap-12 md:flex-row">
+    <div
+      class="mt-12 flex flex-col flex-wrap justify-between gap-12 md:flex-row"
+    >
       {
         guestbookPosts.map((post) => (
           <div class="post-container flex flex-auto sm:justify-around">
@@ -141,57 +144,64 @@ const guestbookPosts = guestbookPostsResponse.data?.repository?.discussion?.comm
 
 <script is:inline>
   // Randomly rotate posts
-  document.querySelectorAll('.post-container').forEach((post) => {
+  document.querySelectorAll(".post-container").forEach((post) => {
     const randomDegree = Math.random() * 30 - 15;
     post.style.transform = `rotate(${randomDegree}deg)`;
   });
 
   // Add event listener to post button
-  document.getElementById('guestbook-post-button').addEventListener('click', toggleGuestbookPost);
+  document
+    .getElementById("guestbook-post-button")
+    .addEventListener("click", toggleGuestbookPost);
 
   // Post button logic
   function toggleGuestbookPost() {
-    const guestbookPost = document.getElementById('giscus-post');
-    const guestbookPostButton = document.getElementById('guestbook-post-button');
-    if (guestbookPost.style.maxHeight === '500px') {
-      guestbookPost.style.maxHeight = '1px';
-      guestbookPostButton.style.backgroundColor = '';
-      guestbookPostButton.innerHTML = 'Post';
+    const guestbookPost = document.getElementById("giscus-post");
+    const guestbookPostButton = document.getElementById(
+      "guestbook-post-button"
+    );
+    if (guestbookPost.style.maxHeight === "500px") {
+      guestbookPost.style.maxHeight = "1px";
+      guestbookPostButton.style.backgroundColor = "";
+      guestbookPostButton.innerHTML = "Post";
     } else {
-      guestbookPost.style.maxHeight = '500px';
-      guestbookPostButton.style.backgroundColor = 'red';
-      guestbookPostButton.innerHTML = 'Close';
+      guestbookPost.style.maxHeight = "500px";
+      guestbookPostButton.style.backgroundColor = "red";
+      guestbookPostButton.innerHTML = "Close";
     }
   }
 
   // Inject Giscus script
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     injectGiscusScript();
   });
 
   function injectGiscusScript() {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
 
-    script.setAttribute('src', 'https://giscus.app/client.js');
-    script.setAttribute('data-repo', 'sebdanielsson/sebdanielsson.github.io');
-    script.setAttribute('data-repo-id', 'R_kgDOJITMkA');
-    script.setAttribute('data-category', 'Guestbook');
-    script.setAttribute('data-category-id', 'DIC_kwDOJITMkM4CcDrE');
-    script.setAttribute('data-mapping', 'pathname');
-    script.setAttribute('data-strict', '0');
-    script.setAttribute('data-reactions-enabled', '0');
-    script.setAttribute('data-emit-metadata', '0');
-    script.setAttribute('data-input-position', 'bottom');
-    script.setAttribute('data-theme', 'https://sebdanielsson.dev/styles/giscus-dark.css');
-    script.setAttribute('data-lang', 'en');
-    script.setAttribute('crossorigin', 'anonymous');
-    script.setAttribute('async', '');
+    script.setAttribute("src", "https://giscus.app/client.js");
+    script.setAttribute("data-repo", "sebdanielsson/sebdanielsson.github.io");
+    script.setAttribute("data-repo-id", "R_kgDOJITMkA");
+    script.setAttribute("data-category", "Guestbook");
+    script.setAttribute("data-category-id", "DIC_kwDOJITMkM4CcDrE");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "0");
+    script.setAttribute("data-emit-metadata", "0");
+    script.setAttribute("data-input-position", "bottom");
+    script.setAttribute(
+      "data-theme",
+      "https://sebdanielsson.dev/styles/giscus-dark.css"
+    );
+    script.setAttribute("data-lang", "en");
+    script.setAttribute("crossorigin", "anonymous");
+    script.setAttribute("async", "");
 
-    const div = document.getElementById('giscus-post');
+    const div = document.getElementById("giscus-post");
     if (div) {
       div.appendChild(script);
     } else {
-      console.error('Div with ID giscus-post not found.');
+      console.error("Div with ID giscus-post not found.");
     }
   }
 </script>
