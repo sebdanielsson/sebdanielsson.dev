@@ -11,14 +11,7 @@ export default {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: [
-          'theme',
-          'source',
-          'utility',
-          'variant',
-          'custom-variant',
-          'plugin',
-        ],
+        ignoreAtRules: ['theme', 'source', 'utility', 'variant', 'custom-variant', 'plugin'],
       },
     ],
     'function-no-unknown': [
