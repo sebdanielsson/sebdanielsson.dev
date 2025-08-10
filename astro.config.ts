@@ -10,15 +10,29 @@ export default defineConfig({
   site: "https://sebdanielsson.dev",
   env: {
     schema: {
-      GITHUB_USER: envField.string({ context: "server", access: "public", optional: false }),
-      GITHUB_REPO: envField.string({ context: "server", access: "public", optional: false }),
+      GITHUB_USER: envField.string({
+        context: "server",
+        access: "public",
+        optional: true,
+        default: "sebdanielsson",
+      }),
+      GITHUB_REPO: envField.string({
+        context: "server",
+        access: "public",
+        optional: true,
+        default: "sebdanielsson.dev",
+      }),
       COMMIT_ID: envField.string({
         context: "server",
         access: "public",
         optional: true,
         default: "UNKNOWN COMMIT",
       }),
-      GH_API: envField.string({ context: "server", access: "secret", optional: false }),
+      GH_API: envField.string({
+        context: "server",
+        access: "secret",
+        optional: false,
+      }),
     },
     validateSecrets: true,
   },

@@ -3,12 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "dotenvx run -- astro dev",
-    "build": "astro check && dotenvx run -- astro build",
-    "preview": "dotenvx run -- astro preview",
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier . --write",
-    "format:check": "prettier . --check",
+    "format": "prettier . --check",
+    "format:write": "prettier . --write",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "stylelint": "stylelint \"src/**/*.{astro,css}\""
