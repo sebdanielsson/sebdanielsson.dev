@@ -1,16 +1,16 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import GitHubRepoCard from "@components/GitHubRepoCard.astro";
-import RaycastStoreCard from "@components/RaycastStoreCard.astro";
-import DockerHubCard from "@components/DockerHubCard.astro";
+import Layout from "@/layouts/Layout.astro";
+import GitHubRepoCard from "@/components/GitHubRepoCard.astro";
+import RaycastStoreCard from "@/components/RaycastStoreCard.astro";
+import DockerHubCard from "@/components/DockerHubCard.astro";
 import { Octokit } from "@octokit/rest";
-import githubRepos from "@data/githubRepos.json";
-import raycastExtensions from "@data/raycastExtensions.json";
-import dockerHubImages from "@data/dockerHubImages.json";
+import githubRepos from "@/data/githubRepos.json";
+import raycastExtensions from "@/data/raycastExtensions.json";
+import dockerHubImages from "@/data/dockerHubImages.json";
 import { parse } from "node-html-parser";
-import type GitHubRepoData from "@interfaces/gitHubRepoData";
-import type GitHubRepo from "@interfaces/gitHubRepo";
-import type DockerHubRepoData from "@interfaces/dockerHubRepoData";
+import type GitHubRepoData from "@/interfaces/gitHubRepoData";
+import type GitHubRepo from "@/interfaces/gitHubRepo";
+import type DockerHubRepoData from "@/interfaces/dockerHubRepoData";
 import { GH_API } from "astro:env/server";
 
 // Fetch DL count for Raycast extension

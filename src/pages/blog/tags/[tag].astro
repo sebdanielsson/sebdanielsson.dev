@@ -1,5 +1,5 @@
 ---
-import BlogList from "@layouts/BlogList.astro";
+import BlogList from "@/layouts/BlogList.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -39,9 +39,8 @@ const postsWithTag = allPosts
 >
   <div slot="header" class="mb-8">
     <h1 class="!my-0 !text-2xl">
-      {postsWithTag.length} post{postsWithTag.length !== 1 ? "s" : ""} tagged with <span
-        class="rounded-full border-1 px-3 py-1">{tag}</span
-      >
+      {postsWithTag.length} post{postsWithTag.length !== 1 ? "s" : ""} tagged with
+      <span class="rounded-full border-1 px-3 py-1">{tag}</span>
     </h1>
     <a href="/blog" class="text-[var(--accent-main)] hover:text-[var(--accent-light)]">
       ← Back to all posts

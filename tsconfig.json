@@ -5,14 +5,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["src/assets/*"],
-      "@blogAssets/*": ["src/assets/blog/*"],
-      "@components/*": ["src/components/*"],
-      "@data/*": ["src/data/*"],
-      "@interfaces/*": ["src/interfaces/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/styles/*"]
+      "@/*": ["src/*"]
     }
   }
 }
