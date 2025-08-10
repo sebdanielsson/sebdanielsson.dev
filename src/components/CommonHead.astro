@@ -1,9 +1,9 @@
 ---
-import { Font } from 'astro:assets';
+import { Font } from "astro:assets";
 
-const { title: propTitle, description = 'The personal site of Sebastian Danielsson' } = Astro.props;
+const { title: propTitle, description = "The personal site of Sebastian Danielsson" } = Astro.props;
 
-const title = propTitle ? `${propTitle} - sebdanielsson.dev` : 'sebdanielsson.dev';
+const title = propTitle ? `${propTitle} - sebdanielsson.dev` : "sebdanielsson.dev";
 ---
 
 <meta charset="UTF-8" />
@@ -25,7 +25,7 @@ const title = propTitle ? `${propTitle} - sebdanielsson.dev` : 'sebdanielsson.de
   rel="alternate"
   type="application/rss+xml"
   title={title}
-  href={new URL('rss.xml', Astro.site)}
+  href={new URL("rss.xml", Astro.site)}
 />
 <script
   is:inline

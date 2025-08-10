@@ -1,11 +1,11 @@
 ---
 title: Install Reflector on Arch Linux
 description: Learn to install and set up Reflector, a Python tool that automatically updates your Arch Linux mirrorlist for faster package downloads.
-pubDate: '2020-03-29'
+pubDate: "2020-03-29"
 slug: install-reflector-on-arch-linux
 tags: [reflector, pacman, mirrors, python, arch, linux, tutorial, guide]
-heroImage: './images/server-rack.webp'
-heroImageAlt: 'Rack mounted servers in a server room.'
+heroImage: "./images/server-rack.webp"
+heroImageAlt: "Rack mounted servers in a server room."
 author: Sebastian Danielsson
 draft: false
 ---

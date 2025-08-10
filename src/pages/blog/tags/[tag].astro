@@ -1,9 +1,9 @@
 ---
-import BlogList from '@layouts/BlogList.astro';
-import { getCollection } from 'astro:content';
+import BlogList from "@layouts/BlogList.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
 
   // Get all unique tags from all posts
   const allTags = new Set<string>();
@@ -25,7 +25,7 @@ interface Props {
 const { tag } = Astro.props;
 
 // Get all posts that contain this tag
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 const postsWithTag = allPosts
   .filter((post) => post.data.tags?.includes(tag))
   .filter((post) => post.data.draft !== true)
@@ -35,11 +35,11 @@ const postsWithTag = allPosts
 <BlogList
   posts={postsWithTag}
   title={`Posts tagged with "${tag}"`}
-  description={`Found ${postsWithTag.length} post${postsWithTag.length !== 1 ? 's' : ''} tagged with "${tag}"`}
+  description={`Found ${postsWithTag.length} post${postsWithTag.length !== 1 ? "s" : ""} tagged with "${tag}"`}
 >
   <div slot="header" class="mb-8">
     <h1 class="!my-0 !text-2xl">
-      {postsWithTag.length} post{postsWithTag.length !== 1 ? 's' : ''} tagged with <span
+      {postsWithTag.length} post{postsWithTag.length !== 1 ? "s" : ""} tagged with <span
         class="rounded-full border-1 px-3 py-1">{tag}</span
       >
     </h1>

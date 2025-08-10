@@ -1,19 +1,19 @@
-import { type Config } from 'prettier';
+import { type Config } from "prettier";
 
 const config: Config = {
-  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
+  plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   overrides: [
     {
-      files: '*.astro',
+      files: "*.astro",
       options: {
-        parser: 'astro',
+        parser: "astro",
       },
     },
   ],
   useTabs: false,
   tabWidth: 2,
-  singleQuote: true,
-  trailingComma: 'all',
+  singleQuote: false,
+  trailingComma: "all",
   semi: true,
   printWidth: 100,
 };

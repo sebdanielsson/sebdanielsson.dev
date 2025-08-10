@@ -1,12 +1,12 @@
 ---
 title: Install yay on Arch Linux
 description: Learn how to install yay, an AUR Helper that lets you install packages from the Arch User Repository using the same commands as pacman.
-pubDate: '2020-02-27'
-updatedDate: '2021-05-21'
+pubDate: "2020-02-27"
+updatedDate: "2021-05-21"
 slug: install-yay-on-arch-linux
 tags: [yay, aur, aur helper, arch, linux, tutorial, guide]
-heroImage: './images/yay.webp'
-heroImageAlt: 'Terminal screenshot of yay installing packages.'
+heroImage: "./images/yay.webp"
+heroImageAlt: "Terminal screenshot of yay installing packages."
 author: Sebastian Danielsson
 draft: false
 ---

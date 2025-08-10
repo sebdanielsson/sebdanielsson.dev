@@ -1,10 +1,10 @@
 ---
 interface Props {
   variables: { id: string; label: string; defaultValue: string; placeholder?: string }[];
-  syntax?: 'double-braces' | 'single-braces' | 'angle-brackets' | 'square-brackets';
+  syntax?: "double-braces" | "single-braces" | "angle-brackets" | "square-brackets";
 }
 
-const { variables, syntax = 'double-braces' } = Astro.props;
+const { variables, syntax = "double-braces" } = Astro.props;
 ---
 
 <div class="mdx-interactive-container my-6" data-syntax={syntax}>
@@ -33,13 +33,13 @@ const { variables, syntax = 'double-braces' } = Astro.props;
 <script>
   // Function to update all code blocks on the page
   function updateCodeBlocks() {
-    const inputs = document.querySelectorAll('.mdx-input') as NodeListOf<HTMLInputElement>;
-    const codeBlocks = document.querySelectorAll('pre code') as NodeListOf<HTMLElement>;
+    const inputs = document.querySelectorAll(".mdx-input") as NodeListOf<HTMLInputElement>;
+    const codeBlocks = document.querySelectorAll("pre code") as NodeListOf<HTMLElement>;
 
     // Create a map of variable values
     const variableMap = new Map<string, string>();
     inputs.forEach((input) => {
-      const variable = input.getAttribute('data-variable');
+      const variable = input.getAttribute("data-variable");
       if (variable) {
         variableMap.set(variable, input.value || input.placeholder || variable);
       }
@@ -66,8 +66,8 @@ const { variables, syntax = 'double-braces' } = Astro.props;
       // Use a data attribute approach by setting it on the parent element
       const parentElement = textNode.parentElement;
       const dataKey =
-        'data-original-text-' + Array.from(parentElement?.childNodes || []).indexOf(textNode);
-      const originalText = parentElement?.getAttribute(dataKey) || textNode.textContent || '';
+        "data-original-text-" + Array.from(parentElement?.childNodes || []).indexOf(textNode);
+      const originalText = parentElement?.getAttribute(dataKey) || textNode.textContent || "";
 
       // Store original text on first run
       if (parentElement && !parentElement.getAttribute(dataKey)) {
@@ -76,7 +76,7 @@ const { variables, syntax = 'double-braces' } = Astro.props;
 
       let updatedText = originalText;
       variableMap.forEach((value, variable) => {
-        const regex = new RegExp(`\\b${variable}\\b`, 'g');
+        const regex = new RegExp(`\\b${variable}\\b`, "g");
         updatedText = updatedText.replace(regex, value);
       });
 
@@ -89,43 +89,43 @@ const { variables, syntax = 'double-braces' } = Astro.props;
   // Update copy button data-code attribute
   function updateCopyButton(codeBlock: HTMLElement, variableMap: Map<string, string>) {
     // Find the copy button associated with this code block
-    const preElement = codeBlock.closest('pre');
+    const preElement = codeBlock.closest("pre");
     if (!preElement) return;
 
     // Look for copy button in the next sibling or parent's next sibling
     const copyButton = preElement.parentElement?.querySelector(
-      'button[data-code]',
+      "button[data-code]",
     ) as HTMLButtonElement;
 
     if (copyButton) {
       // Get the original data-code value
       const originalDataCode =
-        copyButton.getAttribute('data-original-code') || copyButton.getAttribute('data-code') || '';
+        copyButton.getAttribute("data-original-code") || copyButton.getAttribute("data-code") || "";
 
       // Store original data-code on first run
-      if (!copyButton.getAttribute('data-original-code')) {
-        copyButton.setAttribute('data-original-code', originalDataCode);
+      if (!copyButton.getAttribute("data-original-code")) {
+        copyButton.setAttribute("data-original-code", originalDataCode);
       }
 
       // Apply variable replacements to the data-code
       let updatedDataCode = originalDataCode;
       variableMap.forEach((value, variable) => {
-        const regex = new RegExp(`\\b${variable}\\b`, 'g');
+        const regex = new RegExp(`\\b${variable}\\b`, "g");
         updatedDataCode = updatedDataCode.replace(regex, value);
       });
 
       // Update the data-code attribute
-      copyButton.setAttribute('data-code', updatedDataCode);
+      copyButton.setAttribute("data-code", updatedDataCode);
     }
   }
 
   // Initialize on page load
   function initializeInteractiveCodeBlocks() {
-    const container = document.querySelector('.mdx-interactive-container');
+    const container = document.querySelector(".mdx-interactive-container");
     if (!container) return;
 
     // Initialize original text storage for text nodes in code blocks
-    const codeBlocks = document.querySelectorAll('pre code') as NodeListOf<HTMLElement>;
+    const codeBlocks = document.querySelectorAll("pre code") as NodeListOf<HTMLElement>;
     codeBlocks.forEach((codeBlock) => {
       // Pre-store original text for all text nodes
       updateTextNodes(codeBlock, new Map()); // Empty map just to initialize storage
@@ -133,10 +133,10 @@ const { variables, syntax = 'double-braces' } = Astro.props;
       updateCopyButton(codeBlock, new Map()); // Empty map just to initialize storage
     });
 
-    const inputs = container.querySelectorAll('.mdx-input') as NodeListOf<HTMLInputElement>;
+    const inputs = container.querySelectorAll(".mdx-input") as NodeListOf<HTMLInputElement>;
 
     inputs.forEach((input) => {
-      input.addEventListener('input', updateCodeBlocks);
+      input.addEventListener("input", updateCodeBlocks);
     });
 
     // Initial update
@@ -144,6 +144,6 @@ const { variables, syntax = 'double-braces' } = Astro.props;
   }
 
   // Handle both initial load and Astro's client-side routing
-  document.addEventListener('DOMContentLoaded', initializeInteractiveCodeBlocks);
-  document.addEventListener('astro:page-load', initializeInteractiveCodeBlocks);
+  document.addEventListener("DOMContentLoaded", initializeInteractiveCodeBlocks);
+  document.addEventListener("astro:page-load", initializeInteractiveCodeBlocks);
 </script>

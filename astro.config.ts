@@ -1,19 +1,24 @@
-import { defineConfig, fontProviders, envField } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-import mdx from '@astrojs/mdx';
+import { defineConfig, fontProviders, envField } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import mdx from "@astrojs/mdx";
 
-import expressiveCode from 'astro-expressive-code';
+import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'static',
-  site: 'https://sebdanielsson.dev',
+  output: "static",
+  site: "https://sebdanielsson.dev",
   env: {
     schema: {
-      GITHUB_USER: envField.string({ context: 'server', access: 'public', optional: false }),
-      GITHUB_REPO: envField.string({ context: 'server', access: 'public', optional: false }),
-      COMMIT_ID: envField.string({ context: 'server', access: 'public', optional: false }),
-      GH_API: envField.string({ context: 'server', access: 'secret', optional: false }),
+      GITHUB_USER: envField.string({ context: "server", access: "public", optional: false }),
+      GITHUB_REPO: envField.string({ context: "server", access: "public", optional: false }),
+      COMMIT_ID: envField.string({
+        context: "server",
+        access: "public",
+        optional: true,
+        default: "UNKNOWN COMMIT",
+      }),
+      GH_API: envField.string({ context: "server", access: "secret", optional: false }),
     },
     validateSecrets: true,
   },
@@ -22,7 +27,7 @@ export default defineConfig({
   },
   integrations: [
     expressiveCode({
-      themes: ['github-dark'],
+      themes: ["github-dark"],
     }),
     mdx(),
   ],
@@ -31,7 +36,7 @@ export default defineConfig({
   },
   markdown: {
     shikiConfig: {
-      theme: 'github-dark',
+      theme: "github-dark",
     },
   },
   image: {
@@ -47,8 +52,8 @@ export default defineConfig({
     fonts: [
       {
         provider: fontProviders.fontsource(),
-        name: 'Kalam',
-        cssVariable: '--font-kalam',
+        name: "Kalam",
+        cssVariable: "--font-kalam",
       },
     ],
   },

@@ -1,11 +1,11 @@
 ---
 title: Install Phoronix Test Suite on Arch Linux
 description: Step-by-step guide to installing the Phoronix Test Suite on Arch Linux using an AUR helper for comprehensive system benchmarking and performance testing.
-pubDate: '2020-02-29'
+pubDate: "2020-02-29"
 slug: install-phoronix-test-suite-on-arch-linux
 tags: [phoronix test suite, pts, benchmark, arch, linux, tutorial, guide]
-heroImage: './images/pts.webp'
-heroImageAlt: 'Phoronix Test Suite (PTS) logo.'
+heroImage: "./images/pts.webp"
+heroImageAlt: "Phoronix Test Suite (PTS) logo."
 author: Sebastian Danielsson
 draft: false
 ---

@@ -1,11 +1,11 @@
-import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
-import { experimental_AstroContainer as AstroContainer } from 'astro/container';
-import { render } from 'astro:content';
-import type { APIContext } from 'astro';
+import rss from "@astrojs/rss";
+import { getCollection } from "astro:content";
+import { experimental_AstroContainer as AstroContainer } from "astro/container";
+import { render } from "astro:content";
+import type { APIContext } from "astro";
 
 export async function GET(context: APIContext) {
-  const blog = await getCollection('blog', ({ data }) => {
+  const blog = await getCollection("blog", ({ data }) => {
     return data.draft !== true;
   });
 
@@ -27,9 +27,9 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    title: 'sebdanielsson.dev',
-    description: 'The personal site of Sebastian Danielsson',
-    site: context.site || 'https://sebdanielsson.dev',
+    title: "sebdanielsson.dev",
+    description: "The personal site of Sebastian Danielsson",
+    site: context.site || "https://sebdanielsson.dev",
     items: blogWithRenderedContent.map((post) => ({
       title: post.data.title,
       link: `/${post.id}/`,

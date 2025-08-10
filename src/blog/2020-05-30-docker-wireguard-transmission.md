@@ -1,12 +1,12 @@
 ---
 title: Run WireGuard & Transmission in a Docker Container
 description: Learn how to run WireGuard VPN and Transmission BitTorrent client together in a lightweight Alpine Linux Docker container with a custom dark web interface.
-pubDate: '2020-05-30'
-updatedDate: '2021-05-23'
+pubDate: "2020-05-30"
+updatedDate: "2021-05-23"
 slug: docker-wireguard-transmission
 tags: [docker, container, transmission, wireguard, vpn, linux, tutorial, guide]
-heroImage: './images/docker-wireguard-transmission.webp'
-heroImageAlt: 'Docker, WireGuard, Transmission logos.'
+heroImage: "./images/docker-wireguard-transmission.webp"
+heroImageAlt: "Docker, WireGuard, Transmission logos."
 author: Sebastian Danielsson
 draft: false
 ---
@@ -47,7 +47,7 @@ sebdanielsson/wireguard-transmission
 ### docker-compose.yml
 
 ```yaml
-version: '3.7'
+version: "3.7"
 services:
 wireguard-transmission:
 container_name: wireguard-transmission
@@ -58,13 +58,13 @@ environment:
   - INTERFACE=wg0
   - KILLSWITCH=wg0
 ports:
-  - '51820:51820/udp'
-  - '9091:9091'
+  - "51820:51820/udp"
+  - "9091:9091"
 volumes:
-  - '/path/to/wg-conf-dir:/etc/wireguard'
-  - '/path/to/transmission-conf-dir:/etc/transmission-daemon'
-  - '/path/to/transmission-complete-dir:/transmission/complete'
-  - '/path/to/transmission-incomplete-dir:/transmission/incomplete'
-  - '/path/to/transmission-watch-dir:/transmission/watch'
+  - "/path/to/wg-conf-dir:/etc/wireguard"
+  - "/path/to/transmission-conf-dir:/etc/transmission-daemon"
+  - "/path/to/transmission-complete-dir:/transmission/complete"
+  - "/path/to/transmission-incomplete-dir:/transmission/incomplete"
+  - "/path/to/transmission-watch-dir:/transmission/watch"
 image: sebdanielsson/wireguard-transmission
 ```

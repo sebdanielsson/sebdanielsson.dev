@@ -7,28 +7,17 @@ import { Picture } from "astro:assets";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const {
-  title,
-  description,
-  pubDate,
-  updatedDate,
-  tags,
-  heroImage,
-  heroImageAlt,
-  draft,
-} = Astro.props;
+const { title, description, pubDate, updatedDate, tags, heroImage, heroImageAlt, draft } =
+  Astro.props;
 ---
 
 <Layout title={title} description={description}>
-  <main
-    class="main-width flex flex-col items-center gap-4 py-4 sm:py-8 md:py-12"
-  >
+  <main class="main-width flex flex-col items-center gap-4 py-4 sm:py-8 md:py-12">
     {
       draft && (
         <div class="w-full max-w-[800px] bg-yellow-100 p-4 text-yellow-800">
           <p class="m-0 text-sm">
-            This post is a draft and is not visible on the blog page or in the
-            RSS feed.
+            This post is a draft and is not visible on the blog page or in the RSS feed.
           </p>
         </div>
       )
@@ -67,14 +56,9 @@ const {
       </div>
       <slot />
     </article>
-    <div
-      class="flex w-full max-w-[720px] flex-col gap-12 px-4 py-12 text-center"
-    >
+    <div class="flex w-full max-w-[720px] flex-col gap-12 px-4 py-12 text-center">
       <p class="text-center text-gray-400">
-        <a
-          href="/blog"
-          class="text-[var(--accent-main)] hover:text-[var(--accent-light)]"
-        >
+        <a href="/blog" class="text-[var(--accent-main)] hover:text-[var(--accent-light)]">
           ← Back to all posts
         </a>
       </p>
@@ -1091,9 +1075,7 @@ const {
   }
 
   .markdown-body .contains-task-list:hover .task-list-item-convert-container,
-  .markdown-body
-    .contains-task-list:focus-within
-    .task-list-item-convert-container {
+  .markdown-body .contains-task-list:focus-within .task-list-item-convert-container {
     display: block;
     width: auto;
     height: 24px;
@@ -1135,9 +1117,7 @@ const {
     border-left-color: #8957e5;
   }
 
-  .markdown-body
-    .markdown-alert.markdown-alert-important
-    .markdown-alert-title {
+  .markdown-body .markdown-alert.markdown-alert-important .markdown-alert-title {
     color: #ab7df8;
   }
 

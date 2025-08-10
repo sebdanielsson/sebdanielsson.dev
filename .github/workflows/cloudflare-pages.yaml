@@ -30,7 +30,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version-file: '.bun-version'
+          bun-version-file: ".bun-version"
 
       - run: bun install --frozen-lockfile
 
@@ -51,5 +51,5 @@ jobs:
         with:
           apiToken: ${{ steps.dotenvx.outputs.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ steps.dotenvx.outputs.CLOUDFLARE_ACCOUNT_ID }}
-          command: 'pages deploy dist --project-name=${{ steps.dotenvx.outputs.CLOUDFLARE_PROJECT_NAME }}'
+          command: "pages deploy dist --project-name=${{ steps.dotenvx.outputs.CLOUDFLARE_PROJECT_NAME }}"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -4,8 +4,8 @@ description: Step-by-step guide to installing and configuring Transmission on Ar
 pubDate: 2020-02-03
 slug: install-transmission-on-arch-linux
 tags: [transmission, arch, linux, tutorial, guide]
-heroImage: './images/transmission.webp'
-heroImageAlt: 'Transmission logo.'
+heroImage: "./images/transmission.webp"
+heroImageAlt: "Transmission logo."
 author: Sebastian Danielsson
 draft: false
 ---

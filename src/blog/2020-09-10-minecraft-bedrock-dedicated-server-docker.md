@@ -1,11 +1,11 @@
 ---
 title: Start a Minecraft Bedrock Server using Docker
 description: Complete guide to setting up a Minecraft Bedrock dedicated server using Docker and Docker Compose with configuration examples and permissions management.
-pubDate: '2020-09-10'
+pubDate: "2020-09-10"
 slug: minecraft-bedrock-dedicated-server-docker
 tags: [docker, container, compose, minecraft, bedrock, dedicated, server, linux, tutorial, guide]
-heroImage: './images/minecraft-docker.webp'
-heroImageAlt: 'Screenshot of Minecraft with an overlay of the Docker compose file.'
+heroImage: "./images/minecraft-docker.webp"
+heroImageAlt: "Screenshot of Minecraft with an overlay of the Docker compose file."
 author: Sebastian Danielsson
 draft: false
 ---
@@ -29,36 +29,36 @@ docker volume create minecraft
 ```yaml title="docker-compose.yaml"
 services:
   minecraft:
-    container_name: 'minecraft'
+    container_name: "minecraft"
     image: itzg/minecraft-bedrock-server
     ports:
-      - '19132:19132/udp'
+      - "19132:19132/udp"
     volumes:
-      - 'minecraft:/data'
+      - "minecraft:/data"
     environment:
-      EULA: 'TRUE'
-      SERVER_NAME: 'Minecraft Server'
-      SERVER_PORT: '19132'
-      GAMEMODE: 'survival'
-      DIFFICULTY: 'easy'
-      LEVEL_TYPE: 'DEFAULT'
-      ALLOW_CHEATS: 'true'
-      MAX_PLAYERS: '10'
-      ONLINE_MODE: 'true'
+      EULA: "TRUE"
+      SERVER_NAME: "Minecraft Server"
+      SERVER_PORT: "19132"
+      GAMEMODE: "survival"
+      DIFFICULTY: "easy"
+      LEVEL_TYPE: "DEFAULT"
+      ALLOW_CHEATS: "true"
+      MAX_PLAYERS: "10"
+      ONLINE_MODE: "true"
       #WHITE_LIST: ""
-      VIEW_DISTANCE: '12'
-      TICK_DISTANCE: '12'
-      PLAYER_IDLE_TIMEOUT: '0'
-      MAX_THREADS: '8'
-      LEVEL_NAME: 'level'
+      VIEW_DISTANCE: "12"
+      TICK_DISTANCE: "12"
+      PLAYER_IDLE_TIMEOUT: "0"
+      MAX_THREADS: "8"
+      LEVEL_NAME: "level"
       #LEVEL_SEED: ""
-      DEFAULT_PLAYER_PERMISSION_LEVEL: 'member'
-      TEXTUREPACK_REQUIRED: 'false'
-      SERVER_AUTHORITATIVE_MOVEMENT: 'true'
-      PLAYER_MOVEMENT_SCORE_THRESHOLD: '20'
-      PLAYER_MOVEMENT_DISTANCE_THRESHOLD: '0.3'
-      PLAYER_MOVEMENT_DURATION_THRESHOLD_IN_MS: '500'
-      CORRECT_PLAYER_MOVEMENT: 'false'
+      DEFAULT_PLAYER_PERMISSION_LEVEL: "member"
+      TEXTUREPACK_REQUIRED: "false"
+      SERVER_AUTHORITATIVE_MOVEMENT: "true"
+      PLAYER_MOVEMENT_SCORE_THRESHOLD: "20"
+      PLAYER_MOVEMENT_DISTANCE_THRESHOLD: "0.3"
+      PLAYER_MOVEMENT_DURATION_THRESHOLD_IN_MS: "500"
+      CORRECT_PLAYER_MOVEMENT: "false"
 volumes:
   minecraft:
     external:

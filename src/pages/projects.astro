@@ -1,17 +1,17 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import GitHubRepoCard from '@components/GitHubRepoCard.astro';
-import RaycastStoreCard from '@components/RaycastStoreCard.astro';
-import DockerHubCard from '@components/DockerHubCard.astro';
-import { Octokit } from '@octokit/rest';
-import githubRepos from '@data/githubRepos.json';
-import raycastExtensions from '@data/raycastExtensions.json';
-import dockerHubImages from '@data/dockerHubImages.json';
-import { parse } from 'node-html-parser';
-import type GitHubRepoData from '@interfaces/gitHubRepoData';
-import type GitHubRepo from '@interfaces/gitHubRepo';
-import type DockerHubRepoData from '@interfaces/dockerHubRepoData';
-import { GH_API } from 'astro:env/server';
+import Layout from "@layouts/Layout.astro";
+import GitHubRepoCard from "@components/GitHubRepoCard.astro";
+import RaycastStoreCard from "@components/RaycastStoreCard.astro";
+import DockerHubCard from "@components/DockerHubCard.astro";
+import { Octokit } from "@octokit/rest";
+import githubRepos from "@data/githubRepos.json";
+import raycastExtensions from "@data/raycastExtensions.json";
+import dockerHubImages from "@data/dockerHubImages.json";
+import { parse } from "node-html-parser";
+import type GitHubRepoData from "@interfaces/gitHubRepoData";
+import type GitHubRepo from "@interfaces/gitHubRepo";
+import type DockerHubRepoData from "@interfaces/dockerHubRepoData";
+import { GH_API } from "astro:env/server";
 
 // Fetch DL count for Raycast extension
 async function getRaycastExtensionDL(urlToFetch: string, querySelector: string) {
@@ -19,12 +19,12 @@ async function getRaycastExtensionDL(urlToFetch: string, querySelector: string) 
   const root = parse(htmlString);
   const element = root.querySelector(querySelector);
   const text = element?.textContent;
-  const downloads = (text ?? '').trim().split(' ')[0];
+  const downloads = (text ?? "").trim().split(" ")[0];
   return downloads;
 }
 
 // Update DL count for Raycast extensions
-const querySelector = '.ExtensionPage_installsCount__lbE0o';
+const querySelector = ".ExtensionPage_installsCount__lbE0o";
 const raycastExtensionsWithDL = await Promise.all(
   raycastExtensions.map(async (extension) => {
     const downloads = await getRaycastExtensionDL(extension.store_url, querySelector);
@@ -38,7 +38,7 @@ const raycastExtensionsWithDL = await Promise.all(
 // Fetch repo details
 const octokit = new Octokit({
   auth: GH_API,
-  userAgent: 'sebdanielsson/sebdanielsson.dev',
+  userAgent: "sebdanielsson/sebdanielsson.dev",
 });
 
 // Function to fetch and transform repo details to match the GitHubRepoData interface
@@ -77,7 +77,7 @@ async function getRepoDetails(owner: string, repo: string): Promise<GitHubRepoDa
         : null,
     };
   } catch (error) {
-    console.error('Error fetching repository details:', error);
+    console.error("Error fetching repository details:", error);
     return null;
   }
 }
@@ -95,7 +95,7 @@ async function getDockerHubRepoDetails(
 
     return repoData;
   } catch (error) {
-    console.error('Error fetching Docker Hub repository details:', error);
+    console.error("Error fetching Docker Hub repository details:", error);
     return null;
   }
 }

@@ -1,11 +1,11 @@
 ---
 title: Get started with Docker
 description: "Beginner's guide to Docker: install, pull images, run containers, and manage with Docker Compose."
-pubDate: '2020-05-30'
+pubDate: "2020-05-30"
 slug: get-started-with-docker
 tags: [docker, container, arch, linux, tutorial, guide]
-heroImage: './images/docker.webp'
-heroImageAlt: 'Docker logo.'
+heroImage: "./images/docker.webp"
+heroImageAlt: "Docker logo."
 author: Sebastian Danielsson
 draft: false
 ---

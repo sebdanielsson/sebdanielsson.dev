@@ -1,11 +1,11 @@
 ---
 title: Install tmux on Arch Linux
 description: Learn how to install and use tmux, a terminal multiplexer that enables multiple terminal sessions, multitasking capabilities, and persistent SSH sessions.
-pubDate: '2021-02-11'
+pubDate: "2021-02-11"
 slug: install-tmux-on-linux
 tags: [tmux, terminal, multiplexer, arch, linux, tutorial, guide]
-heroImage: './images/tmux.webp'
-heroImageAlt: 'Tmux running with multiple panes.'
+heroImage: "./images/tmux.webp"
+heroImageAlt: "Tmux running with multiple panes."
 author: Sebastian Danielsson
 draft: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Create cloud-init templates in Proxmox
 description: Guide to creating cloud-init templates in Proxmox VE for fast VM deployment with automated setup, EFI support, and cloud image integration.
-pubDate: '2022-07-11'
+pubDate: "2022-07-11"
 slug: create-cloud-init-templates-in-proxmox
 tags:
   [
@@ -19,8 +19,8 @@ tags:
     tutorial,
     guide,
   ]
-heroImage: './images/server-rack.webp'
-heroImageAlt: 'Rack mounted servers in a server room.'
+heroImage: "./images/server-rack.webp"
+heroImageAlt: "Rack mounted servers in a server room."
 author: Sebastian Danielsson
 draft: false
 ---

@@ -1,11 +1,11 @@
 ---
 title: Install NGINX on Arch Linux
 description: Step-by-step guide to installing NGINX with HTTP/2 and Let's Encrypt TLS certificates on Arch Linux, including automatic certificate renewal.
-pubDate: '2020-02-04'
+pubDate: "2020-02-04"
 slug: install-nginx-on-arch-linux
 tags: [nginx, reverse proxy, arch, linux, tutorial, guide]
-heroImage: './images/nginx.webp'
-heroImageAlt: 'NGINX logo.'
+heroImage: "./images/nginx.webp"
+heroImageAlt: "NGINX logo."
 author: Sebastian Danielsson
 draft: false
 ---

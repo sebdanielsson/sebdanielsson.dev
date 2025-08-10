@@ -1,11 +1,11 @@
 ---
 title: Analyze Boot Performance with systemd-analyze
 description: Learn how to analyze and optimize your Linux boot performance using systemd-analyze to identify bottlenecks and improve system startup times.
-pubDate: '2022-04-18'
+pubDate: "2022-04-18"
 slug: analyze-boot-performance-with-systemd-analyze
 tags: [linux, boot, performance, systemd, tutorial, guide]
-heroImage: './images/server-rack.webp'
-heroImageAlt: 'Rack mounted servers in a server room.'
+heroImage: "./images/server-rack.webp"
+heroImageAlt: "Rack mounted servers in a server room."
 author: Sebastian Danielsson
 draft: false
 ---

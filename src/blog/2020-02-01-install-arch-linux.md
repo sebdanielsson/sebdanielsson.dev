@@ -1,11 +1,11 @@
 ---
 title: Install Arch Linux
 description: Step-by-step guide to installing Arch Linux on x86-64 UEFI systems, covering partitioning, setup, configuration, and first boot.
-pubDate: '2020-02-01'
+pubDate: "2020-02-01"
 slug: install-arch-linux
 tags: [arch, linux, install, tutorial, guide]
-heroImage: './images/arch-linux.webp'
-heroImageAlt: 'Arch Linux logo.'
+heroImage: "./images/arch-linux.webp"
+heroImageAlt: "Arch Linux logo."
 author: Sebastian Danielsson
 draft: false
 ---

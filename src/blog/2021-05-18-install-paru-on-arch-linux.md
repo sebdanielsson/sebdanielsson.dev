@@ -1,11 +1,11 @@
 ---
 title: Install paru on Arch Linux
 description: Learn how to install paru, the newest AUR helper written in Rust that lets you install packages from the Arch User Repository with the same ease as pacman.
-pubDate: '2021-05-18'
+pubDate: "2021-05-18"
 slug: install-paru-on-arch-linux
 tags: [paru, aur, aur helper, rust, arch, linux, tutorial, guide]
-heroImage: './images/server-rack.webp'
-heroImageAlt: 'Rack mounted servers in a server room.'
+heroImage: "./images/server-rack.webp"
+heroImageAlt: "Rack mounted servers in a server room."
 author: Sebastian Danielsson
 draft: false
 ---

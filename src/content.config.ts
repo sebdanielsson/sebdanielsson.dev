@@ -1,16 +1,16 @@
-import { glob } from 'astro/loaders';
-import { defineCollection, z } from 'astro:content';
-import { rssSchema } from '@astrojs/rss';
+import { glob } from "astro/loaders";
+import { defineCollection, z } from "astro:content";
+import { rssSchema } from "@astrojs/rss";
 
 const blog = defineCollection({
-  loader: glob({ base: './src/blog', pattern: '**/*.{md,mdx}' }),
+  loader: glob({ base: "./src/blog", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
     rssSchema
       .extend({
         title: z.string(),
         description: z
           .string()
-          .max(155, { message: 'Must be 155 or fewer characters long' })
+          .max(155, { message: "Must be 155 or fewer characters long" })
           .optional(),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
@@ -30,8 +30,8 @@ const blog = defineCollection({
           return true;
         },
         {
-          message: 'heroImageAlt is required when heroImage is provided',
-          path: ['heroImageAlt'], // This will show the error on the heroImageAlt field
+          message: "heroImageAlt is required when heroImage is provided",
+          path: ["heroImageAlt"], // This will show the error on the heroImageAlt field
         },
       ),
 });

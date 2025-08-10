@@ -1,9 +1,9 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import { Picture } from 'astro:assets';
-import sebastianImage from '@assets/sebastian.webp';
+import Layout from "@layouts/Layout.astro";
+import { Picture } from "astro:assets";
+import sebastianImage from "@assets/sebastian.webp";
 
-const firstName = 'Sebastian';
+const firstName = "Sebastian";
 ---
 
 <Layout>
@@ -18,7 +18,7 @@ const firstName = 'Sebastian';
           width={405}
           height={405}
           loading="eager"
-          formats={['avif', 'webp']}
+          formats={["avif", "webp"]}
           fallbackFormat="webp"
           class="rounded-full border-4 border-white"
         />
@@ -44,23 +44,23 @@ const firstName = 'Sebastian';
 </Layout>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const date = new Date();
     const hour = date.getHours();
 
-    let greeting = 'Hello!';
+    let greeting = "Hello!";
 
     if (hour < 4) {
-      greeting = 'Hello, night owl!';
+      greeting = "Hello, night owl!";
     } else if (hour < 12) {
-      greeting = 'Good morning!';
+      greeting = "Good morning!";
     } else if (hour < 18) {
-      greeting = 'Good afternoon!';
+      greeting = "Good afternoon!";
     } else {
-      greeting = 'Good evening!';
+      greeting = "Good evening!";
     }
 
-    const greetingElement = document.getElementById('greeting');
+    const greetingElement = document.getElementById("greeting");
     if (greetingElement) {
       greetingElement.textContent = greeting;
     } else {

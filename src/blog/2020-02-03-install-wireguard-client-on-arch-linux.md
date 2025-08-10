@@ -1,11 +1,11 @@
 ---
 title: Install WireGuard [Client] on Arch Linux
 description: Learn how to install and configure WireGuard as a VPN client on Arch Linux, including key generation and secure tunnel setup.
-pubDate: '2020-02-03'
+pubDate: "2020-02-03"
 slug: install-wireguard-client-on-arch-linux
 tags: [wireguard, vpn, arch, linux, tutorial, guide]
-heroImage: './images/wireguard.webp'
-heroImageAlt: 'WireGuard logo.'
+heroImage: "./images/wireguard.webp"
+heroImageAlt: "WireGuard logo."
 author: Sebastian Danielsson
 draft: false
 ---

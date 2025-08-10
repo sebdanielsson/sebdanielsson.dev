@@ -1,23 +1,23 @@
 /** @type {import('stylelint').Config} */
 export default {
   extends: [
-    'stylelint-config-standard',
-    'stylelint-config-html/html',
-    'stylelint-config-html/astro',
+    "stylelint-config-standard",
+    "stylelint-config-html/html",
+    "stylelint-config-html/astro",
   ],
   rules: {
-    'import-notation': null,
-    'color-hex-length': null,
-    'at-rule-no-unknown': [
+    "import-notation": null,
+    "color-hex-length": null,
+    "at-rule-no-unknown": [
       true,
       {
-        ignoreAtRules: ['theme', 'source', 'utility', 'variant', 'custom-variant', 'plugin'],
+        ignoreAtRules: ["theme", "source", "utility", "variant", "custom-variant", "plugin"],
       },
     ],
-    'function-no-unknown': [
+    "function-no-unknown": [
       true,
       {
-        ignoreFunctions: ['theme'],
+        ignoreFunctions: ["theme"],
       },
     ],
   },
