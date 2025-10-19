@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { shortenNumberWithK } from "../utils/shortenNumber";
 
 const { extension } = Astro.props;
-const icon = extension.data.icon_light || extension.data.icon_dark;
+const icon = extension.data.icons.light || extension.data.icons.dark;
 ---
 
 <div
