@@ -3,109 +3,21 @@ import Layout from "@/layouts/Layout.astro";
 import GitHubRepoCard from "@/components/GitHubRepoCard.astro";
 import RaycastStoreCard from "@/components/RaycastStoreCard.astro";
 import DockerHubCard from "@/components/DockerHubCard.astro";
-import { Octokit } from "@octokit/rest";
 import { getCollection } from "astro:content";
-import githubRepos from "@/data/githubRepos.json";
-import dockerHubImages from "@/data/dockerHubImages.json";
-import type GitHubRepoData from "@/interfaces/gitHubRepoData";
-import type GitHubRepo from "@/interfaces/gitHubRepo";
-import type DockerHubRepoData from "@/interfaces/dockerHubRepoData";
-import { GH_API } from "astro:env/server";
 
 // Fetch Raycast extensions from collection
 const raycastExtensions = await getCollection("raycastExtensions");
 
-// Fetch repo details
-const octokit = new Octokit({
-  auth: GH_API,
-  userAgent: "sebdanielsson/sebdanielsson.dev",
+// Fetch Docker Hub images from collection
+const dockerHubImages = await getCollection("dockerHubImages");
+
+// Fetch GitHub repos from collection
+const githubRepos = await getCollection("githubRepos");
+
+// Sort GitHub repos by stars
+const sortedGithubRepos = githubRepos.sort((a, b) => {
+  return b.data.stars - a.data.stars;
 });
-
-// Function to fetch and transform repo details to match the GitHubRepoData interface
-async function getRepoDetails(owner: string, repo: string): Promise<GitHubRepoData | null> {
-  try {
-    const response = await octokit.repos.get({
-      owner,
-      repo,
-    });
-
-    const repoData = response.data;
-
-    // Transform the fetched data to match the GitHubRepoData interface
-    return {
-      id: repoData.id,
-      owner: repoData.owner.login,
-      owner_url: repoData.owner.html_url,
-      name: repoData.name,
-      full_name: repoData.full_name,
-      html_url: repoData.html_url,
-      description: repoData.description,
-      created_at: repoData.created_at,
-      updated_at: repoData.updated_at,
-      pushed_at: repoData.pushed_at,
-      stars: repoData.stargazers_count,
-      language: repoData.language,
-      topics: repoData.topics ?? [],
-      license: repoData.license
-        ? {
-            key: repoData.license.key,
-            name: repoData.license.name,
-            url: repoData.license.url,
-            spdx_id: repoData.license.spdx_id,
-            node_id: repoData.license.node_id,
-          }
-        : null,
-    };
-  } catch (error) {
-    console.error("Error fetching repository details:", error);
-    return null;
-  }
-}
-
-// Fetch Docker Hub repo details
-async function getDockerHubRepoDetails(
-  dockerHubUser: string,
-  dockerHubRepo: string,
-): Promise<DockerHubRepoData | null> {
-  try {
-    const response = await fetch(
-      `https://hub.docker.com/v2/repositories/${dockerHubUser}/${dockerHubRepo}`,
-    );
-    const repoData = (await response.json()) as DockerHubRepoData;
-
-    return repoData;
-  } catch (error) {
-    console.error("Error fetching Docker Hub repository details:", error);
-    return null;
-  }
-}
-
-// List of GitHub repos to fetch
-const typedGithubRepos: GitHubRepo[] = githubRepos as GitHubRepo[];
-
-// Fetch repo details
-const repoDetails: (GitHubRepoData | null)[] = await Promise.all(
-  typedGithubRepos.map((repo) => getRepoDetails(repo.owner, repo.repo)),
-);
-
-// Sort by stars
-repoDetails.sort((a, b) => {
-  if (a && b) {
-    return b.stars - a.stars;
-  }
-  return 0;
-});
-
-// Fetch all details for Docker Hub images
-const dockerHubImagesWithDetails = await Promise.all(
-  dockerHubImages.map(async (image) => {
-    const details = await getDockerHubRepoDetails(image.owner, image.repo);
-    return {
-      ...image,
-      details,
-    };
-  }),
-);
 ---
 
 <Layout title="Projects">
@@ -113,7 +25,7 @@ const dockerHubImagesWithDetails = await Promise.all(
     <h1 class="my-0">Projects</h1>
     <h2>Docker Images</h2>
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
-      {dockerHubImagesWithDetails.map((image) => <DockerHubCard image={image} />)}
+      {dockerHubImages.map((image) => <DockerHubCard image={image} />)}
     </div>
     <h2>Raycast Extensions</h2>
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
@@ -121,7 +33,7 @@ const dockerHubImagesWithDetails = await Promise.all(
     </div>
     <h2>GitHub Repos</h2>
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
-      {repoDetails.map((repo) => <GitHubRepoCard repo={repo} type="repo" />)}
+      {sortedGithubRepos.map((repo) => <GitHubRepoCard repo={repo} type="repo" />)}
     </div>
   </main>
 </Layout>

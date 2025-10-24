@@ -2,6 +2,10 @@ import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 import { rssSchema } from "@astrojs/rss";
 import raycastExtensionsList from "./data/raycastExtensions.json";
+import dockerHubImagesList from "./data/dockerHubImages.json";
+import githubReposList from "./data/githubRepos.json";
+import { Octokit } from "@octokit/rest";
+import { GH_API } from "astro:env/server";
 
 const blog = defineCollection({
   loader: glob({ base: "./src/blog", pattern: "**/*.{md,mdx}" }),
@@ -180,4 +184,126 @@ const raycastExtensions = defineCollection({
   }),
 });
 
-export const collections = { blog, raycastExtensions };
+const dockerHubImages = defineCollection({
+  loader: {
+    name: "docker-hub-images-loader",
+    load: async ({ store, logger }) => {
+      logger.info("Loading Docker Hub images");
+      store.clear();
+
+      for (const image of dockerHubImagesList) {
+        const res = await fetch(
+          `https://hub.docker.com/v2/repositories/${image.owner}/${image.repo}`,
+        );
+        const json = await res.json();
+
+        store.set({
+          id: `${image.owner}/${image.repo}`,
+          data: {
+            owner: image.owner,
+            repo: image.repo,
+            github_url: image.github_url,
+            hub_details: json,
+          },
+        });
+      }
+    },
+  },
+  schema: z.object({
+    owner: z.string(),
+    repo: z.string(),
+    github_url: z.string().url(),
+    hub_details: z.object({
+      user: z.string(),
+      name: z.string(),
+      namespace: z.string(),
+      description: z.string(),
+      pull_count: z.number(),
+      star_count: z.number(),
+      last_updated: z.string(),
+      date_registered: z.string(),
+    }),
+  }),
+});
+
+const githubRepos = defineCollection({
+  loader: {
+    name: "github-repos-loader",
+    load: async ({ store, logger }) => {
+      logger.info("Loading GitHub repositories");
+      store.clear();
+
+      const octokit = new Octokit({
+        auth: GH_API,
+        userAgent: "sebdanielsson/sebdanielsson.dev",
+      });
+
+      for (const repo of githubReposList) {
+        try {
+          const response = await octokit.repos.get({
+            owner: repo.owner,
+            repo: repo.repo,
+          });
+
+          const repoData = response.data;
+
+          store.set({
+            id: `${repo.owner}/${repo.repo}`,
+            data: {
+              id: repoData.id,
+              owner: repoData.owner.login,
+              owner_url: repoData.owner.html_url,
+              name: repoData.name,
+              full_name: repoData.full_name,
+              html_url: repoData.html_url,
+              description: repoData.description,
+              created_at: repoData.created_at,
+              updated_at: repoData.updated_at,
+              pushed_at: repoData.pushed_at,
+              stars: repoData.stargazers_count,
+              language: repoData.language,
+              topics: repoData.topics ?? [],
+              license: repoData.license
+                ? {
+                    key: repoData.license.key,
+                    name: repoData.license.name,
+                    url: repoData.license.url,
+                    spdx_id: repoData.license.spdx_id,
+                    node_id: repoData.license.node_id,
+                  }
+                : null,
+            },
+          });
+        } catch (error) {
+          logger.error(`Error fetching repository ${repo.owner}/${repo.repo}: ${error}`);
+        }
+      }
+    },
+  },
+  schema: z.object({
+    id: z.number(),
+    owner: z.string(),
+    owner_url: z.string().url(),
+    name: z.string(),
+    full_name: z.string(),
+    html_url: z.string().url(),
+    description: z.string().nullable(),
+    created_at: z.string(),
+    updated_at: z.string(),
+    pushed_at: z.string(),
+    stars: z.number(),
+    language: z.string().nullable(),
+    topics: z.array(z.string()),
+    license: z
+      .object({
+        key: z.string(),
+        name: z.string(),
+        url: z.string().url().nullable(),
+        spdx_id: z.string().nullable(),
+        node_id: z.string(),
+      })
+      .nullable(),
+  }),
+});
+
+export const collections = { blog, raycastExtensions, dockerHubImages, githubRepos };

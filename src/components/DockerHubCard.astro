@@ -2,24 +2,25 @@
 import { shortenNumberWithK } from "../utils/shortenNumber";
 
 const { image } = Astro.props;
+const { owner, repo, github_url, hub_details } = image.data;
 ---
 
 <div
-  id={`image-${image.repo}`}
+  id={`image-${repo}`}
   class="grid grid-rows-[1fr_auto] rounded-2xl border border-[var(--accent-main)] bg-[var(--accent-background)] p-4 text-gray-400 shadow-lg"
 >
   <div class="">
     <div class="grid gap-1">
       <div class="flex items-center justify-between">
         <a
-          href=`https://hub.docker.com/r/${image.owner}/${image.repo}`
+          href=`https://hub.docker.com/r/${owner}/${repo}`
           target="_blank"
           class="passing-underline flex-none text-base font-bold text-gray-200 hover:text-gray-200"
         >
-          {image.owner}/{image.repo}
+          {owner}/{repo}
         </a>
       </div>
-      <p class="text-sm">{image.details.description}</p>
+      <p class="text-sm">{hub_details.description}</p>
     </div>
   </div>
   <div class="">
@@ -31,16 +32,16 @@ const { image } = Astro.props;
             d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
           ></path>
         </svg>
-        <p>{shortenNumberWithK(image.details.star_count)} stars</p>
+        <p>{shortenNumberWithK(hub_details.star_count)} stars</p>
       </div>
       <div class="inline-flex items-center gap-1">
         <svg fill="none" aria-hidden="true" viewBox="0 0 24 24" class="size-5"
           ><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg
         >
-        <p>{shortenNumberWithK(image.details.pull_count)} pulls</p>
+        <p>{shortenNumberWithK(hub_details.pull_count)} pulls</p>
       </div>
       <div class="inline-flex items-center">
-        <span>View source on <a href={image.github_url} target="_blank">GitHub</a></span>
+        <span>View source on <a href={github_url} target="_blank">GitHub</a></span>
       </div>
     </div>
   </div>
