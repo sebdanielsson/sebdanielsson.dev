@@ -57,6 +57,7 @@ export default defineConfig({
     responsiveStyles: true,
   },
   experimental: {
+    svgo: true,
     liveContentCollections: true,
     /* csp: {
       directives: [
