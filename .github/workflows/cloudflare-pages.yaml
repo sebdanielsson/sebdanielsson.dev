@@ -15,7 +15,8 @@ jobs:
       contents: read
       deployments: write
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
       - name: Load secrets from dotenvx
         id: dotenvx
@@ -28,19 +29,23 @@ jobs:
       - name: Set commit in environment
         run: echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version-file: ".bun-version"
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
 
-      - run: bun install --frozen-lockfile
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
 
-      - run: bun --bun run lint
+      - name: Run formt check
+        run: bun --bun run format:check
 
-      - run: bun --bun run stylelint
+      - name: Run lint
+        run: bun --bun run lint
 
-      - run: bun --bun run format
+      - name: Run stylelint
+        run: bun --bun run stylelint
 
-      - run: bun --bun run build
+      - name: Build project
+        run: bun --bun run build
         env:
           GITHUB_USER: ${{ github.repository_owner }}
           GITHUB_REPO: ${{ github.event.repository.name }}
