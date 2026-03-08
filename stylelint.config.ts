@@ -1,4 +1,5 @@
-/** @type {import('stylelint').Config} */
+import type { Config } from "stylelint";
+
 export default {
   extends: [
     "stylelint-config-standard",
@@ -21,4 +22,4 @@ export default {
       },
     ],
   },
-};
+} satisfies Config;
