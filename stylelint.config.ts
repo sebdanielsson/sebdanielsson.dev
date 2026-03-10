@@ -9,6 +9,7 @@ export default {
   rules: {
     "import-notation": null,
     "color-hex-length": null,
+    "declaration-property-value-no-unknown": null,
     "at-rule-no-unknown": [
       true,
       {
