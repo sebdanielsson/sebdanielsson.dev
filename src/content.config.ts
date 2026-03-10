@@ -1,11 +1,12 @@
 import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { rssSchema } from "@astrojs/rss";
 import raycastExtensionsList from "./data/raycastExtensions.json";
 import dockerHubImagesList from "./data/dockerHubImages.json";
 import githubReposList from "./data/githubRepos.json";
 import { Octokit } from "@octokit/rest";
 import { GH_API } from "astro:env/server";
+import { z } from "astro/zod";
 
 const blog = defineCollection({
   loader: glob({ base: "./src/blog", pattern: "**/*.{md,mdx}" }),
@@ -81,10 +82,10 @@ const raycastExtensions = defineCollection({
       slack_community_user_id: z.string().nullable(),
       created_at: z.number(),
       website_anchor: z.string(),
-      website: z.string().url(),
+      website: z.url(),
       credits: z.number(),
       username: z.string(),
-      avatar: z.string().url(),
+      avatar: z.url(),
     }),
     created_at: z.number(),
     kill_listed_at: z.number(),
@@ -102,15 +103,15 @@ const raycastExtensions = defineCollection({
       slack_community_user_id: z.string().nullable(),
       created_at: z.number(),
       website_anchor: z.string(),
-      website: z.string().url(),
+      website: z.url(),
       credits: z.number(),
       username: z.string(),
-      avatar: z.string().url(),
+      avatar: z.url(),
     }),
     status: z.string(),
     is_new: z.boolean(),
     access: z.string(),
-    store_url: z.string().url(),
+    store_url: z.url(),
     download_count: z.number(),
     past_contributors: z.array(z.any()),
     listed: z.boolean(),
@@ -123,12 +124,12 @@ const raycastExtensions = defineCollection({
     prompt_examples: z.array(z.any()),
     metadata_count: z.number(),
     updated_at: z.number(),
-    source_url: z.string().url(),
-    readme_url: z.string().url(),
-    readme_assets_path: z.string().url(),
+    source_url: z.url(),
+    readme_url: z.url(),
+    readme_assets_path: z.url(),
     icons: z.object({
-      light: z.string().url().nullable(),
-      dark: z.string().url().nullable(),
+      light: z.url().nullable(),
+      dark: z.url().nullable(),
     }),
     commands: z.array(
       z.object({
@@ -142,13 +143,13 @@ const raycastExtensions = defineCollection({
         disabled_by_default: z.boolean(),
         beta: z.boolean(),
         icons: z.object({
-          light: z.string().url().nullable(),
-          dark: z.string().url().nullable(),
+          light: z.url().nullable(),
+          dark: z.url().nullable(),
         }),
       }),
     ),
     tools: z.array(z.any()),
-    download_url: z.string().url(),
+    download_url: z.url(),
     contributors: z.array(
       z.object({
         id: z.string(),
@@ -164,13 +165,13 @@ const raycastExtensions = defineCollection({
         slack_community_user_id: z.string().nullable(),
         created_at: z.number(),
         website_anchor: z.string(),
-        website: z.string().url(),
+        website: z.url(),
         credits: z.number(),
         username: z.string(),
-        avatar: z.string().url(),
+        avatar: z.url(),
       }),
     ),
-    metadata: z.array(z.string().url()),
+    metadata: z.array(z.url()),
     changelog: z.object({
       versions: z.array(
         z.object({
@@ -212,7 +213,7 @@ const dockerHubImages = defineCollection({
   schema: z.object({
     owner: z.string(),
     repo: z.string(),
-    github_url: z.string().url(),
+    github_url: z.url(),
     hub_details: z.object({
       user: z.string(),
       name: z.string(),
@@ -283,10 +284,10 @@ const githubRepos = defineCollection({
   schema: z.object({
     id: z.number(),
     owner: z.string(),
-    owner_url: z.string().url(),
+    owner_url: z.url(),
     name: z.string(),
     full_name: z.string(),
-    html_url: z.string().url(),
+    html_url: z.url(),
     description: z.string().nullable(),
     created_at: z.string(),
     updated_at: z.string(),
@@ -298,7 +299,7 @@ const githubRepos = defineCollection({
       .object({
         key: z.string(),
         name: z.string(),
-        url: z.string().url().nullable(),
+        url: z.url().nullable(),
         spdx_id: z.string().nullable(),
         node_id: z.string(),
       })

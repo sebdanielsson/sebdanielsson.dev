@@ -56,20 +56,19 @@ export default defineConfig({
   image: {
     responsiveStyles: true,
   },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Kalam",
+      cssVariable: "--font-kalam",
+    },
+  ],
   experimental: {
     svgo: true,
-    liveContentCollections: true,
     /* csp: {
       directives: [
         "default-src 'self' https://plausible.hogwarts.zone https://static.cloudflareinsights.com",
       ],
     }, */
-    fonts: [
-      {
-        provider: fontProviders.fontsource(),
-        name: "Kalam",
-        cssVariable: "--font-kalam",
-      },
-    ],
   },
 });
