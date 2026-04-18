@@ -20,7 +20,7 @@
     "@expressive-code/plugin-line-numbers": "^0.41.3",
     "@octokit/rest": "^22.0.0",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "6.1.7",
+    "astro": "6.1.8",
     "astro-expressive-code": "^0.41.3",
     "node-html-parser": "^7.0.1",
     "sharp": "^0.34.4",
