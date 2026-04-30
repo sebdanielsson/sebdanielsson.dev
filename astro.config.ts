@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders, envField } from "astro/config";
+import { defineConfig, fontProviders, envField, svgoOptimizer } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 
@@ -64,7 +64,7 @@ export default defineConfig({
     },
   ],
   experimental: {
-    svgo: true,
+    svgOptimizer: svgoOptimizer(),
     /* csp: {
       directives: [
         "default-src 'self' https://plausible.hogwarts.zone https://static.cloudflareinsights.com",
