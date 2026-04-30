@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders, envField, svgOptimizer } from "astro/config";
+import { defineConfig, fontProviders, envField, svgoOptimizer } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 
