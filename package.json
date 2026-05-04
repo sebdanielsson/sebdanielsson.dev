@@ -17,7 +17,7 @@
     "@astrojs/check": "0.9.9",
     "@astrojs/mdx": "5.0.4",
     "@astrojs/rss": "4.0.18",
-    "@expressive-code/plugin-line-numbers": "^0.41.3",
+    "@expressive-code/plugin-line-numbers": "^0.42.0",
     "@octokit/rest": "^22.0.0",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "6.2.2",
