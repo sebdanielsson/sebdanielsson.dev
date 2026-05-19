@@ -52,7 +52,7 @@ jobs:
           GH_API: ${{ steps.dotenvx.outputs.GH_API }}
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ steps.dotenvx.outputs.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ steps.dotenvx.outputs.CLOUDFLARE_ACCOUNT_ID }}
