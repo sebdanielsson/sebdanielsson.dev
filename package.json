@@ -30,7 +30,7 @@
     "@eslint/js": "^10.0.1",
     "@typescript-eslint/parser": "^8.46.2",
     "eslint": "^10.0.3",
-    "eslint-plugin-astro": "^1.6.0",
+    "eslint-plugin-astro": "^2.0.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
