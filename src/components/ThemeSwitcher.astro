@@ -30,6 +30,12 @@
   }
 
   const themes: Record<string, ThemeColors> = {
+    claude: {
+      accentBackgroundVar: "--claude-background",
+      accentDarkVar: "--claude-dark",
+      accentMainVar: "--claude-main",
+      accentLightVar: "--claude-light",
+    },
     purple: {
       accentBackgroundVar: "--purple-background",
       accentDarkVar: "--purple-dark",
@@ -66,7 +72,7 @@
   const options = document.getElementById("theme-options") as HTMLElement;
 
   // Get current theme from localStorage or fall back to default
-  const currentTheme = (localStorage.getItem("theme") as keyof typeof themes) || "purple";
+  const currentTheme = (localStorage.getItem("theme") as keyof typeof themes) || "claude";
   setTheme(currentTheme);
   updateIndicator();
   populateThemeOptions();
@@ -85,11 +91,10 @@
       const colors = themes[theme];
 
       if (colors) {
-        // Set the background color of the preview
-        const accentMainColor = getComputedStyle(document.documentElement).getPropertyValue(
-          colors.accentMainVar,
-        );
-        preview.style.backgroundColor = accentMainColor.trim();
+        // Reference the CSS variable directly so the browser resolves it at
+        // paint time. Reading the computed value here races the external
+        // stylesheet on cold loads and yields an empty (invisible) swatch.
+        preview.style.backgroundColor = `var(${colors.accentMainVar})`;
 
         // Add the preview and theme name to the list item
         listItem.appendChild(preview);
