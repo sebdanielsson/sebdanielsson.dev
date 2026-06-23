@@ -22,7 +22,7 @@ const imageSrcPromise = getImageImport(item.image)();
   <Picture
     src={(await imageSrcPromise).default}
     alt={item.name}
-    width="480"
+    width="960"
     height="480"
     loading={loading}
     formats={["avif", "webp"]}
