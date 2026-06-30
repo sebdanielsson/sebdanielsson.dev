@@ -16,11 +16,11 @@
   "dependencies": {
     "@astrojs/check": "0.9.9",
     "@astrojs/mdx": "7.0.0",
-    "@astrojs/rss": "4.0.18",
+    "@astrojs/rss": "4.0.19",
     "@expressive-code/plugin-line-numbers": "^0.44.0",
     "@octokit/rest": "^22.0.0",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "7.0.3",
+    "astro": "7.0.4",
     "astro-expressive-code": "^0.44.0",
     "node-html-parser": "^8.0.0",
     "sharp": "^0.35.0",
