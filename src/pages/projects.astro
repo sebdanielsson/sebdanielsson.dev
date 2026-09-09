@@ -25,15 +25,21 @@ const sortedGithubRepos = githubRepos.sort((a, b) => {
     <h1 class="my-0">Projects</h1>
     <h2>Docker Images</h2>
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
-      {dockerHubImages.map((image) => <DockerHubCard image={image} />)}
+      {dockerHubImages.map((image) => (
+        <DockerHubCard image={image} />
+      ))}
     </div>
     <h2>Raycast Extensions</h2>
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
-      {raycastExtensions.map((extension) => <RaycastStoreCard extension={extension} />)}
+      {raycastExtensions.map((extension) => (
+        <RaycastStoreCard extension={extension} />
+      ))}
     </div>
     <h2>GitHub Repos</h2>
     <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
-      {sortedGithubRepos.map((repo) => <GitHubRepoCard repo={repo} type="repo" />)}
+      {sortedGithubRepos.map((repo) => (
+        <GitHubRepoCard repo={repo} type="repo" />
+      ))}
     </div>
   </main>
 </Layout>

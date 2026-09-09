@@ -30,9 +30,7 @@ const imageSrcPromise = getImageImport(item.image)();
     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-in-out group-hover:blur-md"
   />
 
-  <div
-    class="absolute inset-0 flex items-center justify-center rounded-xl bg-black/50 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100"
-  >
+  <div class="absolute inset-0 flex items-center justify-center rounded-xl bg-black/50 opacity-0 transition-opacity duration-700 ease-in-out group-hover:opacity-100">
     <div class="flex flex-col items-center gap-2 px-4 text-center text-slate-200">
       <h6 class="text-base font-bold">{item.name}</h6>
       <p class="text-sm" set:html={item.description} />

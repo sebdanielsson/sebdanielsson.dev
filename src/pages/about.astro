@@ -12,15 +12,21 @@ import stuffIUse from "@/data/stuffIUse.json";
     <p></p>
     <h3>Hardware</h3>
     <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {stuffIUse.hardware.map((item) => <ItemCard item={item} loading="eager" />)}
+      {stuffIUse.hardware.map((item) => (
+        <ItemCard item={item} loading="eager" />
+      ))}
     </div>
     <h3>Software</h3>
     <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {stuffIUse.software.map((item) => <ItemCard item={item} loading="lazy" />)}
+      {stuffIUse.software.map((item) => (
+        <ItemCard item={item} loading="lazy" />
+      ))}
     </div>
     <h3>Coffee</h3>
     <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {stuffIUse.coffee.map((item) => <ItemCard item={item} loading="lazy" />)}
+      {stuffIUse.coffee.map((item) => (
+        <ItemCard item={item} loading="lazy" />
+      ))}
     </div>
   </main>
 </Layout>

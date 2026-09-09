@@ -9,24 +9,22 @@ const { variables, syntax = "double-braces" } = Astro.props;
 
 <div class="mdx-interactive-container my-6" data-syntax={syntax}>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-    {
-      variables.map((variable) => (
-        <div>
-          <label for={variable.id} class="mb-2 block text-sm font-medium text-gray-300">
-            {variable.label}
-          </label>
-          <input
-            type="text"
-            id={variable.id}
-            name={variable.id}
-            value={variable.defaultValue}
-            placeholder={variable.placeholder || variable.defaultValue}
-            class="mdx-input w-full rounded-md border border-[var(--accent-main)] bg-[var(--accent-background)] px-3 py-2 text-white placeholder-gray-400 focus:border-transparent focus:ring-2 focus:ring-[var(--accent-main)] focus:outline-none"
-            data-variable={variable.id}
-          />
-        </div>
-      ))
-    }
+    {variables.map((variable) => (
+      <div>
+        <label for={variable.id} class="mb-2 block text-sm font-medium text-gray-300">
+          {variable.label}
+        </label>
+        <input
+          type="text"
+          id={variable.id}
+          name={variable.id}
+          value={variable.defaultValue}
+          placeholder={variable.placeholder || variable.defaultValue}
+          class="mdx-input w-full rounded-md border border-[var(--accent-main)] bg-[var(--accent-background)] px-3 py-2 text-white placeholder-gray-400 focus:border-transparent focus:ring-2 focus:ring-[var(--accent-main)] focus:outline-none"
+          data-variable={variable.id}
+        />
+      </div>
+    ))}
   </div>
 </div>
 

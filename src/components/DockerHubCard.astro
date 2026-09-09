@@ -35,13 +35,18 @@ const { owner, repo, github_url, hub_details } = image.data;
         <p>{shortenNumberWithK(hub_details.star_count)} stars</p>
       </div>
       <div class="inline-flex items-center gap-1">
-        <svg fill="none" aria-hidden="true" viewBox="0 0 24 24" class="size-5"
-          ><path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path></svg
-        >
+        <svg fill="none" aria-hidden="true" viewBox="0 0 24 24" class="size-5">
+          <path fill="currentColor" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+        </svg>
         <p>{shortenNumberWithK(hub_details.pull_count)} pulls</p>
       </div>
       <div class="inline-flex items-center">
-        <span>View source on <a href={github_url} target="_blank">GitHub</a></span>
+        <span>
+          View source on{" "}
+          <a href={github_url} target="_blank">
+            GitHub
+          </a>
+        </span>
       </div>
     </div>
   </div>

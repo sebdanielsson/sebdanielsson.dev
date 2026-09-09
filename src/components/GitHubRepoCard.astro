@@ -22,17 +22,15 @@ const repoData = repo.data;
       </div>
       <p class="text-sm text-gray-400">{repoData.description}</p>
       <div class="flex flex-wrap gap-x-2 py-1">
-        {
-          repoData.topics.map((topic: string) => (
-            <a
-              href={`https://github.com/topics/${topic}`}
-              target="_blank"
-              class="text-[10px] font-semibold text-gray-400 uppercase"
-            >
-              {topic}
-            </a>
-          ))
-        }
+        {repoData.topics.map((topic: string) => (
+          <a
+            href={`https://github.com/topics/${topic}`}
+            target="_blank"
+            class="text-[10px] font-semibold text-gray-400 uppercase"
+          >
+            {topic}
+          </a>
+        ))}
       </div>
     </div>
   </div>
