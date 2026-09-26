@@ -5,6 +5,32 @@
   "semanticCommits": "enabled",
   "packageRules": [
     {
+      "groupName": "all patch dependencies (manual)",
+      "groupSlug": "all-patch-manual",
+      "matchUpdateTypes": ["patch"],
+      "matchPackageNames": ["*"]
+    },
+    {
+      "groupName": "all patch dependencies",
+      "groupSlug": "all-patch",
+      "matchUpdateTypes": ["patch"],
+      "matchCurrentVersion": "!/^0/",
+      "matchPackageNames": ["*"]
+    },
+    {
+      "groupName": "oxc",
+      "matchPackageNames": [
+        "oxlint",
+        "oxlint-**",
+        "@oxlint/**",
+        "oxfmt",
+        "@oxfmt/**",
+        "eslint-plugin-oxlint",
+        "oxc-**",
+        "@oxc-*/**"
+      ]
+    },
+    {
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
