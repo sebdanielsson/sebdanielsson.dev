@@ -19,12 +19,12 @@
     "@astrojs/rss": "4.0.19",
     "@expressive-code/plugin-line-numbers": "^0.44.3",
     "@octokit/rest": "^22.0.1",
-    "@tailwindcss/vite": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.4",
     "astro": "7.4.5",
     "astro-expressive-code": "^0.44.3",
     "node-html-parser": "^9.0.6",
     "sharp": "^0.35.5",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
