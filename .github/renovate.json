@@ -1,8 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "rangeStrategy": "bump",
-  "semanticCommits": "enabled",
+  "extends": ["github>sebdanielsson/renovate-config"],
   "packageRules": [
     {
       "groupName": "all patch dependencies (manual)",
@@ -29,11 +27,6 @@
         "oxc-**",
         "@oxc-*/**"
       ]
-    },
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
     }
   ]
 }
