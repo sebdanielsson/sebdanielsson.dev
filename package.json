@@ -17,11 +17,11 @@
     "@astrojs/check": "0.9.12",
     "@astrojs/mdx": "8.1.6",
     "@astrojs/rss": "4.0.19",
-    "@expressive-code/plugin-line-numbers": "^0.44.3",
+    "@expressive-code/plugin-line-numbers": "^0.44.4",
     "@octokit/rest": "^22.0.1",
     "@tailwindcss/vite": "^4.3.5",
     "astro": "7.4.12",
-    "astro-expressive-code": "^0.44.3",
+    "astro-expressive-code": "^0.44.4",
     "node-html-parser": "^9.0.7",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.5"
